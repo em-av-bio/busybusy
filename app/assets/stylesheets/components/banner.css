@@ -1,14 +1,18 @@
 .banner{
   background-size: cover;
   background-position: center;
-  display: flex;
-  align-items: center;
+  height: 200px;
+  background-image: url('banner.jpg');
+}
 
-  h1 {
+.banner h1{
+  text-align: center;
+  font-size: 36px;
+  color:black;
 
-  }
+}
 
-  p {
-
-  }
+.banner p{
+  color: black;
+  text-align: center;
 }

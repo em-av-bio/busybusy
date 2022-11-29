@@ -1,6 +1,33 @@
+.card{
+    
+}
 .card-horizontal {
+
 }
 
-.card_vertical{
 
+.card-horizontal > img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-horizontal h3 {
+
+}
+
+.card-vertical{
+
+}
+
+.card-vertical > img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-vertical h3 {
+
+}
+
+.card a{
+  text-decoration: none;
 }

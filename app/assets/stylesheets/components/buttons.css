@@ -2,6 +2,7 @@
   display: flex;
   min-height: 48px;
   border-radius: 24px;
+  padding: 8px 16px;
   align-items: center;
   justify-content: center;
   background-size: 0% 100%;
@@ -18,4 +19,12 @@
 
 .primary {
   @apply bg-red-500;
+}
+
+.secondary {
+  @apply bg-gray-200;
+}
+
+.button a {
+  text-decoration: none;
 }
