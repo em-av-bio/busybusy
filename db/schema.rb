@@ -10,18 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_101051) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_130534) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "journey_dates", force: :cascade do |t|
-    t.date "start_date"
-    t.date "end_date"
-    t.boolean "selected?", default: false
-    t.bigint "journey_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["journey_id"], name: "index_journey_dates_on_journey_id"
 
   create_table "accommodations", force: :cascade do |t|
     t.string "name"
@@ -36,6 +27,34 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_101051) do
     t.text "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "journey_accommodations", force: :cascade do |t|
+    t.bigint "accommodation_id", null: false
+    t.bigint "journey_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["accommodation_id"], name: "index_journey_accommodations_on_accommodation_id"
+    t.index ["journey_id"], name: "index_journey_accommodations_on_journey_id"
+  end
+
+  create_table "journey_dates", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.boolean "selected?", default: false
+    t.bigint "journey_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["journey_id"], name: "index_journey_dates_on_journey_id"
+  end
+
+  create_table "journey_locations", force: :cascade do |t|
+    t.bigint "location_id", null: false
+    t.bigint "journey_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["journey_id"], name: "index_journey_locations_on_journey_id"
+    t.index ["location_id"], name: "index_journey_locations_on_location_id"
   end
 
   create_table "journey_members", force: :cascade do |t|
@@ -81,7 +100,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_101051) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "journey_accommodations", "accommodations"
+  add_foreign_key "journey_accommodations", "journeys"
   add_foreign_key "journey_dates", "journeys"
+  add_foreign_key "journey_locations", "journeys"
+  add_foreign_key "journey_locations", "locations"
   add_foreign_key "journey_members", "journeys"
   add_foreign_key "journey_members", "users"
   add_foreign_key "journeys", "users"
