@@ -1,0 +1,14 @@
+.banner{
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+
+  h1 {
+
+  }
+
+  p {
+
+  }
+}
