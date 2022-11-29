@@ -3,5 +3,5 @@ class User < ApplicationRecord
   has_one_attached :photo
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :nickname, presence: true
+  validates :nickname, presence: true, uniqueness: true
 end
