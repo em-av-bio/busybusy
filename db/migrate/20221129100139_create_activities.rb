@@ -4,7 +4,6 @@ class CreateActivities < ActiveRecord::Migration[7.0]
       t.string :name
       t.integer :duration_in_h
       t.text :details
-
       t.timestamps
     end
   end
