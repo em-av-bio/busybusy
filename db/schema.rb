@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_125402) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_131535) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,7 +76,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_125402) do
     t.index ["journey_id"], name: "index_journey_dates_on_journey_id"
   end
 
-
   create_table "journey_locations", force: :cascade do |t|
     t.bigint "location_id", null: false
     t.bigint "journey_id", null: false
@@ -85,7 +84,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_125402) do
     t.index ["journey_id"], name: "index_journey_locations_on_journey_id"
     t.index ["location_id"], name: "index_journey_locations_on_location_id"
   end
-
 
   create_table "journey_members", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -103,6 +101,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_125402) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_journeys_on_user_id"
+  end
+
+  create_table "location_accommodations", force: :cascade do |t|
+    t.bigint "location_id", null: false
+    t.bigint "accommodation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["accommodation_id"], name: "index_location_accommodations_on_accommodation_id"
+    t.index ["location_id"], name: "index_location_accommodations_on_location_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -130,7 +137,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_125402) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "journey_accommodations", "accommodations"
@@ -141,4 +147,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_125402) do
   add_foreign_key "journey_members", "journeys"
   add_foreign_key "journey_members", "users"
   add_foreign_key "journeys", "users"
+  add_foreign_key "location_accommodations", "accommodations"
+  add_foreign_key "location_accommodations", "locations"
 end
