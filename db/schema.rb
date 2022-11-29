@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_130534) do
+
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_125402) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_130534) do
     t.index ["journey_id"], name: "index_journey_dates_on_journey_id"
   end
 
+
   create_table "journey_locations", force: :cascade do |t|
     t.bigint "location_id", null: false
     t.bigint "journey_id", null: false
@@ -56,6 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_130534) do
     t.index ["journey_id"], name: "index_journey_locations_on_journey_id"
     t.index ["location_id"], name: "index_journey_locations_on_location_id"
   end
+
 
   create_table "journey_members", force: :cascade do |t|
     t.bigint "user_id", null: false
