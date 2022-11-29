@@ -4,6 +4,7 @@
 /* This file is where you can add your own custom styles. */
 @import "components/buttons";
 @import "components/card";
+@import "components/banner";
 
 
 @import "tailwindcss/utilities";
