@@ -1,0 +1,2 @@
+class JourneyDate < ApplicationRecord
+end
