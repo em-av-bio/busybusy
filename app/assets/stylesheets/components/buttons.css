@@ -1,0 +1,21 @@
+.button {
+  display: flex;
+  min-height: 48px;
+  border-radius: 24px;
+  align-items: center;
+  justify-content: center;
+  background-size: 0% 100%;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: all .15s ease-in-out;
+  font-weight: bold;
+  letter-spacing: 1px;
+  width: fit-content;
+  min-width: 100px;
+  cursor: pointer;
+  border-width: 0;
+}
+
+.primary {
+  @apply bg-red-500;
+}

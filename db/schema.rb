@@ -14,15 +14,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_101051) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "journey_dates", force: :cascade do |t|
-    t.date "start_date"
-    t.date "end_date"
-    t.boolean "selected?", default: false
-    t.bigint "journey_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["journey_id"], name: "index_journey_dates_on_journey_id"
-
   create_table "accommodations", force: :cascade do |t|
     t.string "name"
     t.text "details"
@@ -36,6 +27,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_101051) do
     t.text "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "journey_dates", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.boolean "selected?", default: false
+    t.bigint "journey_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["journey_id"], name: "index_journey_dates_on_journey_id"
   end
 
   create_table "journey_members", force: :cascade do |t|
