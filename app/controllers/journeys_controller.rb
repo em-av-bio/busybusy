@@ -1,7 +1,7 @@
 class JourneysController < ApplicationController
 
   def index
-    @journeys = Journey.all
+    @journeys = Journey.where(user_id: current_user.id)
   end
 
   def new
@@ -9,6 +9,8 @@ class JourneysController < ApplicationController
   end
 
   def create
+    @user = current_user
+    @journey.user = @user
     @journey = Journey.new(journey_params)
     if @journey.save!
       redirect_to journey(@journey)
