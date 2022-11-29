@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_132045) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_132654) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_132045) do
     t.datetime "updated_at", null: false
     t.index ["accommodation_id"], name: "index_journey_accommodations_on_accommodation_id"
     t.index ["journey_id"], name: "index_journey_accommodations_on_journey_id"
+  end
+
+  create_table "journey_activities", force: :cascade do |t|
+    t.bigint "journey_id", null: false
+    t.bigint "activity_id", null: false
+    t.boolean "selected"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_journey_activities_on_activity_id"
+    t.index ["journey_id"], name: "index_journey_activities_on_journey_id"
   end
 
   create_table "journey_dates", force: :cascade do |t|
@@ -150,6 +160,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_132045) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "journey_accommodations", "accommodations"
   add_foreign_key "journey_accommodations", "journeys"
+  add_foreign_key "journey_activities", "activities"
+  add_foreign_key "journey_activities", "journeys"
   add_foreign_key "journey_dates", "journeys"
   add_foreign_key "journey_locations", "journeys"
   add_foreign_key "journey_locations", "locations"
