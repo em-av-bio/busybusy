@@ -1,7 +1,10 @@
 class JourneysController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @journeys = Journey.where(user_id: current_user.id)
+    if current_user
+      @journeys = Journey.where(user_id: current_user.id)
+    end
   end
 
   def new
