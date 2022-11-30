@@ -19,8 +19,7 @@ u4 = User.create!(nickname: "JeanRo", email: "jeanro@toto.com", password: "azert
 def getRandImage(city)
   url = "https://www.bing.com/images/search?q=#{city}&qft=+filterui:imagesize-wallpaper+filterui:photo-photo&form=IRFLTR&first=1&tsc=ImageHoverTitle"
   html = URI.open(url)
-  doc = Nokogiri::HTML(open(url))
-  puts doc
+  doc = Nokogiri::HTML(html)
   img = doc.css("img").select { |link| link["src"].nil? == false && link["src"].include?("https://") }.map { |link| link["src"] }.sample
   img.gsub!("w=", "")
   img.gsub!("h=", "")
