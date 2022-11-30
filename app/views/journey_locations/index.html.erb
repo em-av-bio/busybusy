@@ -1,0 +1,7 @@
+<h1>Affichage locations</h1>
+
+<%= form_with model: @locations do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.submit "Proposer une ville" %>
+<% end %>
