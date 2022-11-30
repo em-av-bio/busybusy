@@ -1,5 +1,5 @@
 class JourneysController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :test]
 
   def index
     if current_user
@@ -25,7 +25,7 @@ class JourneysController < ApplicationController
   end
 
   def test
-    
+
   end
 
   private
