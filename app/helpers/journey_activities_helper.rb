@@ -1,0 +1,2 @@
+module JourneyActivitiesHelper
+end
