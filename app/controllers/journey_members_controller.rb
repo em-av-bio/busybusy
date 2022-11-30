@@ -20,6 +20,7 @@ class JourneyMembersController < ApplicationController
   end
 
   def edit
+    @journey = Journey.find(params[:journey_id])
     @journey_member = JourneyMember.find(params[:id])
   end
 
