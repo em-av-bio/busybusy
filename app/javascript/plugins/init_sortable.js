@@ -1,8 +1,6 @@
 import Sortable from "sortablejs"
 
-const list = document.querySelector(".cards-sortable")
-const listItems = document.querySelectorAll(".cards-sortable .card")
-
+const list = document.querySelector(".cards-sortable");
 const initSortable = () => {
   Sortable.create(list, {
     dataIdAttr: 'data-ranking',
@@ -11,9 +9,11 @@ const initSortable = () => {
     animation: 150,
     onSort: (event) => {
       console.log(event.oldIndex + ' -> ' + event.newIndex);
+      let listItems = document.querySelectorAll(".cards-sortable .card")
+      let i = listItems.length;
       listItems.forEach((item) => {
-        item.dataset.ranking = event.newIndex;
-        console.log(item.dataset.ranking);
+        item.dataset.ranking = i;
+        i -= 1;
       });
     }
   });
