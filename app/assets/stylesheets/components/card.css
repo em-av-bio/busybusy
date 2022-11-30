@@ -1,5 +1,5 @@
 .card{
-    
+
 }
 .card-horizontal {
 
@@ -30,4 +30,17 @@
 
 .card a{
   text-decoration: none;
+}
+
+.cards-sortable li{
+  cursor: grab;
+}
+
+.cards-sortable li:active {
+  cursor: grabbing;
+}
+
+.cards-sortable li.ghost {
+  filter: grayscale(1);
+  opacity: 0.5;
 }
