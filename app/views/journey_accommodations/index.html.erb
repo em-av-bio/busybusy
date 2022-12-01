@@ -1,0 +1,9 @@
+<h1>Affichage logements</h1>
+
+<% @journey_accommodations.each do |journey_accommodation| %>
+    <li><%= journey_accommodation.accommodation.name%></li>
+    <li><%= journey_accommodation.accommodation.details%></li>
+<% end %>
+
+<button>Ce choix me convient</button>
+<p> Je propose une destination</p>
