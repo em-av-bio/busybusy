@@ -7,13 +7,15 @@ class JourneyMembersController < ApplicationController
     @journey_member = JourneyMember.new
     @journey = Journey.find(params[:journey_id])
     @users = User.all
+    @select_users = @users.map { |user| [user.nickname, user.id] }
   end
 
   def create
     @journey_member = JourneyMember.new(journey_member_params)
-    @journey_member.user = @user
+    @journey = Journey.find(params[:journey_id])
+    @journey_member.journey = @journey
     if @journey_member.save!
-      render :new
+      redirect_to new_journey_journey_member_path(@journey)
     end
   end
 
@@ -31,6 +33,6 @@ class JourneyMembersController < ApplicationController
   private
 
   def journey_member_params
-    params.require(:journey_member).permit(:nickname)
+    params.require(:journey_member).permit(:user_id)
   end
 end

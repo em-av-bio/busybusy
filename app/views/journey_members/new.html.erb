@@ -1,8 +1,8 @@
 <h1>Ajout des participants</h1>
 
-<%= form_with model: @journey_members do |form| %>
-  <%= form.label :nickname %>
-  <%= form.select :nickname, @users %>
+<%= form_with model: [@journey, @journey_member] do |form| %>
+  <%= form.label :user_id %>
+  <%= form.select :user_id, @select_users %>
   <%= form.submit "Ajouter un participant" %>
 <% end %>
 
