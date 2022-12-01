@@ -13,6 +13,7 @@ class LocationsController < ApplicationController
 
   def create
     @location = Location.new(location_params)
+    @location.image_url = @location.get_rand_image
     if @location.save!
       redirect_to location_path(@location)
     else
@@ -32,6 +33,6 @@ class LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:name, :city, :country)
+    params.require(:location).permit(:city, :country)
   end
 end

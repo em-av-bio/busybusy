@@ -77,3 +77,5 @@ end
 gem "dotenv-rails", groups: [:development, :test]
 
 gem "cloudinary"
+gem "nokogiri"
+gem "geocoder"

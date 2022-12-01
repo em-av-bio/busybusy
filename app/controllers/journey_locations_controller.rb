@@ -3,6 +3,7 @@ class JourneyLocationsController < ApplicationController
   def index
     @journey_locations = JourneyLocation.where(journey_id: params[:journey_id])
     @journey = Journey.find(params[:journey_id])
+    @journey_total_budget = @journey.journey_members.reduce(0) { |sum, member| sum += member.budget unless member.budget.nil? }
   end
 
   def new
