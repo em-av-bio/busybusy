@@ -1,3 +1,9 @@
 <h1>Affichage locations</h1>
+
+<% @journey_locations.each do |journey_location| %>
+    <li><%= journey_location.location.city%></li>
+<% end %>
+
 <button>Ce choix me convient</button>
-<p> Je propose une destination</p>
+
+<%= link_to "Proposer une ville", new_journey_journey_location_path(@journey) %>

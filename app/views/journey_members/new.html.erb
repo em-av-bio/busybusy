@@ -1,0 +1,9 @@
+<h1>Ajout des participants</h1>
+
+<%= form_with model: [@journey, @journey_member] do |form| %>
+  <%= form.label :user_id %>
+  <%= form.select :user_id, @select_users %>
+  <%= form.submit "Ajouter un participant" %>
+<% end %>
+
+<%= link_to "Passer à l'étape suivante",  edit_journey_journey_member_path(@journey, current_user)  %>
