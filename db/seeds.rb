@@ -8,6 +8,7 @@
 require "nokogiri"
 require "net/http"
 require "open-uri"
+
 JourneyMember.destroy_all
 Journey.destroy_all
 User.destroy_all
