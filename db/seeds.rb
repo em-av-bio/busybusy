@@ -21,6 +21,7 @@ u4 = User.create!(nickname: "JeanRo", email: "jeanro@toto.com", password: "azert
 
 puts "all users created"
 
+
 l1 = Location.create!(country: "France", city: "Avignon")
 l1.image_url = l1.get_rand_image
 l1.save

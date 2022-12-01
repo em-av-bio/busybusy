@@ -1,9 +1,8 @@
 <h1>Affichage activités</h1>
 
-<% @journey_activities.each do |journey_activitie| %>
-    <li><%= journey_activitie.activitie.name%></li>
-    <li><%= journey_activitie.activitie.details%></li>
+<% @journey_activities.each do |journey_activity| %>
+    <li><%= journey_activity.activities.name%></li>
+    <li><%= journey_activity.activities.details%></li>
 <% end %>
-
 <button>Ce choix me convient</button>
-<p> Je propose une destination</p>
+<%= link_to "Proposer une activité", new_journey_journey_activity_path(@journey) %>

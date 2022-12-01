@@ -1,9 +1,11 @@
-<h1>Affichage logements</h1>
+<h1>Affichage accommodations</h1>
 
 <% @journey_accommodations.each do |journey_accommodation| %>
-    <li><%= journey_accommodation.accommodation.name%></li>
-    <li><%= journey_accommodation.accommodation.details%></li>
+    <li><%= journey_accommodation.accommodation.name %></li>
 <% end %>
 
 <button>Ce choix me convient</button>
-<p> Je propose une destination</p>
+
+<%= link_to "Proposer un lieu où dormir",  new_journey_journey_accommodation_path(@journey) %>
+
+

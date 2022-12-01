@@ -1,0 +1,8 @@
+<h1>Affichage dates proposées</h1>
+
+<% @journey_dates.each do |journey_date| %>
+    <li><%= journey_date.dates.start_date%></li>
+    <li><%= journey_date.dates.start_end%></li>
+<% end %>
+<button>Ce choix me convient</button>
+<%= link_to "Proposer une date", new_journey_journey_date_path(@journey) %>

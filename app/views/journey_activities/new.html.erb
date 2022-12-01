@@ -1,0 +1,8 @@
+<h1>Ajout d'une activité</h1>
+
+<%= form_with model: [@journey, @journey_activity] do |form| %>
+  <%= form.label :activity_id %>
+  <%= form.select :activity_id, @select_activities %>
+  <%= form.submit "Ajouter une activité" %>
+<% end %>
+
