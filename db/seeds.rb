@@ -6,8 +6,15 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+# User.destroy_all
+Location.destroy_all
+JourneyLocation.destroy_all
+User.destroy_all
+u7 = User.create!(nickname: "Mino", email: "mino@toto.com", password: "azerty")
+journey_member = JourneyMember.create!(user: u7, budget: 1000)
+j1 = Journey.create!(name: "Entre postes", journey_member_id: journey_member.id)
 
-u1 = User.create!(nickname: "Gaëlle", email: "gaelle@toto.com", password: "azerty")
-u2 = User.create!(nickname: "Anoula", email: "anoula@toto.com", password: "azerty")
-u3 = User.create!(nickname: "Emmanuel", email: "emmanuel@toto.com", password: "azerty")
-u4 = User.create!(nickname: "JeanRo", email: "jeanro@toto.com", password: "azerty")
+l1 = Location.create!(city: "Paris", country: "France")
+
+
+jl1 = JourneyLocation.create!(location_id: l1.id, journey_id: j1.id)
