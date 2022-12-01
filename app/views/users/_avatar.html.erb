@@ -1,0 +1,5 @@
+<% if user.avatar.attached? %>
+  <%= cl_image_tag user.avatar.key, class: "avatar" %>
+<% else %>
+  <%= image_tag "default_user.png", class:"avatar" %>
+<% end %>

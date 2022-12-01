@@ -1,0 +1,13 @@
+<section class="journey-summary">
+  <h2><%= journey.name %></h2>
+  <div>
+    <span>Budget total :</span> <%= total_budget %>
+  </div>
+  <div>
+    <span>Participants :</span>
+    <% journey_members.each do |member| %>
+      <%= render "users/avatar", user: member.user %>
+      <span><%= member.user.nickname %></span>
+    <% end %>
+  </div>
+</section>
