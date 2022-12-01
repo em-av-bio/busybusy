@@ -1,0 +1,7 @@
+<h1>Ajout d'une accomodation</h1>
+
+<%= form_with model: [@journey, @journey_accommodation] do |form| %>
+  <%= form.label :accommodation_id %>
+  <%= form.select :accommodation_id, @select_accommodations %>
+  <%= form.submit "Ajouter un lieu où dormir" %>
+<% end %>

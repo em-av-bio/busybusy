@@ -8,6 +8,6 @@ Rails.application.routes.draw do
     resources :journey_accommodations, only: [:index, :new, :create]
     resources :journey_activities, only: [:index, :new, :create]
   end
-
+  get 'journeys/:id/summary', to: 'journeys#summary', as: :summary
   get '/test', to: 'journeys#test'
 end

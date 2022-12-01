@@ -15,7 +15,7 @@ class JourneyLocationsController < ApplicationController
   def create
     @journey_location = JourneyLocation.new(journey_location_params)
     @journey = Journey.find(params[:journey_id])
-    @location = Location.find(params[:location_id])
+    @journey_location.journey = @journey
     if @journey_location.save!
       redirect_to journey_journey_dates_path(@journey)
     end
@@ -24,6 +24,6 @@ class JourneyLocationsController < ApplicationController
   private
 
   def journey_location_params
-    permit.require(:journey_location).permit(:location_id)
+    params.require(:journey_location).permit(:location_id)
   end
 end

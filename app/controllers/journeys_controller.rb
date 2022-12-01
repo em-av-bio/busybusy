@@ -23,7 +23,8 @@ class JourneysController < ApplicationController
     end
   end
 
-  def test
+
+  def summary
 
   end
 

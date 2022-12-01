@@ -1,0 +1,9 @@
+<h1>Proposition de date</h1>
+
+<%= form_with model: [@journey, @journey_date] do |form| %>
+  <%= form.label :start_date %>
+  <%= form.date_field :start_date %>
+  <%= form.label :end_date %>
+  <%= form.date_field :end_date %>
+  <%= form.submit "Proposer une date" %>
+<% end %>
