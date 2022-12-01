@@ -1,10 +1,15 @@
 class JourneyLocationsController < ApplicationController
+
   def index
     @journey_locations = JourneyLocation.where(journey_id: params[:journey_id])
+    @journey = Journey.find(params[:journey_id])
   end
 
   def new
     @journey_location = JourneyLocation.new
+    @journey = Journey.find(params[:journey_id])
+    @locations = Location.all
+    @select_locations = @locations.map { |location| [location.city, location.id] }
   end
 
   def create
@@ -19,6 +24,6 @@ class JourneyLocationsController < ApplicationController
   private
 
   def journey_location_params
-    permit.require(:journey_location).permit(:location)
+    permit.require(:journey_location).permit(:location_id)
   end
 end
