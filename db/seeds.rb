@@ -11,8 +11,8 @@ Location.destroy_all
 JourneyLocation.destroy_all
 User.destroy_all
 u7 = User.create!(nickname: "Mino", email: "mino@toto.com", password: "azerty")
-journey_member = JourneyMember.create!(user: u7, budget: 1000)
-j1 = Journey.create!(name: "Entre postes", journey_member_id: journey_member.id)
+j1 = Journey.create!(name: "Entre postes")
+journey_member = JourneyMember.create!(user_id: u7.id, journey_id: j1.id)
 
 l1 = Location.create!(city: "Paris", country: "France")
 

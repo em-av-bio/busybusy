@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'journeys#index'
   resources :journeys do
-    resources :journey_members, only: :edit
+    resources :journey_members, only: [:edit, :new]
     resources :journey_locations, only: [:index, :create]
     resources :journey_dates, only: [:index, :create]
     resources :journey_accommodations, only: [:index, :create]
