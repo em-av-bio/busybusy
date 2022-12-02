@@ -3,7 +3,7 @@
 <% @journey_activities.each do |journey_activity| %>
     <li><%= journey_activity.activity.name%></li>
 <% end %>
-<%= link_to "Ces choix me conviennent", waitings_path(@journey) %>
+<%= link_to "Ces choix me conviennent", waitings_act_path(@journey) %>
 
 <%= form_with model: [@journey, @journey_activity] do |form| %>
   <%= form.label :activity_id %>

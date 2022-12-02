@@ -32,6 +32,14 @@ class JourneysController < ApplicationController
     @journey = Journey.find(params[:id])
   end
 
+  def waitings_act
+    @journey = Journey.find(params[:id])
+  end
+
+  def has_voted
+    @journey = Journey.find(params[:id])
+  end
+
   private
 
   def journey_params

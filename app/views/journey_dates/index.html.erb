@@ -1,10 +1,10 @@
 <h1>Affichage dates proposées</h1>
 
 <% @journey_dates.each do |journey_date| %>
-    <li><%= journey_date.start_date%></li>
-    <li><%= journey_date.end_date%></li>
+    <li>Du <%= journey_date.start_date%>au <%= journey_date.end_date%></li>
+
 <% end %>
-<%= link_to "Ce choix me convient", journey_journey_accommodations_path(@journey) %>
+<%= link_to "Ce choix me convient", waitings_path(@journey) %>
 
 <%= form_with model: [@journey, @journey_date] do |form| %>
   <%= form.label :start_date %>
@@ -13,4 +13,3 @@
   <%= form.date_field :end_date %>
   <%= form.submit "Proposer une date" %>
 <% end %>
-
