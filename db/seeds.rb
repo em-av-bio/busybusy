@@ -9,10 +9,10 @@ require "nokogiri"
 require "net/http"
 require "open-uri"
 
-JourneyMember.destroy_all
-Journey.destroy_all
-User.destroy_all
-puts "all instances deleted"
+# JourneyMember.destroy_all
+# Journey.destroy_all
+# User.destroy_all
+# puts "all instances deleted"
 
 u1 = User.create!(nickname: "Gaëlle", email: "gaelle@toto.com", password: "azerty")
 u2 = User.create!(nickname: "Anoula", email: "anoula@toto.com", password: "azerty")

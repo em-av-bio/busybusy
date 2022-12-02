@@ -28,6 +28,10 @@ class JourneysController < ApplicationController
 
   end
 
+  def waitings
+    @journey = Journey.find(params[:id])
+  end
+
   private
 
   def journey_params

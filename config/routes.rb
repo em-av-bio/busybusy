@@ -10,4 +10,9 @@ Rails.application.routes.draw do
   end
   get 'journeys/:id/summary', to: 'journeys#summary', as: :summary
   get '/test', to: 'journeys#test'
+  get '/journeys/:id/waitings', to: 'journeys#waitings', as: :waitings
+  get '/journeys/:id/journey_locations/votes', to: 'journey_locations#votes', as: :locations_votes
+  get '/journeys/:id/journey_dates/votes', to: 'journey_dates#votes', as: :dates_votes
+  get '/journeys/:id/journey_accommodations/votes', to: 'journey_accommodations#votes', as: :accommodations_votes
+  get '/journeys/:id/journey_activities/votes', to: 'journey_activities#votes', as: :activities_votes
 end
