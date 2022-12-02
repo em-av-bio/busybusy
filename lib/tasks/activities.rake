@@ -1,0 +1,2 @@
+namespace :activities do
+end

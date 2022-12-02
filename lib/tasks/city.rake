@@ -1,7 +1,8 @@
 require "csv"
+require "nokogiri"
 
 namespace :city do
-  desc "Import cities from csv"
+  # desc "toto"
   task import: :environment do
     # we need to require the file in db/data/villes_france.csv
     csv = File.read(Rails.root.join("db", "data", "villes2000.csv"))
@@ -18,5 +19,14 @@ namespace :city do
       location.save!
       puts location.city
     end
+  end
+
+  # desc "titi"
+  task scrap: :environment do
+    location = "Lyon"
+    url = "https://www.funbooker.com/fr/category/activites?search=Toutes+les+activit%C3%A9s&where=#{location}&page=1&nb_prices=&minAge=0&maxAge=0&tag="
+    html_file = URI.open(url).read
+    html_doc = Nokogiri::HTML(html_file)
+    puts html_doc
   end
 end
