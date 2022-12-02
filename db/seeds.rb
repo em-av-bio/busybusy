@@ -9,10 +9,11 @@ require "nokogiri"
 require "net/http"
 require "open-uri"
 
-# JourneyMember.destroy_all
-# Journey.destroy_all
-# User.destroy_all
-# puts "all instances deleted"
+JourneyMember.destroy_all
+Journey.destroy_all
+User.destroy_all
+Activity.destroy_all
+puts "all instances deleted"
 
 u1 = User.create!(nickname: "Gaëlle", email: "gaelle@toto.com", password: "azerty")
 u2 = User.create!(nickname: "Anoula", email: "anoula@toto.com", password: "azerty")
@@ -28,16 +29,9 @@ l1.save
 
 puts "all locations created"
 
-# def getRandImage(activity)
-#   url = "https://www.bing.com/images/search?q=#{activity}&qft=+filterui:imagesize-wallpaper+filterui:photo-photo&form=IRFLTR&first=1&tsc=ImageHoverTitle"
-#   html = URI.open(url)
-#   doc = Nokogiri::HTML(html)
-#   img = doc.css("img").select { |link| link["src"].nil? == false && link["src"].include?("https://") }.map { |link| link["src"] }.sample
-#   img.gsub!("w=", "")
-#   img.gsub!("h=", "")
-#   p img
-# end
+a1 = Activity.create!(name: "Visite guidée de la ville", duration_in_h: 2, details: "Visite guidée de la ville d'Avignon")
+a2 = Activity.create!(name: "Visite guidée du Palais des Papes", duration_in_h: 2, details: "Visite guidée du Palais des Papes d'Avignon")
+a3 = Activity.create!(name: "Visite guidée du Pont d'Avignon", duration_in_h: 2, details: "Visite guidée du Pont d'Avignon")
+a4 = Activity.create!(name: "Visite guidée du Musée Calvet", duration_in_h: 2, details: "Visite guidée du Musée Calvet d'Avignon")
 
-# activity = gets.chomp
-
-# getRandImage(activity)
+puts "all activities created"
