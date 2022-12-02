@@ -3,7 +3,7 @@ class JourneysController < ApplicationController
 
   def index
     if current_user
-      @journeys = Journey.where(user_id: current_user.id)
+      @journeys = current_user.journeys
     end
   end
 
