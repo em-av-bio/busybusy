@@ -1,9 +1,15 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
     './app/assets/stylesheets/**/*.css',
     './app/javascript/**/*.js'
+  ],
+
+  plugins: [
+    require('@tailwindcss/forms')({ strategy: 'class' })
   ],
 
   theme: {
@@ -22,6 +28,9 @@ module.exports = {
           '800': '#14204A',
           '900': '#0C102E'
         },
+      },
+      fontFamily: {
+        'sans': ['azo-sans-web', ...defaultTheme.fontFamily.sans]
       }
     }
   }

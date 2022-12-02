@@ -1,0 +1,30 @@
+<header class="sticky top-0 px-4 py-2 shadow-md bg-white">
+  <div class="header__container flex items-center justify-between gap-4">
+    <%= link_to root_path do %>
+      <%= image_tag "logo.svg", class: "w-36 h-12" %>
+    <% end %>
+    <nav class="flex items-center justify-end gap-2">
+      <% if user_signed_in? %>
+        <%= current_user.nickname %>
+        <div data-controller="dropdown" class="relative">
+          <button type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+          <%= render "users/avatar", user: current_user %>
+          </button>
+          <div
+            data-dropdown-target="menu"
+            class="hidden transition transform origin-top-right absolute right-0 bg-white p-2 rounded shadow-md"
+            data-transition-enter-from="opacity-0 scale-95"
+            data-transition-enter-to="opacity-100 scale-100"
+            data-transition-leave-from="opacity-100 scale-100"
+            data-transition-leave-to="opacity-0 scale-95"
+          >
+            <%= link_to "Déconnexion", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+          </div>
+        </div>
+      <% else %>
+        <%= link_to "Connexion", new_user_session_path %>
+        <%= link_to "Inscription", new_user_registration_path %>
+      <% end %>
+    </nav>
+  </div>
+</header>
