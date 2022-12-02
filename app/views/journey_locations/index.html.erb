@@ -1,6 +1,6 @@
 <%= render "journeys/summary", journey: @journey, total_budget: @journey_total_budget, journey_members: @journey.journey_members %>
 
-<h1>Affichage locations</h1>
+<h1>Affichage des lieux</h1>
 
 <% @journey_locations.each do |journey_location| %>
     <li><%= journey_location.location.city%></li>
