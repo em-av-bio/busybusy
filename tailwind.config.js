@@ -8,10 +8,6 @@ module.exports = {
     './app/javascript/**/*.js'
   ],
 
-  plugins: [
-    require('@tailwindcss/forms')({ strategy: 'class' })
-  ],
-
   theme: {
     extend: {
       colors: {
