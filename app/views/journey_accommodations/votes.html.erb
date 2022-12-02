@@ -1,0 +1,9 @@
+<h1>Votez</h1>
+
+<div class="cards-sortable">
+    <% @journey_accommodations.each do |journey_accommodation| %>
+        <li><%= journey_accommodation.accommodation.name %></li>
+    <% end %>
+</div>
+
+<%= link_to "Je valide mon vote", activities_votes_path(@journey) %>

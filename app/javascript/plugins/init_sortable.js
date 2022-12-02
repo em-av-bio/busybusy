@@ -1,7 +1,7 @@
 import Sortable from "sortablejs"
 
 const list = document.querySelector(".cards-sortable");
-const initSortable = () => {
+const initSortable = (event) => {
   Sortable.create(list, {
     dataIdAttr: 'data-ranking',
     ghostClass: "ghost",

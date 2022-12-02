@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_01_133201) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_12_01_161257) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,7 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_133201) do
   create_table "journey_activities", force: :cascade do |t|
     t.bigint "journey_id", null: false
     t.bigint "activity_id", null: false
-    t.boolean "selected"
+    t.boolean "selected?"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["activity_id"], name: "index_journey_activities_on_activity_id"
@@ -102,6 +101,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_133201) do
     t.bigint "journey_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
     t.index ["journey_id"], name: "index_journey_members_on_journey_id"
     t.index ["user_id"], name: "index_journey_members_on_user_id"
   end
