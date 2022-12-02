@@ -7,7 +7,7 @@
   <%= link_to "Créer un week-end", new_journey_path, class:"btn-tail" %>
   <h2>Mes week-end en cours</h2> 
   <% @journeys.each do |journey| %>
-    <%= link_to journey_path(journey), class:"btn-tail" do %>
+    <%= link_to edit_journey_journey_member_path(journey.id, current_user), class:"m-2" do %>
       <%= journey.name %>
     <% end %>
   <% end %>
