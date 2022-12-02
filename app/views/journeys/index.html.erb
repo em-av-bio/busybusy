@@ -4,7 +4,11 @@
 </div>
 
 <div class="container">
-  <h2>Mes week-end en cours</h2>
-  <h2>Mes week-end passés</h2>
-<%= link_to "Créer un week-end", new_journey_path, class:"btn-tail" %>
+  <%= link_to "Créer un week-end", new_journey_path, class:"btn-tail" %>
+  <h2>Mes week-end en cours</h2> 
+  <% @journeys.each do |journey| %>
+    <%= link_to journey_path(journey), class:"btn-tail" do %>
+      <%= journey.name %>
+    <% end %>
+  <% end %>
 </div>
