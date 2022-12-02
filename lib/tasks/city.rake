@@ -4,6 +4,7 @@ require "nokogiri"
 namespace :city do
   # desc "toto"
   task import: :environment do
+    Location.destroy_all
     # we need to require the file in db/data/villes_france.csv
     csv = File.read(Rails.root.join("db", "data", "villes2000.csv"))
     # we need to parse the csv file, it's a file with headers in french including accents
@@ -14,19 +15,12 @@ namespace :city do
       location = Location.new
       location.city = row["ville_nom"]
       location.zip_code = row["ville_code_postal"]
+      location.longitude = row["ville_longitude_deg"]
+      location.latitude = row["ville_latitude_deg"]
       location.country = "France"
       location.image_url = location.get_rand_image
       location.save!
       puts location.city
     end
-  end
-
-  # desc "titi"
-  task scrap: :environment do
-    location = "Lyon"
-    url = "https://www.funbooker.com/fr/category/activites?search=Toutes+les+activit%C3%A9s&where=#{location}&page=1&nb_prices=&minAge=0&maxAge=0&tag="
-    html_file = URI.open(url).read
-    html_doc = Nokogiri::HTML(html_file)
-    puts html_doc
   end
 end
