@@ -4,8 +4,17 @@
 
 <% @journey_locations.each do |journey_location| %>
     <li><%= journey_location.location.city%></li>
+    <img src="<%= journey_location.location.image_url %>">
 <% end %>
 
-<button>Ce choix me convient</button>
+<%= link_to "Je valide la liste", journey_journey_dates_path(@journey) %>
 
-<%= link_to "Proposer une ville", new_journey_journey_location_path(@journey) %>
+
+
+<h1>Ajout d'un lieu</h1>
+
+<%= form_with model: [@journey, @journey_location] do |form| %>
+  <%= form.label :location_id %>
+  <%= form.select :location_id, @select_locations %>
+  <%= form.submit "Ajouter une ville" %>
+<% end %>

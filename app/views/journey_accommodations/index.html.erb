@@ -4,8 +4,12 @@
     <li><%= journey_accommodation.accommodation.name %></li>
 <% end %>
 
-<button>Ce choix me convient</button>
 
-<%= link_to "Proposer un lieu où dormir",  new_journey_journey_accommodation_path(@journey) %>
+<%= link_to "Ce choix me convient",  journey_journey_activities_path(@journey) %>
 
 
+<%= form_with model: [@journey, @journey_accommodation] do |form| %>
+  <%= form.label :accommodation_id %>
+  <%= form.select :accommodation_id, @select_accommodations %>
+  <%= form.submit "Ajouter un lieu où dormir" %>
+<% end %>
