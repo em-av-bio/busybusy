@@ -1,18 +1,19 @@
 .banner{
   background-size: cover;
   background-position: center;
-  height: 200px;
-  background-image: url('banner.jpg');
+  height: 220px;
+  background-image: url('img_banner.jpg');
+  background-position: bottom;
 }
 
 .banner h1{
   text-align: center;
   font-size: 36px;
-  color:black;
+  color: black ;
 
 }
 
 .banner p{
-  color: black;
+  color:black ;
   text-align: center;
 }

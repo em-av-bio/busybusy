@@ -1,12 +1,13 @@
-<h1>Affichage activités</h1>
+<h1>Proposition d'activités <i class="fa-solid fa-person-hiking"></i></h1>
 
 <% @journey_activities.each do |journey_activity| %>
     <li><%= journey_activity.activity.name%></li>
 <% end %>
-<%= link_to "Ces choix me conviennent", waitings_act_path(@journey) %>
 
 <%= form_with model: [@journey, @journey_activity] do |form| %>
   <%= form.label :activity_id %>
   <%= form.select :activity_id, @select_activities %>
   <%= form.submit "Ajouter une activité" %>
 <% end %>
+
+<%= link_to "Je valide la liste", waitings_act_path(@journey), class:"btn-one inline-block" %>
