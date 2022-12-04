@@ -1,0 +1,7 @@
+
+<% users.each do |user| %>
+  <%= link_to users_search_path do %>
+    <%= highlight(user.nickname, params.dig(:username_search)) %>
+  <% end %>
+  <br>
+<% end %>
