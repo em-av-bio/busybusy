@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'journeys/:id/summary', to: 'journeys#summary', as: :summary
   get '/test', to: 'journeys#test'
   post '/search', to: 'users#search', as: :users_search
+  post '/locations/search', to: 'locations#search', as: :locations_search
   get '/journeys/:id/has_voted', to: 'journeys#has_voted', as: :has_voted
   get '/journeys/:id/waitings', to: 'journeys#waitings', as: :waitings
   get '/journeys/:id/waitings_act', to: 'journeys#waitings_act', as: :waitings_act

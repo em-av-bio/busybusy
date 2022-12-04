@@ -9,12 +9,14 @@
 
 <%= link_to "Je valide la liste", journey_journey_dates_path(@journey) %>
 
+<%# <%= form_with model: [@journey, @journey_location] do |form| %>
+  <%# <%= form.label :location_id %>
+  <%# <%= form.select :location_id, @select_locations %>
+  <%# <%= form.submit "Ajouter une ville" %>
+<%# <% end %>
 
+<h1>Recherche par ville:</h1>
 
-<h1>Ajout d'un lieu</h1>
-
-<%= form_with model: [@journey, @journey_location] do |form| %>
-  <%= form.label :location_id %>
-  <%= form.select :location_id, @select_locations %>
-  <%= form.submit "Ajouter une ville" %>
-<% end %>
+<%= render "journey_locations/search_form" %>
+<%= link_to "Ajouter cette ville", journey_journey_locations_path(@journey) %>
+<%= link_to "Passer à l'étape suivante",  journey_journey_dates_path(@journey)  %>
