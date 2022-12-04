@@ -5,29 +5,33 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require "nokogiri"
+require "net/http"
+require "open-uri"
 
-# User.destroy_all
-# Location.destroy_all
-# JourneyLocation.destroy_all
-# User.destroy_all
-u7 = User.create!(nickname: "Mimederdeeffrsfeedeeo", email: "minfosidreefroeedee@tdeeoto.com", password: "azerty")
-j1 = Journey.create!(name: "Entre postes")
-journey_member = JourneyMember.create!(user_id: u7.id, journey_id: j1.id)
+JourneyMember.destroy_all
+Journey.destroy_all
+User.destroy_all
+Activity.destroy_all
+puts "all instances deleted"
 
-l1 = Location.create!(city: "Paris", country: "France")
-acc = Accommodation.create!(name: "Hotel de la paix", details: "blabla")
-acc2 = Accommodation.create!(name: "Hotel de la px", details: "blabla")
-acc3 = Accommodation.create!(name: "Hotel de l'amour", details: "blabla")
+u1 = User.create!(nickname: "Gaëlle", email: "gaelle@toto.com", password: "azerty")
+u2 = User.create!(nickname: "Anoula", email: "anoula@toto.com", password: "azerty")
+u3 = User.create!(nickname: "Emmanuel", email: "emmanuel@toto.com", password: "azerty")
+u4 = User.create!(nickname: "JeanRo", email: "jeanro@toto.com", password: "azerty")
+
+puts "all users created"
 
 
-jl1 = JourneyLocation.create!(location_id: l1.id, journey_id: j1.id)
+l1 = Location.create!(country: "France", city: "Avignon")
+l1.image_url = l1.get_rand_image
+l1.save
 
-acc2 = JourneyAccommodation.create!(accommodation_id: acc.id, journey_id: j1.id)
-acc3 = JourneyAccommodation.create!(accommodation_id: acc.id, journey_id: j1.id)
-acc4 = JourneyAccommodation.create!(accommodation_id: acc.id, journey_id: j1.id)
+puts "all locations created"
 
-act1 = Activity.create!(name: "Visite du Louvre", details: "cool", duration_in_h: "2")
-act1 = Activity.create!(name: "Visite d'une usine", details: "cool", duration_in_h: "2")
+a1 = Activity.create!(name: "Visite guidée de la ville", duration_in_h: 2, details: "Visite guidée de la ville d'Avignon")
+a2 = Activity.create!(name: "Visite guidée du Palais des Papes", duration_in_h: 2, details: "Visite guidée du Palais des Papes d'Avignon")
+a3 = Activity.create!(name: "Visite guidée du Pont d'Avignon", duration_in_h: 2, details: "Visite guidée du Pont d'Avignon")
+a4 = Activity.create!(name: "Visite guidée du Musée Calvet", duration_in_h: 2, details: "Visite guidée du Musée Calvet d'Avignon")
 
-actj1 = JourneyActivity.create!(activity_id: act1.id, journey_id: j1.id)
-actj2 = JourneyActivity.create!(activity_id: act1.id, journey_id: j1.id)
+puts "all activities created"

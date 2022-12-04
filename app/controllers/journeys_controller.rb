@@ -3,7 +3,7 @@ class JourneysController < ApplicationController
 
   def index
     if current_user
-      @journeys = Journey.where(user_id: current_user.id)
+      @journeys = current_user.journeys
     end
   end
 
@@ -26,6 +26,18 @@ class JourneysController < ApplicationController
 
   def summary
 
+  end
+
+  def waitings
+    @journey = Journey.find(params[:id])
+  end
+
+  def waitings_act
+    @journey = Journey.find(params[:id])
+  end
+
+  def has_voted
+    @journey = Journey.find(params[:id])
   end
 
   private

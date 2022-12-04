@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Busybusy</title>
+    <title>WeekZen | Planificateur de weekends entre amis</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://use.typekit.net/jjq4sge.css">
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-great-blue-50 h-screen flex flex-col">
+    <%= render "shared/header" %>
+    <main class="grow">
+      <%= yield %>
+    </main>
+    <%= render "shared/footer" %>
   </body>
 </html>

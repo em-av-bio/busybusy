@@ -1,0 +1,9 @@
+<h1>Votez</h1>
+
+<div class="cards-sortable">
+    <% @journey_activities.each do |journey_activity| %>
+        <li><%= journey_activity.activity.name%></li>
+    <% end %>
+</div>
+
+<%= link_to "Je valide mon vote", summary_path(@journey) %>

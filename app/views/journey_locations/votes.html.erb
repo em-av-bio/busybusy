@@ -1,0 +1,10 @@
+<h1>Votez</h1>
+
+<div class="cards-sortable">
+    <% @journey_locations.each do |journey_location| %>
+        <li><%= journey_location.location.city%></li>
+    <% end %>
+</div>
+
+
+<%= link_to "Je valide mon vote", dates_votes_path(@journey) %>

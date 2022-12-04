@@ -1,10 +1,13 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 
-/* This file is where you can add your own custom styles. */
+/* Main styles */
+@import "base";
+
+/* Components */
 @import "components/buttons";
 @import "components/card";
 @import "components/banner";
-
+@import "components/avatar";
 
 @import "tailwindcss/utilities";
