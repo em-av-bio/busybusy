@@ -1,7 +1,11 @@
 <h1>Proposition d'activités <i class="fa-solid fa-person-hiking"></i></h1>
 
 <% @journey_activities.each do |journey_activity| %>
-    <li><%= journey_activity.activity.name%></li>
+    <li>
+      <%= journey_activity.activity.name%>
+      <%= journey_activity.activity.details%>
+      <%= journey_activity.activity.duration_in_h%>
+    </li>
 <% end %>
 
 <%= form_with model: [@journey, @journey_activity] do |form| %>

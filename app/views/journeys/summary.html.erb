@@ -1,8 +1,8 @@
 <h1>Il est temps de faire vos valises! <i class="fa-solid fa-suitcase"></i></h1>
 <h2>Votre futur week-end</h2>
 
-<i class="fa-solid fa-calendar"></i><p>Vous partez du au ... </p>
-<i class="fa-solid fa-location-dot"></i><p> Dans la ville de...</p>
-
-<i class="fa-solid fa-piggy-bank"></i><p>Avec un budget de <%= @budget_total %>€</p>
+<i class="fa-solid fa-calendar"></i><p>Vous partez du <%= @date_voted.start_date.strftime("%d/%m/%Y") %> au  <%= @date_voted.end_date.strftime("%d/%m/%Y") %>
+<i class="fa-solid fa-location-dot"></i><p> A <%= @city_voted.location.city %></p>
+<i class="fa-solid fa-piggy-bank"></i><p>Avec un budget de <%= @journey_total_budget%>€</p>
+<i class="fa-solid fa-location-dot"></i><p> Pour faire : <%= @activity_voted.activity.name%></p>
 <i class="fa-solid fa-house-user"></i><p>Quelques propositions de logements <a target="_blank" href="https://www.airbnb.fr/" >ici</a></p>

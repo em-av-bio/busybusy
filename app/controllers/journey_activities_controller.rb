@@ -33,6 +33,16 @@ class JourneyActivitiesController < ApplicationController
     @journey = Journey.find(params[:id])
   end
 
+  def update_ranking
+    @journey = Journey.find(params[:journey_id])
+    params[:journey_activities].each do |k, activity|
+      journey_activity = JourneyActivity.find(activity[:id])
+      journey_activity.ranking += activity[:ranking].to_i
+      journey_activity.save!
+    end
+    redirect_to waitings_votes_path(@journey)
+  end
+
   private
 
   def journey_activity_params

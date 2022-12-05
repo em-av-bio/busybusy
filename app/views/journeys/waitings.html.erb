@@ -1,3 +1,11 @@
+<% @journey_members.each do |journey_member| %>
+  <% journey_member.locations_accepted? && journey_member.dates_accepted? %>
+    <li><%= journey_member.user.nickname %> <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %> has accepted the locations and dates.</li>
+      <% if !journey_member.locations_accepted? && !journey_member.dates_accepted? %>
+        <li><%= journey_member.user.nickname %> <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %> hasn't accepted the locations and dates.</li>
+      <% end %>
+<% end %>
+
 <h1>Félicitations ! <i class="fa-sharp fa-solid fa-hands-clapping"></i></h1>
 
 <h2>Tous les participants ont validé les propositions de lieux et de dates!</h2>
