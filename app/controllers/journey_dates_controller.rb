@@ -1,10 +1,11 @@
 class JourneyDatesController < ApplicationController
-  before_action :set_user, :set_journey, except: [:update_ranking]
+
+  before_action :set_user, :set_journey, only: [:index, :new, :create]
 
   def index
     @journey_dates = JourneyDate.where(journey_id: params[:journey_id])
     @journey_date = JourneyDate.new
-    @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:journey_id])
+    @journey_member = JourneyMember.find_by(user: current_user, journey: params[:journey_id])
     @journey_member.locations_accepted!
   end
 
@@ -23,8 +24,10 @@ class JourneyDatesController < ApplicationController
   end
 
   def votes
+    @journey = Journey.find(params[:id])
     @journey_dates = JourneyDate.where(journey_id: params[:id])
-    @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
+    @journey = Journey.find(params[:id])
+    @journey_member = JourneyMember.find_by(user: current_user, journey: @journey)
     @journey_member.locations_voted!
   end
 
@@ -49,6 +52,6 @@ class JourneyDatesController < ApplicationController
   end
 
   def set_journey
-    @journey = Journey.find(params[:id])
+    @journey = Journey.find(params[:journey_id])
   end
 end
