@@ -7,7 +7,8 @@
     <img src="<%= journey_location.location.image_url %>">
 <% end %>
 
-
+<%= link_to "Proposer une ville", new_journey_journey_location_path(@journey) %>
+<%= link_to "Je valide la liste", journey_journey_dates_path(@journey) %>
 
 <%# <%= form_with model: [@journey, @journey_location] do |form| %>
   <%# <%= form.label :location_id %>
