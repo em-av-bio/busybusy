@@ -1,6 +1,6 @@
 <%= render "journeys/summary", journey: @journey, total_budget: @journey_total_budget, journey_members: @journey.journey_members %>
 
-<h1>Affichage des lieux</h1>
+<h1>Affichage des lieux <i class="fa-solid fa-location-dot"></i></h1>
 
 <% @journey_locations.each do |journey_location| %>
     <li><%= journey_location.location.city%></li>
@@ -18,6 +18,8 @@
 
 <h1>Recherche par ville:</h1>
 
-<%= render "journey_locations/search_form" %>
-<%= link_to "Ajouter cette ville", journey_journey_locations_path(@journey) %>
-<%= link_to "Passer à l'étape suivante",  journey_journey_dates_path(@journey)  %>
+<%= render "journey_locations/search_form"%>
+<%= link_to "Ajouter cette ville", journey_journey_locations_path(@journey)%>
+<%= link_to "Passer à l'étape suivante",  journey_journey_dates_path(@journey)%>
+
+<%= link_to "Je valide la liste", journey_journey_dates_path(@journey), class:"btn-one inline-block" %>

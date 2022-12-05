@@ -1,10 +1,10 @@
-<h1>Affichage dates proposées</h1>
+<h1>Propositions de dates <i class="fa-solid fa-calendar"></i></h1>
 
 <% @journey_dates.each do |journey_date| %>
     <li>Du <%= journey_date.start_date.strftime("%d/%m/%Y")%>au <%= journey_date.end_date.strftime("%d/%m/%Y")%></li>
 
 <% end %>
-<%= link_to "Ce choix me convient", waitings_path(@journey) %>
+
 
 <%= form_with model: [@journey, @journey_date] do |form| %>
   <%= form.label :start_date %>
@@ -13,3 +13,5 @@
   <%= form.date_field :end_date, value: form.object.try(:strftime,"%m/%d/%Y") %>
   <%= form.submit "Proposer une date" %>
 <% end %>
+
+<%= link_to "Je valide ces dates", waitings_path(@journey), class:"btn-one inline-block" %>
