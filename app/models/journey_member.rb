@@ -8,10 +8,8 @@ class JourneyMember < ApplicationRecord
     locations_voted: 3,
     dates_accepted: 4,
     dates_voted: 5,
-    accommodations_accepted: 6,
-    accommodations_voted: 7,
     activities_accepted: 8,
     activities_voted: 9
   }
-  validates :budget, numericality: { only_integer: true }
+  # validates :budget, numericality: { only_integer: true }
 end

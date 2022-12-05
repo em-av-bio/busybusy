@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   get '/journeys/:id/journey_dates/votes', to: 'journey_dates#votes', as: :dates_votes
   get '/journeys/:id/journey_accommodations/votes', to: 'journey_accommodations#votes', as: :accommodations_votes
   get '/journeys/:id/journey_activities/votes', to: 'journey_activities#votes', as: :activities_votes
+  get '/journeys/:id/waitings_votes', to: 'journey_activities#waitings_votes', as: :waitings_votes
 end
