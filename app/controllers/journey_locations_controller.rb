@@ -28,6 +28,7 @@ class JourneyLocationsController < ApplicationController
   def votes
     @journey_locations = JourneyLocation.where(journey_id: params[:id])
     @journey = Journey.find(params[:id])
+
   end
 
   private
