@@ -31,13 +31,14 @@ class LocationsController < ApplicationController
   end
 
   def search
+    @journey = Journey.find(params[:journey][:id].to_i)
     @locations = Location.where('city ILIKE ?', "%#{params[:locations_search]}%").order(created_at: :desc)
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.update('locations_results',
           partial: 'journey_locations/search_results',
-          locals: { locations: @locations })
+          locals: { locations: @locations, journey: @journey })
         ]
       end
     end

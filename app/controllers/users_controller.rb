@@ -10,7 +10,8 @@ class UsersController < ApplicationController
         render turbo_stream: [
           turbo_stream.update('search_results',
           partial: 'users/search_results',
-          locals: { users: @users })
+          locals: { users: @users
+                    })
         ]
       end
     end
