@@ -38,9 +38,10 @@ class ScrapActivitiesService
     name = html_doc.search(".title h1").text.gsub("\n", "").strip
     details = html_doc.search(".position-relative .border-bottom .mb-sm-1").text.gsub("\n", "").strip
     duration_in_h = html_doc.search(".flex-sm-col li")[0].text.gsub("\n", "").strip
+    image_url =  html_doc.search("[data-srcset]").first.values[1]
     return unless details.present?
 
-    activity = Activity.create!(location: @location, name: , details:, duration_in_h:)
+    activity = Activity.create!(location: @location, name: , details:, duration_in_h:, image_url:)
     p "Activity #{activity.name} created"
   end
 end
