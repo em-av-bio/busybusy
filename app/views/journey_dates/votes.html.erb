@@ -5,7 +5,7 @@
       <% x = 0 %>
         <% @journey_dates.each do |journey_date| %>
             <li class="card" data-ranking="<%= @journey_dates.count %>">
-                <li>Du <%= journey_date.start_date%> au <%= journey_date.end_date%></li>
+                <li>Du <%= journey_date.start_date.strftime("%d/%m/%Y") %> au <%= journey_date.end_date.strftime("%d/%m/%Y") %></li>
                 <%= hidden_field_tag "journey_dates[#{x}][id]", journey_date.id %>
                 <%= hidden_field_tag "journey_dates[#{x}][ranking]", @journey_dates.count - x, class:"hidden_ranking" %>
             </li>
