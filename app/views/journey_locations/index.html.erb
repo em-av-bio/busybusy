@@ -7,9 +7,8 @@
     <img src="<%= journey_location.location.image_url %>">
 <% end %>
 
+<%= link_to "Proposer une ville", new_journey_journey_location_path(@journey) %>
 <%= link_to "Je valide la liste", journey_journey_dates_path(@journey) %>
-
-
 
 <h1>Ajout d'un lieu</h1>
 
@@ -18,3 +17,4 @@
   <%= form.select :location_id, @select_locations %>
   <%= form.submit "Ajouter une ville" %>
 <% end %>
+
