@@ -43,7 +43,7 @@ class JourneyActivitiesController < ApplicationController
   end
 
   def set_journey
-    @journey = Journey.find(params[:journey_id])
+    @journey = Journey.find(params[:id])
   end
 
 end

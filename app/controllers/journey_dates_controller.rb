@@ -4,7 +4,8 @@ class JourneyDatesController < ApplicationController
   def index
     @journey_dates = JourneyDate.where(journey_id: params[:journey_id])
     @journey_date = JourneyDate.new
-    @user.locations_accepted!
+    @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:journey_id])
+    @journey_member.locations_accepted!
   end
 
   def new
@@ -24,7 +25,8 @@ class JourneyDatesController < ApplicationController
   def votes
     @journey_dates = JourneyDate.where(journey_id: params[:id])
     @journey = Journey.find(params[:id])
-    @user.locations_voted!
+    @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
+    @journey_member.locations_voted!
   end
 
   private
@@ -38,6 +40,6 @@ class JourneyDatesController < ApplicationController
   end
 
   def set_journey
-    @journey = Journey.find(params[:journey_id])
+    @journey = Journey.find(params[:id])
   end
 end
