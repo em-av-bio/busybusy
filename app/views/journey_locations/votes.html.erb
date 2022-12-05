@@ -1,10 +1,14 @@
 <h1>Votez <i class="fa-solid fa-check-to-slot"></i></h1>
 
-<div class="cards-sortable">
+<ul class="cards-sortable">
     <% @journey_locations.each do |journey_location| %>
-        <li><%= journey_location.location.city%></li>
+        <li class="card" data-journey-location-id="1" data-ranking="4"><%= journey_location.location.city%></li>
     <% end %>
-</div>
+</ul>
 
 
 <%= link_to "Je valide mon vote", dates_votes_path(@journey), data: { turbo: false } %>
+
+
+
+ 

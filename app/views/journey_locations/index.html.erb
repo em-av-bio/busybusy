@@ -2,6 +2,7 @@
 
 <h1>Affichage des lieux <i class="fa-solid fa-location-dot"></i></h1>
 
+
 <% @journey_locations.each do |journey_location| %>
     <li><%= journey_location.location.city%></li>
     <img src="<%= journey_location.location.image_url %>">

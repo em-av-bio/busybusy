@@ -25,22 +25,26 @@ class JourneysController < ApplicationController
 
 
   def summary
-    @user.activities_voted!
+    @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
+    @journey_member.activities_voted!
   end
 
   def waitings
     @journey = Journey.find(params[:id])
-    @user.dates_accepted!
+    @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
+    @journey_member.dates_accepted!
   end
 
   def waitings_act
     @journey = Journey.find(params[:id])
-    @user.activities_accepted!
+    @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
+    @journey_member.activities_accepted!
   end
 
   def has_voted
     @journey = Journey.find(params[:id])
-    @user.dates_voted!
+    @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
+    @journey_member.dates_voted!
   end
 
   private
