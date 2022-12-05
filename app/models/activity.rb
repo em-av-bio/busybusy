@@ -1,5 +1,5 @@
 class Activity < ApplicationRecord
-  has_many :journey_activities
+  has_many :journey_activities, dependent: :destroy
   has_many :journey, through: :journey_activities
   belongs_to :location
 

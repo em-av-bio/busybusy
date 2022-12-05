@@ -8,7 +8,8 @@
 require "nokogiri"
 require "net/http"
 require "open-uri"
-
+JourneyDate.destroy_all
+JourneyActivity.destroy_all
 JourneyMember.destroy_all
 Journey.destroy_all
 User.destroy_all
@@ -29,9 +30,9 @@ l1.save
 
 puts "all locations created"
 
-a1 = Activity.create!(name: "Visite guidée de la ville", duration_in_h: 2, details: "Visite guidée de la ville d'Avignon")
-a2 = Activity.create!(name: "Visite guidée du Palais des Papes", duration_in_h: 2, details: "Visite guidée du Palais des Papes d'Avignon")
-a3 = Activity.create!(name: "Visite guidée du Pont d'Avignon", duration_in_h: 2, details: "Visite guidée du Pont d'Avignon")
-a4 = Activity.create!(name: "Visite guidée du Musée Calvet", duration_in_h: 2, details: "Visite guidée du Musée Calvet d'Avignon")
+a1 = Activity.create!(location: l1, name: "Visite guidée de la ville", duration_in_h: 2, details: "Visite guidée de la ville d'Avignon")
+a2 = Activity.create!(location: l1, name: "Visite guidée du Palais des Papes", duration_in_h: 2, details: "Visite guidée du Palais des Papes d'Avignon")
+a3 = Activity.create!(location: l1, name: "Visite guidée du Pont d'Avignon", duration_in_h: 2, details: "Visite guidée du Pont d'Avignon")
+a4 = Activity.create!(location: l1, name: "Visite guidée du Musée Calvet", duration_in_h: 2, details: "Visite guidée du Musée Calvet d'Avignon")
 
 puts "all activities created"

@@ -40,6 +40,7 @@ class ScrapActivitiesService
     duration_in_h = html_doc.search(".flex-sm-col li")[0].text.gsub("\n", "").strip
     return unless details.present?
 
-    Activity.create!(location: @location, name: , details:, duration_in_h:)
+    activity = Activity.create!(location: @location, name: , details:, duration_in_h:)
+    p "Activity #{activity.name} created"
   end
 end
