@@ -1,5 +1,5 @@
 class JourneyDatesController < ApplicationController
-  before_action :set_user, :set_journey
+  before_action :set_user, :set_journey, except: [:update_ranking]
 
   def index
     @journey_dates = JourneyDate.where(journey_id: params[:journey_id])
@@ -24,9 +24,18 @@ class JourneyDatesController < ApplicationController
 
   def votes
     @journey_dates = JourneyDate.where(journey_id: params[:id])
-    @journey = Journey.find(params[:id])
     @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
     @journey_member.locations_voted!
+  end
+
+  def update_ranking
+    @journey = Journey.find(params[:journey_id])
+    params[:journey_dates].each do |k, date|
+      journey_date = JourneyDate.find(date[:id])
+      journey_date.ranking += date[:ranking].to_i
+      journey_date.save!
+    end
+    redirect_to has_voted_path(@journey)
   end
 
   private
