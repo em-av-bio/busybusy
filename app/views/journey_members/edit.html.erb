@@ -1,8 +1,9 @@
 <h1>Votre budget</h1>
 
-<form class="w-full max-w-sm">
+<%= form_with model: [@journey, @journey_member], class:"full max-w-sm" do |form| %>
   <div class="flex items-center border-b border-great-blue-700  py-2">
-    <input class="appearance-none bg-transparent border-none w-full text-great-blue-700  mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Votre budget pour le week-end" aria-label="Full name">
-    <%= link_to "valider mon budget", journey_journey_locations_path(@journey), class:"flex-shrink-0 bg-great-blue-300 hover:great-blue-700   hover:border-great-blue-200  text-sm border-2 text-white py-1 px-2 rounded" %>
+    <%= form.label :budget %>
+    <%= form.number_field :budget, class:"appearance-none bg-transparent border-none w-full text-great-blue-700  mr-3 py-1 px-2 leading-tight focus:outline-none" %>
+    <%= form.submit "Valider mon budget", class:"flex-shrink-0 bg-great-blue-300 hover:great-blue-700 hover:border-great-blue-200 text-sm border-2 text-white py-1 px-2 rounded"%>
   </div>
-</form>
+<% end %>
