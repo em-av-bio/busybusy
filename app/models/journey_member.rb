@@ -13,5 +13,5 @@ class JourneyMember < ApplicationRecord
     activities_accepted: 8,
     activities_voted: 9
   }
-  # validates :budget, numericality: { only_integer: true }
+  validates :budget, numericality: { only_integer: true }
 end

@@ -1,8 +1,21 @@
 <h1>Ajout des participants</h1>
 
-<%= form_with model: [@journey, @journey_member] do |form| %>
-  <%= form.label :user_id %>
-  <%= form.select :user_id, @select_users %>
-  <%= form.submit "Ajouter un participant" %>
-<% end %>
+<%# <%= form_with model: [@journey, @journey_member] do |form| %>
+  <%# <%= form.label :user_id %>
+  <%# <%= form.select :user_id, @select_users %>
+  <%# <%= form.submit "Ajouter un participant" %>
+<%# <% end %>
+
+<div class="flex flex-wrap items-center gap-2">
+    <span>Participants :</span>
+    <% @journey_members.each do |member| %>
+      <%= render "users/avatar", user: member.user %>
+      <span><%= member.user.nickname %></span>
+    <% end %>
+</div>
+
+
+<h3>Recherche par pseudo:</h3>
+<%= render "users/search_form" %>
+<%= link_to "Ajouter ce participant", new_journey_journey_member_path(@journey) %>
 <%= link_to "Passer à l'étape suivante",  edit_journey_journey_member_path(@journey, current_user)  %>
