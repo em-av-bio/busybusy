@@ -5,6 +5,7 @@ class JourneyMembersController < ApplicationController
 
   def new
     @journey_member = JourneyMember.new
+    @current_journey_member = JourneyMember.find_by(journey_id: params[:journey_id], user: current_user)
     @journey = Journey.find(params[:journey_id])
     @users = User.all
     @select_users = @users.map { |user| [user.nickname, user.id] }
@@ -12,10 +13,11 @@ class JourneyMembersController < ApplicationController
 
   def create
     @journey_member = JourneyMember.new(journey_member_params)
+    @journey_member.user = current_user
     @journey = Journey.find(params[:journey_id])
     @journey_member.journey = @journey
     if @journey_member.save!
-      redirect_to new_journey_journey_member_path(@journey)
+      redirect_to new_journey_journey_member_path(@journey, @journey_member)
     end
   end
 

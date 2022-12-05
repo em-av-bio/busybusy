@@ -25,6 +25,10 @@ class JourneysController < ApplicationController
 
 
   def summary
+    @journey = Journey.find(params[:id])
+    @activities = @journey.journey_locations.first.location.activities
+    @budget_total = 0
+    @journey.journey_members.each { |member| @budget_total += member.budget unless member.budget.nil? }
     @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
     @journey_member.activities_voted!
   end

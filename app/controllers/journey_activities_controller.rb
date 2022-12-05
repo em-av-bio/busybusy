@@ -1,10 +1,11 @@
 class JourneyActivitiesController < ApplicationController
-  before_action :set_user, :set_journey
+  before_action :set_user, :set_journey, only: [:index, :new, :create]
 
   def index
     @journey_activities = JourneyActivity.where(journey_id: params[:journey_id])
     @journey_activity = JourneyActivity.new
-    @activities = Activity.all
+    @journey_location = @journey.locations.first
+    @activities = @journey_location.activities
     @select_activities = @activities.map { |activity| [activity.name, activity.id] }
   end
 
@@ -29,7 +30,6 @@ class JourneyActivitiesController < ApplicationController
 
   def waitings_votes
     @journey = Journey.find(params[:id])
-
   end
 
   private
@@ -43,7 +43,7 @@ class JourneyActivitiesController < ApplicationController
   end
 
   def set_journey
-    @journey = Journey.find(params[:id])
+    @journey = Journey.find(params[:journey_id])
   end
 
 end
