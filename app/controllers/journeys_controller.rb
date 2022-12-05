@@ -47,8 +47,8 @@ class JourneysController < ApplicationController
 
   def has_voted
     @journey = Journey.find(params[:id])
-    @journey_locations = JourneyLocation.all
-    @journey_dates = JourneyDate.all
+    @journey_locations = JourneyLocation.where(journey_id: @journey.id)
+    @journey_dates = JourneyDate.where(journey_id: @journey.id)
     @city_voted = @journey_locations.sort_by { |journey_location| journey_location.ranking }.last
     @date_voted = @journey_dates.sort_by { |journey_date| journey_date.ranking }.last
     @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
