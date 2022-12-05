@@ -1,5 +1,5 @@
 class JourneyActivitiesController < ApplicationController
-  before_action :set_user, :set_journey
+  before_action :set_user, :set_journey, except: [:votes, :waitings_votes]
 
   def index
     @journey_activities = JourneyActivity.where(journey_id: params[:journey_id])
@@ -29,7 +29,6 @@ class JourneyActivitiesController < ApplicationController
 
   def waitings_votes
     @journey = Journey.find(params[:id])
-
   end
 
   private
@@ -43,7 +42,7 @@ class JourneyActivitiesController < ApplicationController
   end
 
   def set_journey
-    @journey = Journey.find(params[:id])
+    @journey = Journey.find(params[:journey_id])
   end
 
 end
