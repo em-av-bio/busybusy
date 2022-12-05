@@ -1,4 +1,5 @@
 class JourneyActivitiesController < ApplicationController
+
   before_action :set_user, :set_journey, only: [:index, :new, :create]
 
   def index
