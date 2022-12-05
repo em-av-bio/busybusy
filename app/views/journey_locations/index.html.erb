@@ -2,10 +2,13 @@
 
 <h1>Affichage des lieux <i class="fa-solid fa-location-dot"></i></h1>
 
-<% @journey_locations.each do |journey_location| %>
-    <li><%= journey_location.location.city%></li>
+<ul class= "cards-sortable">
+  <% @journey_locations.each do |journey_location| %>
+    <li class="card" data-journey-location-id="1" data-ranking="4"><%= journey_location.location.city%></li>
     <img src="<%= journey_location.location.image_url %>">
-<% end %>
+  <% end %>
+</ul>
+
 
 <%= link_to "Proposer une ville", new_journey_journey_location_path(@journey) %>
 <%= link_to "Je valide la liste", journey_journey_dates_path(@journey) %>
