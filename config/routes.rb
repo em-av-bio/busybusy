@@ -8,7 +8,11 @@ Rails.application.routes.draw do
         post :update_ranking
       end
     end
-    resources :journey_dates, only: [:index, :new, :create]
+    resources :journey_dates, only: [:index, :new, :create] do
+      collection do
+        post :update_ranking
+      end
+    end
     resources :journey_accommodations, only: [:index, :new, :create]
     resources :journey_activities, only: [:index, :new, :create]
   end
