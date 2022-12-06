@@ -2,7 +2,8 @@
 <h2>Votre futur week-end</h2>
 
 <i class="fa-solid fa-calendar"></i><p>Vous partez du <%= @date_voted.start_date.strftime("%d/%m/%Y") %> au  <%= @date_voted.end_date.strftime("%d/%m/%Y") %>
-<i class="fa-solid fa-location-dot"></i><p> A <%= @city_voted.location.city %></p>
+<i class="fa-solid fa-location-dot"></i><p> À <%= @city_voted.location.city %></p>
 <i class="fa-solid fa-piggy-bank"></i><p>Avec un budget de <%= @journey_total_budget%>€</p>
 <i class="fa-solid fa-location-dot"></i><p> Pour faire : <%= @activity_voted.activity.name%></p>
-<i class="fa-solid fa-house-user"></i><p>Quelques propositions de logements <a target="_blank" href="https://www.airbnb.fr/s/<%= @city_voted.location.city.downcase %>/homes" >ici</a></p>
+<i class="fa-solid fa-users"></i><p> Vous serez <%= @journey_members.count%> participants</p>
+<i class="fa-solid fa-house-user"></i><p>Quelques propositions de logements <a target="_blank" href="https://www.airbnb.fr/s/<%= @city_voted.location.city.downcase %>/homes?adults=<%= @journey_members.count%>&checkin=<%= @date_voted.start_date.strftime("%Y-%m-%d") %>&checkout=<%= @date_voted.end_date.strftime("%Y-%m-%d") %>" >ici</a></p>
