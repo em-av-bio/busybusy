@@ -56,10 +56,10 @@ class JourneyDatesController < ApplicationController
   end
 
   def start_date
-    params[:journey_date][:dates].split(" to ").first.to_date
+    params[:journey_date][:dates].split(" au ").first.to_date
   end
 
   def end_date
-    params[:journey_date][:dates].split(" to ").last.to_date
+    params[:journey_date][:dates].split(" au ").last.to_date
   end
 end
