@@ -5,7 +5,13 @@ class UsersController < ApplicationController
 
   def search
     @journey = Journey.find(params[:journey][:id].to_i)
-    @users = User.where('nickname ILIKE ?', "%#{params[:nickname_search]}%").order(created_at: :desc)
+
+    if params[:nickname_search].present?
+      @users = User.where('nickname ILIKE ?', "%#{params[:nickname_search]}%").order(created_at: :desc)
+    else
+      @users = User.none
+    end
+
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [

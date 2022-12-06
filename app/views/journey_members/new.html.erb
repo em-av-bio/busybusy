@@ -19,5 +19,6 @@
 
 <h3>Recherche par pseudo:</h3>
 <%= render "users/search_form" %>
+
 <%= link_to "Ajouter ce participant", new_journey_journey_member_path(@journey) %>
 <%= link_to "Passer à l'étape suivante",  edit_journey_journey_member_path(@journey, @current_journey_member)  %>
