@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css">
   </head>
 
-  <body class="bg-great-blue-50 h-screen flex flex-col">
+  <body class="bg-bg h-screen flex flex-col">
     <%= render "shared/header" %>
     <main class="grow<% unless current_page?(root_path) && user_signed_in? == false %> px-4 py-8<% end %>">
       <%= yield %>

@@ -10,7 +10,7 @@
           <%= render "shared/back" %>
         <% end %>
         <div class="border-l-2 border-great-blue-300 pl-4">
-          <h2><%= @journey.name.capitalize %></h2>
+          <h2><%= current_page?(new_journey_path) ? "Nouveau weekend" : @journey.name  %></h2>
           <% unless @journey.id.nil? || @journey.journey_members.size < 1 %>
             <span>
               <% @journey.journey_members.each do |member|%>
