@@ -1,7 +1,9 @@
 <div class="container"
   data-controller="waitingroom-subscription"
   data-waitingroom-subscription-journey-id-value="<%= @journey.id %>"
-  data-waitingroom-subscription-current-user-id-value="<%= current_user.id %>">
+  data-waitingroom-subscription-current-user-id-value="<%= current_user.id %>"
+  data-waitingroom-subscription-current-user-status-value="<%= @journey_member.read_attribute_before_type_cast(:status) %>"
+>
 
   <div data-waiting-room-subscription-target="waitingUser">
     <h3>Users</h3>
@@ -13,11 +15,20 @@
           <% end %>
         </li>
 
-        <p class="status <%= journey_member.default? || journey_member.dates_voted? || journey_member.locations_voted? || journey_member.locations_accepted? || journey_member.dates_accepted?  ? "warning" : "good" %>" id="status-<%= journey_member.id %>"><%= journey_member.default? || journey_member.dates_voted? || journey_member.locations_voted? || journey_member.locations_accepted? || journey_member.dates_accepted? ? "Non validé" : "Validé" %></p>
+        <p class="status <%= journey_member.current_status_enum < 6 ? "warning" : "good" %>" id="status-<%= journey_member.id %>"><%= journey_member.current_status_enum < 6 ? "Non validé" : "Validé" %></p>
+
    <% end %>
   </div>
 
 </div>
 
 
-<%= link_to "Place au vote", activities_votes_path(@journey), data: { turbo: false } %>
+ <%= link_to activities_votes_path(@journey),
+              data: {turbo: false, waitingroom_subscription_target: "button"},
+              class: "btn" do
+              %>
+    <%= @all_good ? "Tout le monde peut voter !" : "En attente des autres users..." %>
+
+  <% end %>
+
+

@@ -1,7 +1,10 @@
 <div class="container"
   data-controller="waitingroom-subscription"
   data-waitingroom-subscription-journey-id-value="<%= @journey.id %>"
-  data-waitingroom-subscription-current-user-id-value="<%= current_user.id %>">
+  data-waitingroom-subscription-current-user-id-value="<%= current_user.id %>"
+  data-waitingroom-subscription-current-user-status-value="<%= @journey_member.read_attribute_before_type_cast(:status) %>"
+>
+
 
   <div data-waiting-room-subscription-target="waitingUser">
     <h3>Users</h3>
@@ -13,10 +16,17 @@
           <% end %>
         </li>
 
-        <p class="status <%= journey_member.default? || journey_member.dates_voted? || journey_member.locations_voted? || journey_member.locations_accepted? || journey_member.dates_accepted? ||  journey_member.activities_accepted?  ? "warning" : "good" %>" id="status-<%= journey_member.id %>"><%= journey_member.default?|| journey_member.dates_voted? || journey_member.locations_voted? || journey_member.locations_accepted? || journey_member.dates_accepted? ||  journey_member.activities_accepted? ? "Non validé" : "Validé" %></p>
+        <p class="status <%= journey_member.current_status_enum < 7 ? "warning" : "good" %>" id="status-<%= journey_member.id %>"><%= journey_member.current_status_enum < 7 ? "Non validé" : "Validé" %></p>
+
     <% end %>
   </div>
+
+  <%= link_to summary_path(@journey),
+              data: { waitingroom_subscription_target: "button"},
+              class: "btn" do
+              %>
+    <%= @all_good ? "Découvrez votre week end !" : "En attente des autres users..." %>
+
+  <% end %>
+
 </div>
-
-
-   <%= link_to "Découvrez votre weekend !", summary_path(@journey) %>

@@ -2,6 +2,7 @@
   data-controller="waitingroom-subscription"
   data-waitingroom-subscription-journey-id-value="<%= @journey.id %>"
   data-waitingroom-subscription-current-user-id-value="<%= current_user.id %>"
+  data-waitingroom-subscription-current-user-status-value="<%= @journey_member.read_attribute_before_type_cast(:status) %>"
 >
 
   <div data-waiting-room-subscription-target="waitingUser">
@@ -14,11 +15,18 @@
         <% end %>
       </li>
 
-      <p class="status <%= journey_member.default? ? "warning" : "good" %>" id="status-<%= journey_member.id %>"><%= journey_member.default? ? "Non validé" : "Validé" %></p>
+      <p class="status <%= journey_member.current_status_enum < 3 ? "warning" : "good" %>" id="status-<%= journey_member.id %>"><%= journey_member.current_status_enum < 3 ? "Non validé" : "Validé" %></p>
     <% end %>
 
   </div>
 
 </div>
 
-<%= link_to "Place au vote", locations_votes_path(@journey), data: { turbo: false }, class:"btn-one inline-block"%>
+ <%= link_to locations_votes_path(@journey),
+              data: {turbo: false, waitingroom_subscription_target: "button"},
+              class: "btn" do
+              %>
+    <%= @all_good ? "Tout le monde peut voter !" : "En attente des autres users..." %>
+
+  <% end %>
+
