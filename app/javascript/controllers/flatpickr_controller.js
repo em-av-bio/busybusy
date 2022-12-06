@@ -6,7 +6,7 @@ import flatpickr from "flatpickr";
 export default class extends Controller {
   static targets = [ "startTime", "endTime" ]
   connect() {
-    flatpickr(this.startTimeTarget, {mode: "range", minDate: "today"})
+    flatpickr(this.startTimeTarget, {mode: "range", minDate: "today", altFormat: "d-m-Y", altInput: true, locale: {rangeSeparator: " au "}})
     // flatpickr(this.endTimeTarget)
   }
 }
