@@ -13,9 +13,10 @@
           <% end %>
         </li>
 
-        <p class="status <%= journey_member.default? || journey_member.dates_voted? || journey_member.locations_voted? || journey_member.locations_accepted? || journey_member.dates_accepted? ||  journey_member.activities_accepted?  ? "warning" : "good" %>" id="status-<%= journey_member.id %>"><%= journey_member.default? ? "Non validé" : "Validé" %></p>
+        <p class="status <%= journey_member.default? || journey_member.dates_voted? || journey_member.locations_voted? || journey_member.locations_accepted? || journey_member.dates_accepted? ||  journey_member.activities_accepted?  ? "warning" : "good" %>" id="status-<%= journey_member.id %>"><%= journey_member.default?|| journey_member.dates_voted? || journey_member.locations_voted? || journey_member.locations_accepted? || journey_member.dates_accepted? ||  journey_member.activities_accepted? ? "Non validé" : "Validé" %></p>
     <% end %>
   </div>
 </div>
 
-<%= link_to "Découvrez votre weekend !", summary_path(@journey) %>
+
+   <%= link_to "Découvrez votre weekend !", summary_path(@journey) %>
