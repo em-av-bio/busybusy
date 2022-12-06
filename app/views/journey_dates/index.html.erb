@@ -6,12 +6,9 @@
 <% end %>
 
 
-<%= form_with model: [@journey, @journey_date] do |form| %>
-  <%= form.label :start_date %>
-  <%= form.date_field :start_date, value: form.object.try(:strftime,"%m/%d/%Y") %>
-  <%= form.label :end_date %>
-  <%= form.date_field :end_date, value: form.object.try(:strftime,"%m/%d/%Y") %>
-  <%= form.submit "Proposer une date" %>
+<%= form_with model: [@journey, @journey_date], data: { controller: 'flatpickr' } do |f| %>
+  <%= f.text_field :dates, as: :string,  data: { flatpickr_target: "startTime" } %>
+  <%= f.submit 'Proposer des dates' %>
 <% end %>
 
 <%= link_to "Je valide ces dates", waitings_path(@journey), class:"btn-one inline-block" %>

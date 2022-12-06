@@ -11,3 +11,4 @@
 @import "components/avatar";
 
 @import "tailwindcss/utilities";
+@import "flatpickr/dist/flatpickr.css";
