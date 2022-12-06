@@ -49,6 +49,7 @@ class JourneysController < ApplicationController
 
   def waitings_act
     @journey = Journey.find(params[:id])
+    @journey_members = @journey.journey_members
     @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
     @journey_member.activities_accepted!
   end

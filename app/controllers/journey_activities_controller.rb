@@ -31,6 +31,7 @@ class JourneyActivitiesController < ApplicationController
 
   def waitings_votes
     @journey = Journey.find(params[:id])
+    @journey_members = @journey.journey_members
   end
 
   def update_ranking
