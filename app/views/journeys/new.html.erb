@@ -1,7 +1,7 @@
 <h1>Nouveau weekend</h1>
 
 <%= form_with model: @journey do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
+  <%= form.label :name, "Nom de votre week-end" %>
+  <%= form.text_field :name, placeholder: "Anniv Tom, Cousinade" %>
   <%= form.submit "Créer un weekend" %>
 <% end %>
