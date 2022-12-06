@@ -39,9 +39,12 @@ class ScrapActivitiesService
     details = html_doc.search(".position-relative .border-bottom .mb-sm-1").text.gsub("\n", "").strip
     duration_in_h = html_doc.search(".flex-sm-col li")[0].text.gsub("\n", "").strip
     image_url =  html_doc.search("[data-srcset]").first.values[1]
+    price_value = html_doc.search("p.h2 span").text
+    unity = html_doc.search("section.mt-4.py-4.px-5 .mb-5 p.text-lg").text
+    price = "#{price_value} #{unity}"
     return unless details.present?
 
-    activity = Activity.create!(location: @location, name: , details:, duration_in_h:, image_url:)
+    activity = Activity.create!(location: @location, name: , details:, duration_in_h:, image_url:, price:, url:)
     p "Activity #{activity.name} created"
   end
 end
