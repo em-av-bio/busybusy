@@ -27,7 +27,7 @@ class JourneyMembersController < ApplicationController
 
   def update
     @journey_member = JourneyMember.find(params[:id])
-    @journey_member.update(journey_member_params)
+    @journey_member.update(journey_m_params)
     @journey_member.budget_defined!
     if @journey_member.save!
       redirect_to journey_journey_locations_path(@journey_member.journey)
@@ -38,5 +38,9 @@ class JourneyMembersController < ApplicationController
 
   def journey_member_params
     params.permit(:user_id, :journey_id, :budget)
+  end
+
+  def journey_m_params
+    params.require(:journey_member).permit(:budget)
   end
 end
