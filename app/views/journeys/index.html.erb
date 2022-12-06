@@ -1,16 +1,16 @@
 <% if current_user %>
-  <h1 class="text-center">Mes week-end en cours</h1>
+  <h1 class="text-center">Mes week-ends en cours</h1>
   <% @journeys.each do |journey| %>
     <% journey_member_id = JourneyMember.find_by(journey: journey, user: current_user) %>
     <%= link_to edit_journey_journey_member_path(journey.id, journey_member_id), class:"m-2" do %>
-      <%= journey.name %>
+      <%= render "journey_card", journey: journey, journey_member_id: journey_member_id %>
     <% end %>
   <% end %>
   <%= link_to "Créer un week-end", new_journey_path, class:"btn secundary" %>
 <% else %>
   <div class="h-full bg-cover bg-center bg-no-repeat flex flex-col justify-between" style="background-image: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), url(<%= asset_path 'weekzen_bg.jpg' %>);">
     <div class="grow flex items-center justify-center">
-      <h1 class="px-16 pb-72 text-center">L'application qui vous aide à organiser vos voyages entre ami·e·s</h1>
+      <h1 class="px-16 pb-72 text-center">L'application qui vous aide à organiser vos week-ends entre ami·e·s</h1>
     </div>
     <%= render "shared/footer" %> 
   </div>   

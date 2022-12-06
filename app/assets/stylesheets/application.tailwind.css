@@ -12,6 +12,8 @@
 @import "components/card";
 @import "components/banner";
 @import "components/avatar";
+@import "components/journey_card";
 
+/* Other */
 @import "tailwindcss/utilities";
 @import "flatpickr/dist/flatpickr.css";

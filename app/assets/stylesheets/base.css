@@ -14,6 +14,18 @@ h2 {
   @apply text-xl font-bold text-great-blue-800 tracking-wide;
 }
 
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  @apply w-full rounded-3xl px-6 bg-white border border-great-blue-300;
+  min-height: 48px;
+}
+
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
 .status {
   width: fit-content;
   padding: 5px;

@@ -1,0 +1,23 @@
+.content_title svg {
+  width: 24px;
+  height: 24px;
+}
+
+.content_title svg .calendar {
+  @apply stroke-great-blue-700;
+}
+
+.journey-card__button {
+  @apply bg-great-blue-200 flex items-center justify-center;
+  width: 48px;
+}
+
+.journey-card__button svg {
+  width: 16px;
+  height: 32px;
+  transform: rotate(180deg);
+}
+
+.journey-card__button svg .back {
+  stroke: white;
+}
