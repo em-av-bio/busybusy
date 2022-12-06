@@ -1,5 +1,5 @@
 <%= form_with url: locations_search_path, method: :post do |form| %>
-  <%= form.search_field :locations_search, oninput: "this.form.requestSubmit()", placeholder: "Entrez une ville"%>
+  <%= form.search_field :locations_search, oninput: "this.form.requestSubmit()", placeholder: "Entrez une ville" %>
   <%= hidden_field :journey, :id %>
 <% end %>
 <div id="locations_results">

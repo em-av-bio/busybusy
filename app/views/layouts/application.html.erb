@@ -15,7 +15,7 @@
 
   <body class="bg-bg h-screen flex flex-col">
     <%= render "shared/header" %>
-    <main class="grow<% unless current_page?(root_path) && user_signed_in? == false %> px-4 py-8<% end %>">
+    <main class="grow flex flex-col<% unless current_page?(root_path) && user_signed_in? == false %> px-4 pt-8 pb-4<% end %>">
       <%= yield %>
     </main>
   </body>

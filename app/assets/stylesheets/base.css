@@ -17,7 +17,8 @@ h2 {
 input[type="text"],
 input[type="email"],
 input[type="password"],
-input[type="number"] {
+input[type="number"],
+input[type="search"] {
   @apply w-full rounded-3xl px-6 bg-white border border-great-blue-300;
   min-height: 48px;
 }
