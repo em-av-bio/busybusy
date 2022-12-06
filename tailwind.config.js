@@ -26,7 +26,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        'sans': ['azo-sans-web', ...defaultTheme.fontFamily.sans]
+        'sans': ['futura-pt-condensed', ...defaultTheme.fontFamily.sans]
       }
     }
   }

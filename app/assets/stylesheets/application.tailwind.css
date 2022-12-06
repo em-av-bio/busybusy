@@ -4,6 +4,9 @@
 /* Main styles */
 @import "base";
 
+/* Sections */
+@import "sections/header";
+
 /* Components */
 @import "components/buttons";
 @import "components/card";
