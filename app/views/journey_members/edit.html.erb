@@ -1,9 +1,16 @@
-<h1>Votre budget</h1>
+<%= render "shared/breadcrumbs", step: "budget" %>
 
-<%= form_with model: [@journey, @journey_member], class:"full max-w-sm" do |form| %>
-  <div class="flex items-center border-b border-great-blue-700  py-2">
-    <%= form.label :budget %>
-    <%= form.number_field :budget, class:"appearance-none bg-transparent border-none w-full text-great-blue-700  mr-3 py-1 px-2 leading-tight focus:outline-none" %>
-    <%= form.submit "Valider mon budget", class:"flex-shrink-0 bg-great-blue-300 hover:great-blue-700 hover:border-great-blue-200 text-sm border-2 text-white py-1 px-2 rounded"%>
+<h1 class="text-center">Mon budget pour le weekend</h1>
+
+<div class="flex items-center justify-center py-8 icon64">
+  <%= render "shared/budget" %>
+</div>
+
+<%= form_with model: [@journey, @journey_member] do |form| %>
+  <div class="flex flex-col gap-4">
+    <div class="field">
+      <%= form.number_field :budget, placeholder: "Budget" %>
+    </div>
+    <%= form.submit "Valider mon budget", class:"btn primary" %>
   </div>
 <% end %>

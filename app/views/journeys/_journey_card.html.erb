@@ -1,7 +1,7 @@
 <div class="journey-card flex items-stretch shadow-md bg-white w-full gap-4 rounded-lg overflow-hidden">
   <div class="journey-card__content grow p-4 flex flex-col gap-4">
     <div class="content_title flex items-center pb-2 gap-4 border-b border-great-blue-200">
-      <%= render "shared/calendar" %>
+      <%= render "shared/date" %>
       <h2><%= journey.name %></h2>
     </div>
     <% unless journey.journey_members.size < 1 %>

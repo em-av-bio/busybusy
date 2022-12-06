@@ -1,0 +1,47 @@
+.breadcrumbs>div {
+  width: calc(100% / 6);
+}
+
+.breadcrumbs>div::after {
+  @apply bg-default;
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 1px;
+  right: -8px;
+  top: 50%;
+}
+
+.breadcrumbs>div.fulfilled::after {
+  @apply bg-great-blue-300;
+}
+
+.breadcrumbs>div:last-of-type::after {
+  content: unset;
+}
+
+.breadcrumbs>div svg {
+  height: 30px;
+}
+
+.breadcrumbs>div svg .active {
+  @apply stroke-focus;
+}
+
+.breadcrumbs>div svg .fulfilled {
+  @apply stroke-great-blue-300;
+}
+
+.breadcrumbs>div svg .unfulfilled {
+  @apply stroke-default;
+}
+
+.breadcrumbs>div svg path,
+.breadcrumbs>div svg polygon,
+.breadcrumbs>div svg polyline,
+.breadcrumbs>div svg line,
+.breadcrumbs>div svg rect,
+.breadcrumbs>div svg circle,
+.breadcrumbs>div svg ellipse {
+  stroke-width: 3px!important;
+}

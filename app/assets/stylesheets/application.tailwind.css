@@ -13,6 +13,7 @@
 @import "components/banner";
 @import "components/avatar";
 @import "components/journey_card";
+@import "components/breadcrumbs";
 
 /* Other */
 @import "tailwindcss/utilities";

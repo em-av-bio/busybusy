@@ -16,7 +16,8 @@ h2 {
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="number"] {
   @apply w-full rounded-3xl px-6 bg-white border border-great-blue-300;
   min-height: 48px;
 }
@@ -24,6 +25,10 @@ input[type="password"] {
 input[type="checkbox"] {
   width: 16px;
   height: 16px;
+}
+
+.icon64 svg {
+  height: 64px;
 }
 
 .status {
