@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= favicon_link_tag asset_path('weekzen_favicon.png') %>
 
     <link rel="stylesheet" href="https://use.typekit.net/jjq4sge.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -14,9 +15,8 @@
 
   <body class="bg-great-blue-50 h-screen flex flex-col">
     <%= render "shared/header" %>
-    <main class="grow">
+    <main class="grow<% unless current_page?(root_path) && user_signed_in? == false %> px-4 py-8<% end %>">
       <%= yield %>
     </main>
-    <%= render "shared/footer" %>
   </body>
 </html>

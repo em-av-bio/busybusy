@@ -1,20 +1,17 @@
-<div class="banner">
-    <h1>WEEK ZEN</h1>
-    <p>L'application qui vous aide à organiser vos séjours entre amis</p>
-</div>
-
-<div class="container">
-  <% if current_user %>
-    <%= link_to "Créer un week-end", new_journey_path, class:"btn-tail" %>
-    <h2>Mes week-end en cours</h2>
-    <% @journeys.each do |journey| %>
-      <% journey_member_id = JourneyMember.find_by(journey: journey, user: current_user) %>
-      <%= link_to edit_journey_journey_member_path(journey.id, journey_member_id), class:"m-2" do %>
-        <%= journey.name %>
-      <% end %>
+<% if current_user %>
+  <%= link_to "Créer un week-end", new_journey_path, class:"btn-tail" %>
+  <h2>Mes week-end en cours</h2>
+  <% @journeys.each do |journey| %>
+    <% journey_member_id = JourneyMember.find_by(journey: journey, user: current_user) %>
+    <%= link_to edit_journey_journey_member_path(journey.id, journey_member_id), class:"m-2" do %>
+      <%= journey.name %>
     <% end %>
-  <% else %>
-    <%= link_to "Connexion", new_user_session_path %>
-    <%= link_to "Inscription", new_user_registration_path %>
   <% end %>
-</div>
+<% else %>
+  <div class="h-full bg-cover bg-center bg-no-repeat flex flex-col justify-between" style="background-image: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), url(<%= asset_path 'weekzen_bg.jpg' %>);">
+    <div class="grow flex items-center justify-center">
+      <h1 class="px-16 pb-72 text-center">L'application qui vous aide à organiser vos voyages entre ami·e·s</h1>
+    </div>
+    <%= render "shared/footer" %> 
+  </div>   
+<% end %>

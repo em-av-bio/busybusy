@@ -1,24 +1,42 @@
 <header class="sticky top-0 px-4 py-2 shadow-md bg-white">
   <div class="header__container flex items-center justify-between gap-4">
-    <%= link_to root_path do %>
-      <%= image_tag "logo.svg", class: "w-36 h-12" %>
+    <% if @journey.nil? %>
+      <%= link_to root_path do %>
+        <%= image_tag "logo.svg", class: "w-36 h-12" %>
+      <% end %>
+    <% else %>
+      <div class="header__journey flex items-center gap-2">
+        <%= link_to journeys_path do %>
+          <%= render "shared/back" %>
+        <% end %>
+        <div class="border-l-2 border-great-blue-300 pl-4">
+          <h2><%= @journey.name.capitalize %></h2>
+          <% unless @journey.id.nil? || @journey.journey_members.size < 1 %>
+            <span>
+              <% @journey.journey_members.each do |member|%>
+                <%= member.user.nickname %>
+              <% end %>
+            </span>
+          <% end %>
+        </div>
+      </div>
     <% end %>
     <nav class="flex items-center justify-end gap-2">
       <% if user_signed_in? %>
-        <%= current_user.nickname %>
-        <div data-controller="dropdown" class="relative">
+        <div data-controller="dropdown" class="relative flex">
           <button type="button" data-action="dropdown#toggle click@window->dropdown#hide">
           <%= render "users/avatar", user: current_user %>
           </button>
           <div
             data-dropdown-target="menu"
-            class="hidden transition transform origin-top-right absolute right-0 bg-white p-2 rounded shadow-md"
+            class="hidden flex flex-col items-center transition transform origin-top-right absolute top-full right-0 bg-white p-2 rounded shadow-md"
             data-transition-enter-from="opacity-0 scale-95"
             data-transition-enter-to="opacity-100 scale-100"
             data-transition-leave-from="opacity-100 scale-100"
             data-transition-leave-to="opacity-0 scale-95"
           >
-            <%= link_to "Déconnexion", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+            <%= link_to "Mes weekends", journeys_path, class: "dropdown-item block w-max" %>
+            <%= link_to "Déconnexion", destroy_user_session_path, class: "dropdown-item block w-max", data: {turbo_method: :delete} %>
           </div>
         </div>
       <% else %>
