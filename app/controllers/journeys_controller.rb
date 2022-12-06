@@ -54,6 +54,10 @@ class JourneysController < ApplicationController
     @journey = Journey.find(params[:id])
     @journey_members = @journey.journey_members
     @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
+    WaitingroomChannel.broadcast_to(
+      @journey,
+      json: { journeyMemberId: @journey_member.id }
+    )
     @journey_member.activities_accepted!
   end
 
