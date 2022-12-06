@@ -8,8 +8,8 @@
   @apply bg-great-blue-500 text-white;
 }
 
-.secondary {
-  @apply bg-transparent text-great-blue-500;
+.secundary {
+  @apply bg-transparent text-great-blue-500 border-2 border-great-blue-500;
 }
 
 .button a {
