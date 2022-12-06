@@ -1,5 +1,4 @@
 class JourneyActivitiesController < ApplicationController
-
   before_action :set_user, :set_journey, only: [:index, :new, :create]
 
   def index
@@ -33,12 +32,16 @@ class JourneyActivitiesController < ApplicationController
     @journey = Journey.find(params[:id])
     @journey_members = @journey.journey_members
     @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
+    @journey_member.activities_voted!
+    @all_good = @journey_members.all? { |member| member.read_attribute_before_type_cast(:status) >= 7 }
     WaitingroomChannel.broadcast_to(
       @journey,
-      json: { journeyMemberId: @journey_member.id }
+      json: {
+        journeyMemberId: @journey_member.id,
+        status: @journey_member.read_attribute_before_type_cast(:status),
+        allGood: @all_good
+      }
     )
-    @journey_member.activities_voted!
-
   end
 
   def update_ranking

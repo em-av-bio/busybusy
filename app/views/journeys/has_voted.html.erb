@@ -1,23 +1,34 @@
 <div class="container"
   data-controller="waitingroom-subscription"
   data-waitingroom-subscription-journey-id-value="<%= @journey.id %>"
-  data-waitingroom-subscription-current-user-id-value="<%= current_user.id %>">
+  data-waitingroom-subscription-current-user-id-value="<%= current_user.id %>"
+  data-waitingroom-subscription-current-user-status-value="<%= @journey_member.read_attribute_before_type_cast(:status) %>"
+>
+
 
   <div data-waiting-room-subscription-target="waitingUser">
     <h3>Users</h3>
       <% @journey_members.each do |journey_member| %>
-         <li >
-           <%= journey_member.user.nickname %>
-           <% if journey_member.user.avatar.attached? %>
-             <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %>
-           <% end %>
-         </li>
+        <li >
+          <%= journey_member.user.nickname %>
+          <% if journey_member.user.avatar.attached? %>
+            <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %>
+          <% end %>
+        </li>
 
-         <p class="status <%= journey_member.default?  || journey_member.dates_accepted? || journey_member.locations_accepted? ? "warning" : "good" %>" id="status-<%= journey_member.id %>"><%= journey_member.default? || journey_member.dates_accepted? || journey_member.locations_accepted? ? "Non validé" : "Validé" %></p>
+        <p class="status <%= journey_member.current_status_enum < 5 ? "warning" : "good" %>" id="status-<%= journey_member.id %>"><%= journey_member.current_status_enum < 5 ? "Non validé" : "Validé" %></p>
+
       <% end %>
   </div>
 </div>
 
+
+<%= link_to journey_journey_activities_path(@journey),
+              data: {turbo: false, waitingroom_subscription_target: "button"},
+              class: "btn" do
+              %>
+    <%= @all_good ? "Place aux activités" : "En attente des autres users..." %>
+
+  <% end %>
 <p>Vous partez à : <%= @city_voted.location.city %></p>
 <p>Vous partez du <%= @date_voted.start_date.strftime("%d/%m/%Y") %> au  <%= @date_voted.end_date.strftime("%d/%m/%Y") %></p>
-<%= link_to "Découvrez les activités", journey_journey_activities_path(@journey), class:"btn-one inline-block" %>

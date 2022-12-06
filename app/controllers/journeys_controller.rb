@@ -43,37 +43,52 @@ class JourneysController < ApplicationController
     @journey = Journey.find(params[:id])
     @journey_members = @journey.journey_members
     @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
+    @journey_member.dates_accepted!
+    @all_good = @journey_members.all? { |member| member.read_attribute_before_type_cast(:status) >= 3 }
     WaitingroomChannel.broadcast_to(
       @journey,
-      json: { journeyMemberId: @journey_member.id }
+      json: {
+        journeyMemberId: @journey_member.id,
+        status: @journey_member.read_attribute_before_type_cast(:status),
+        allGood: @all_good
+      }
     )
-    @journey_member.dates_accepted!
   end
 
   def waitings_act
     @journey = Journey.find(params[:id])
     @journey_members = @journey.journey_members
     @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
+    @journey_member.activities_accepted!
+    @all_good = @journey_members.all? { |member| member.read_attribute_before_type_cast(:status) >= 6 }
     WaitingroomChannel.broadcast_to(
       @journey,
-      json: { journeyMemberId: @journey_member.id }
+      json: {
+        journeyMemberId: @journey_member.id,
+        status: @journey_member.read_attribute_before_type_cast(:status),
+        allGood: @all_good
+      }
     )
-    @journey_member.activities_accepted!
   end
 
   def has_voted
     @journey = Journey.find(params[:id])
     @journey_members = @journey.journey_members
     @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
-    WaitingroomChannel.broadcast_to(
-      @journey,
-      json: { journeyMemberId: @journey_member.id }
-    )
     @journey_locations = JourneyLocation.where(journey_id: @journey.id)
     @journey_dates = JourneyDate.where(journey_id: @journey.id)
     @city_voted = @journey_locations.sort_by { |journey_location| journey_location.ranking }.last
     @date_voted = @journey_dates.sort_by { |journey_date| journey_date.ranking }.last
     @journey_member.dates_voted!
+    @all_good = @journey_members.all? { |member| member.read_attribute_before_type_cast(:status) >= 5 }
+    WaitingroomChannel.broadcast_to(
+      @journey,
+      json: {
+        journeyMemberId: @journey_member.id,
+        status: @journey_member.read_attribute_before_type_cast(:status),
+        allGood: @all_good
+      }
+    )
   end
 
   private
