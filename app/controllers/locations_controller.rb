@@ -32,7 +32,11 @@ class LocationsController < ApplicationController
 
   def search
     @journey = Journey.find(params[:journey][:id].to_i)
-    @locations = Location.where('city ILIKE ?', "%#{params[:locations_search]}%").order(created_at: :desc)
+    if params[:locations_search].present?
+      @locations = Location.where('city ILIKE ?', "%#{params[:locations_search]}%").order(created_at: :desc)
+    else
+      @locations = Location.none
+    end
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
