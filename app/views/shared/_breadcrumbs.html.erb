@@ -1,0 +1,15 @@
+<div class="breadcrumbs flex items-center mb-12">
+  <% items = %w[budget location date vote activity vote] %>
+  <% inactive = "fulfilled" %>
+  <% items.each do |item| %>
+    <% if step == item %>
+      <% color = "active" %>
+      <% inactive = "unfulfilled" %>
+    <% else %>
+      <% color = inactive %>
+    <% end %>
+    <div class="flex items-center justify-center relative <%= color %>">
+      <%= render "shared/#{item}", color: color %>
+    </div>
+  <% end %>
+</div>
