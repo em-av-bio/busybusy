@@ -12,3 +12,8 @@ application.register("hello", HelloController)
 
 import WaitingroomSubscriptionController from "./waitingroom_subscription_controller"
 application.register("waitingroom-subscription", WaitingroomSubscriptionController)
+
+import { Application } from '@hotwired/stimulus'
+import Dropdown from 'stimulus-dropdown'
+const dropdown_application = Application.start()
+dropdown_application.register('dropdown', Dropdown)
