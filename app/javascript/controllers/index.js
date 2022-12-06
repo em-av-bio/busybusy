@@ -9,3 +9,6 @@ application.register("flatpickr", FlatpickrController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import WaitingroomSubscriptionController from "./waitingroom_subscription_controller"
+application.register("waitingroom-subscription", WaitingroomSubscriptionController)

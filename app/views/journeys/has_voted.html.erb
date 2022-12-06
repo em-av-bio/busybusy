@@ -1,27 +1,22 @@
-<h3>Ont voté:</h3>
-<% @journey_members.each do |journey_member| %>
-  <% if journey_member.dates_voted? || journey_member.activities_voted? || journey_member.locations_voted? || journey_member.activities_accepted?%>
-    <li>
-    <%= journey_member.user.nickname %>
-     <% if !journey_member.user.avatar.key.nil?%>
-      <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %>
-    <% end %>
-    </li>
-  <% end %>
-<% end %>
-<h3>N'ont pas encore voté</h3>
-<% @journey_members.each do |journey_member| %>
-   <% if journey_member.default? || journey_member.dates_accepted? || journey_member.locations_accepted? %>
-    <li>
-      <%= journey_member.user.nickname %>
-      <% if !journey_member.user.avatar.key.nil?%>
-      <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %>
-    <% end %>
-    </li>
-  <% end %>
-<% end %>
+<div class="container"
+  data-controller="waitingroom-subscription"
+  data-waitingroom-subscription-journey-id-value="<%= @journey.id %>"
+  data-waitingroom-subscription-current-user-id-value="<%= current_user.id %>">
 
+  <div data-waiting-room-subscription-target="waitingUser">
+    <h3>Users</h3>
+      <% @journey_members.each do |journey_member| %>
+         <li >
+           <%= journey_member.user.nickname %>
+           <% if journey_member.user.avatar.attached? %>
+             <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %>
+           <% end %>
+         </li>
 
+         <p class="status <%= journey_member.default?  || journey_member.dates_accepted? || journey_member.locations_accepted? ? "warning" : "good" %>" id="status-<%= journey_member.id %>"><%= journey_member.default? ? "Non validé" : "Validé" %></p>
+      <% end %>
+  </div>
+</div>
 
 <p>Vous partez à : <%= @city_voted.location.city %></p>
 <p>Vous partez du <%= @date_voted.start_date.strftime("%d/%m/%Y") %> au  <%= @date_voted.end_date.strftime("%d/%m/%Y") %>
