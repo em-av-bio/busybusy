@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_02_144623) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_05_170405) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_144623) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "location_id", null: false
+    t.string "image_url"
     t.index ["location_id"], name: "index_activities_on_location_id"
   end
 
@@ -74,6 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_144623) do
     t.boolean "selected?"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ranking", default: 0
     t.index ["activity_id"], name: "index_journey_activities_on_activity_id"
     t.index ["journey_id"], name: "index_journey_activities_on_journey_id"
   end
@@ -85,6 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_144623) do
     t.bigint "journey_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ranking", default: 0
     t.index ["journey_id"], name: "index_journey_dates_on_journey_id"
   end
 
@@ -93,6 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_144623) do
     t.bigint "journey_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ranking", default: 0
     t.index ["journey_id"], name: "index_journey_locations_on_journey_id"
     t.index ["location_id"], name: "index_journey_locations_on_location_id"
   end

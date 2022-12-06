@@ -1,4 +1,12 @@
-<h1>Félicitations tout le monde a voté le lieu et la date</h1>
-<p>Vous partez à ... du ... au ...</p>
+<% @journey_members.each do |journey_member| %>
+  <% journey_member.dates_voted? %>
+    <li><%= journey_member.user.nickname %> <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %>a voté.</li>
+      <% if !journey_member.dates_voted?%>
+        <li><%= journey_member.user.nickname %> <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %> n'a pas encore voté.</li>
+      <% end %>
+<% end %>
+
+<p>Vous partez à : <%= @city_voted.location.city %></p>
+<p>Vous partez du <%= @date_voted.start_date.strftime("%d/%m/%Y") %> au  <%= @date_voted.end_date.strftime("%d/%m/%Y") %>
 <h3>A présent, vous pouvez voir et proposer des activités</h3>
 <%= link_to "Les activités", journey_journey_activities_path(@journey) %>

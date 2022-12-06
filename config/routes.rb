@@ -3,10 +3,22 @@ Rails.application.routes.draw do
   root 'journeys#index'
   resources :journeys do
     resources :journey_members, only: [:new, :create, :edit, :update]
-    resources :journey_locations, only: [:index, :new, :create]
-    resources :journey_dates, only: [:index, :new, :create]
+    resources :journey_locations, only: [:index, :new, :create] do
+      collection do
+        post :update_ranking
+      end
+    end
+    resources :journey_dates, only: [:index, :new, :create] do
+      collection do
+        post :update_ranking
+      end
+    end
     resources :journey_accommodations, only: [:index, :new, :create]
-    resources :journey_activities, only: [:index, :new, :create]
+    resources :journey_activities, only: [:index, :new, :create] do
+      collection do
+        post :update_ranking
+      end
+    end
   end
   get 'journeys/:id/summary', to: 'journeys#summary', as: :summary
   get '/test', to: 'journeys#test'
@@ -19,4 +31,5 @@ Rails.application.routes.draw do
   get '/journeys/:id/journey_dates/votes', to: 'journey_dates#votes', as: :dates_votes
   get '/journeys/:id/journey_accommodations/votes', to: 'journey_accommodations#votes', as: :accommodations_votes
   get '/journeys/:id/journey_activities/votes', to: 'journey_activities#votes', as: :activities_votes
+  get '/journeys/:id/waitings_votes', to: 'journey_activities#waitings_votes', as: :waitings_votes
 end

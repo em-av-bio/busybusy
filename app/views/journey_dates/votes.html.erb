@@ -1,10 +1,16 @@
 <h1>Votez <i class="fa-solid fa-check-to-slot"></i></h1>
 
-<div class="cards-sortable">
-    <% @journey_dates.each do |journey_date| %>
-        <li>Du <%= journey_date.start_date%> au <%= journey_date.end_date%></li>
-
-    <% end %>
-</div>
-
-<%= link_to "Je valide mon vote", has_voted_path(@journey) %>
+<%= form_with url: update_ranking_journey_journey_dates_path(@journey) do |form| %>
+    <ul class="cards-sortable">
+      <% x = 0 %>
+        <% @journey_dates.each do |journey_date| %>
+            <li class="card" data-ranking="<%= @journey_dates.count %>">
+                <li>Du <%= journey_date.start_date.strftime("%d/%m/%Y") %> au <%= journey_date.end_date.strftime("%d/%m/%Y") %></li>
+                <%= hidden_field_tag "journey_dates[#{x}][id]", journey_date.id %>
+                <%= hidden_field_tag "journey_dates[#{x}][ranking]", @journey_dates.count - x, class:"hidden_ranking" %>
+            </li>
+        <% end %>
+      <% x+=1 %>
+    </ul>
+    <%= form.submit "Je valide mon vote", data: { turbo: false } %>
+<% end %>

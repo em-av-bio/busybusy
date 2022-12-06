@@ -8,11 +8,12 @@ const initSortable = (event) => {
     swap: true,
     animation: 150,
     onSort: (event) => {
-      console.log(event.oldIndex + ' -> ' + event.newIndex);
-      let listItems = document.querySelectorAll(".cards-sortable .card")
+      let listItems = document.querySelectorAll(".cards-sortable .card");
       let i = listItems.length;
       listItems.forEach((item) => {
-        item.dataset.ranking = i;
+        let hidden = item.querySelector('.hidden_ranking');
+        hidden.value = i;
+        console.log(hidden.value)
         i -= 1;
       });
     }
