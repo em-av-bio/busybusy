@@ -4,11 +4,11 @@
 
 import { application } from "./application"
 
+import FlatpickrController from "./flatpickr_controller"
+application.register("flatpickr", FlatpickrController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import { Application } from '@hotwired/stimulus'
-import Dropdown from 'stimulus-dropdown'
-
-const dropdown_application = Application.start()
-dropdown_application.register('dropdown', Dropdown)
+import WaitingroomSubscriptionController from "./waitingroom_subscription_controller"
+application.register("waitingroom-subscription", WaitingroomSubscriptionController)

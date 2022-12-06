@@ -1,2 +1,23 @@
-<h1>Tous les participants ont validé les activités proposées.</h1>
-<%= link_to "Place au vote", activities_votes_path,  data: { turbo: false } %>
+<h3>Ont validé les propositions d'activités:</h3>
+<% @journey_members.each do |journey_member| %>
+  <% if journey_member.activities_voted? || journey_member.activities_accepted?%>
+    <li><%= journey_member.user.nickname %>
+     <% if !journey_member.user.avatar.key.nil?%>
+      <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %>
+    <% end %>
+  <% end %>
+  </li>
+<% end %>
+      <h3>N'ont pas encore validé les activitités:</h3>
+<% @journey_members.each do |journey_member| %>
+   <% if journey_member.default? || journey_member.dates_voted? || journey_member.locations_voted? || journey_member.locations_accepted? || journey_member.dates_accepted? %>
+    <li>
+      <%= journey_member.user.nickname %>
+      <% if !journey_member.user.avatar.key.nil?%>
+      <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %>
+    <% end %>
+    </li>
+  <% end %>
+<% end %>
+
+<%= link_to "Place au vote", activities_votes_path(@journey), data: { turbo: false } %>

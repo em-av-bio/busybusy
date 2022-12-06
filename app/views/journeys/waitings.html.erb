@@ -1,13 +1,24 @@
-<% @journey_members.each do |journey_member| %>
-  <% journey_member.locations_accepted? && journey_member.dates_accepted? %>
-    <li><%= journey_member.user.nickname %> <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %> has accepted the locations and dates.</li>
-      <% if !journey_member.locations_accepted? && !journey_member.dates_accepted? %>
-        <li><%= journey_member.user.nickname %> <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %> hasn't accepted the locations and dates.</li>
-      <% end %>
-<% end %>
+<div class="container"
+  data-controller="waitingroom-subscription"
+  data-waitingroom-subscription-journey-id-value="<%= @journey.id %>"
+  data-waitingroom-subscription-current-user-id-value="<%= current_user.id %>"
+>
 
-<h1>Félicitations ! <i class="fa-sharp fa-solid fa-hands-clapping"></i></h1>
+  <div data-waiting-room-subscription-target="waitingUser">
+    <h3>Users</h3>
+    <% @journey_members.each do |journey_member| %>
+      <li >
+        <%= journey_member.user.nickname %>
+        <% if journey_member.user.avatar.attached? %>
+          <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %>
+        <% end %>
+      </li>
 
-<h2>Tous les participants ont validé les propositions de lieux et de dates!</h2>
+      <p class="status <%= journey_member.default? ? "warning" : "good" %>" id="status-<%= journey_member.id %>"><%= journey_member.default? ? "Non validé" : "Validé" %></p>
+    <% end %>
 
-<%= link_to "Place au vote", locations_votes_path(@journey), data: { turbo: false } %>
+  </div>
+
+</div>
+
+<%= link_to "Place au vote", locations_votes_path(@journey), data: { turbo: false }, class:"btn-one inline-block"%>

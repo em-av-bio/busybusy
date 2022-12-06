@@ -13,3 +13,17 @@ h1 {
 h2 {
   @apply text-xl font-bold text-great-blue-800 tracking-wide;
 }
+
+.status {
+  width: fit-content;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.warning {
+  background-color: rgba(255, 0, 0, 0.241);
+}
+
+.good {
+  background-color: rgba(0, 255, 0, 0.241);
+}

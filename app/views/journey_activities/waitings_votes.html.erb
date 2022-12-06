@@ -1,2 +1,26 @@
-<h1>Tout le monde a voté !</h1>
+<h3>Ont voté les activités:</h3>
+<% @journey_members.each do |journey_member| %>
+  <% if journey_member.activities_voted? %>
+    <li>
+    <%= journey_member.user.nickname %>
+     <% if !journey_member.user.avatar.key.nil?%>
+      <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %>
+    <% end %>
+  <% end %>
+  </li>
+<% end %>
+      <h3>N'ont pas encore voté les activités</h3>
+<% @journey_members.each do |journey_member| %>
+   <% if journey_member.default? || journey_member.dates_voted? || journey_member.locations_voted? || journey_member.locations_accepted? || journey_member.dates_accepted?  %>
+    <li>
+      <%= journey_member.user.nickname %>
+      <% if !journey_member.user.avatar.key.nil?%>
+      <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %>
+    <% end %>
+    </li>
+  <% end %>
+<% end %>
+
+
+
 <%= link_to "Découvrez votre weekend !", summary_path(@journey) %>
