@@ -13,7 +13,26 @@
     <% end %>
     <div class="content_status">
       <span>Avancement :</span>
-      <strong></strong>
+      <strong>
+        <% case journey_member_id.status%>
+          <% when "default" %>
+            Budget à définir
+          <% when "budget_defined" %>
+            Budget défini
+          <% when "locations_accepted" %>
+            Lieux validés
+          <% when "locations_voted" %>
+            Lieux votés
+          <% when "dates_accepted" %>
+            Dates acceptées
+          <% when "dates_voted" %>
+            Dates votées
+          <% when "activities_accepted" %>
+            Activités acceptées
+          <% when "activities_voted" %>
+            Activités votées
+        <% end %>
+      </strong>
     </div>
   </div>
   <div class="journey-card__button">
