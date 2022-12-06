@@ -14,7 +14,11 @@ Rails.application.routes.draw do
       end
     end
     resources :journey_accommodations, only: [:index, :new, :create]
-    resources :journey_activities, only: [:index, :new, :create]
+    resources :journey_activities, only: [:index, :new, :create] do
+      collection do
+        post :update_ranking
+      end
+    end
   end
   get 'journeys/:id/summary', to: 'journeys#summary', as: :summary
   get '/test', to: 'journeys#test'
