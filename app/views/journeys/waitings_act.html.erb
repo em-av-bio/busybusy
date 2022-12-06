@@ -1,6 +1,6 @@
 <h3>Ont validé les propositions d'activités:</h3>
 <% @journey_members.each do |journey_member| %>
-    <% if journey_member.activities_voted? || journey_member.activities_accepted?%>
+  <% if journey_member.activities_voted? || journey_member.activities_accepted?%>
     <li><%= journey_member.user.nickname %>
      <% if !journey_member.user.avatar.key.nil?%>
       <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %>

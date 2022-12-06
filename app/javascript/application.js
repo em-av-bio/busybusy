@@ -4,3 +4,4 @@ import "./controllers"
 
 import { initSortable } from "./plugins/init_sortable"
 initSortable();
+import "./channels"

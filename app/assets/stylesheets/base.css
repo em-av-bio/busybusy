@@ -11,3 +11,14 @@ h2 {
   font-size: 24px;
   font-weight: bold;
 }
+.status {
+  width: fit-content;
+  padding: 5px;
+  border-radius: 5px;
+}
+.warning {
+  background-color: rgba(255, 0, 0, 0.241);
+}
+.good {
+  background-color: rgba(0, 255, 0, 0.241);
+}
