@@ -14,7 +14,7 @@ class JourneyDatesController < ApplicationController
   end
 
   def create
-    @journey_date = JourneyDate.new(journey_date_params)
+    @journey_date = JourneyDate.new(start_date: start_date, end_date: end_date)
     @journey_date.journey = @journey
     if @journey_date.save!
       redirect_to journey_journey_dates_path(@journey)
@@ -53,5 +53,13 @@ class JourneyDatesController < ApplicationController
 
   def set_journey
     @journey = Journey.find(params[:journey_id])
+  end
+
+  def start_date
+    params[:journey_date][:dates].split(" to ").first.to_date
+  end
+
+  def end_date
+    params[:journey_date][:dates].split(" to ").last.to_date
   end
 end
