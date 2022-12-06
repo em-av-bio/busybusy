@@ -1,6 +1,6 @@
 <h3>Ont voté les activités:</h3>
 <% @journey_members.each do |journey_member| %>
-  <% if journey_member.activities_voted?%>
+  <% if journey_member.activities_voted? %>
     <li>
     <%= journey_member.user.nickname %>
      <% if !journey_member.user.avatar.key.nil?%>
