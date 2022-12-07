@@ -1,26 +1,20 @@
-<%= render "journeys/summary", journey: @journey, total_budget: @journey_total_budget, journey_members: @journey.journey_members %>
+<div class="pb-24">
+  <%= render "shared/breadcrumbs", step: "location" %>
 
-<h1>Affichage des lieux <i class="fa-solid fa-location-dot"></i></h1>
+  <h1 class="text-center">Choix d'une destination</h1>
 
-
-<% @journey_locations.each do |journey_location| %>
-    <li><%= journey_location.location.city%></li>
-    <img src="<%= journey_location.location.image_url %>">
+  <% if @journey_locations.size > 0 %>
+    <div class="flex flex-col gap-4 py-8">
+      <% @journey_locations.each do |journey_location| %>
+        <%= render "journey_location_card", journey_location: journey_location %>
+      <% end %>
+    </div>
   <% end %>
-</ul>
 
+  <h2 class="text-center">Recherche par ville</h2>
 
-
-<%# <%= form_with model: [@journey, @journey_location] do |form| %>
-  <%# <%= form.label :location_id %>
-  <%# <%= form.select :location_id, @select_locations %>
-  <%# <%= form.submit "Ajouter une ville" %>
-<%# <% end %>
-
-<h1>Recherche par ville:</h1>
-
-<%= render "journey_locations/search_form"%>
-<%= link_to "Ajouter cette ville", journey_journey_locations_path(@journey)%>
-<%= link_to "Passer à l'étape suivante",  journey_journey_dates_path(@journey)%>
-
-<%= link_to "Je valide la liste", journey_journey_dates_path(@journey), class:"btn-one inline-block" %>
+  <%= render "journey_locations/search_form"%>
+</div>
+<div class="fixed bottom-0 left-0 right-0 w-full p-4 bg-white border-t border-great-blue-300">
+  <%= link_to "Je valide la liste", journey_journey_dates_path(@journey), class:"btn primary" %>
+</div>

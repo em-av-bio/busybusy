@@ -6,11 +6,13 @@
   <%= render "shared/budget" %>
 </div>
 
-<%= form_with model: [@journey, @journey_member] do |form| %>
-  <div class="flex flex-col gap-4">
+<%= form_with model: [@journey, @journey_member], class: "grow flex flex-col" do |form| %>
+  <div class="flex flex-col gap-4 grow pb-24">
     <div class="field">
       <%= form.number_field :budget, placeholder: "Budget" %>
-    </div>
+    </div>    
+  </div>
+  <div class="fixed bottom-0 left-0 right-0 w-full p-4 bg-white border-t border-great-blue-300">
     <%= form.submit "Valider mon budget", class:"btn primary" %>
   </div>
 <% end %>
