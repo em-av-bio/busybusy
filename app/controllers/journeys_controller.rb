@@ -50,7 +50,8 @@ class JourneysController < ApplicationController
       json: {
         journeyMemberId: @journey_member.id,
         status: @journey_member.read_attribute_before_type_cast(:status),
-        allGood: @all_good
+        allGood: @all_good,
+        message: 'Tout le monde peut voter !'
       }
     )
   end
@@ -66,7 +67,8 @@ class JourneysController < ApplicationController
       json: {
         journeyMemberId: @journey_member.id,
         status: @journey_member.read_attribute_before_type_cast(:status),
-        allGood: @all_good
+        allGood: @all_good,
+        message: 'Tout le monde peut voter !'
       }
     )
   end
@@ -86,7 +88,13 @@ class JourneysController < ApplicationController
       json: {
         journeyMemberId: @journey_member.id,
         status: @journey_member.read_attribute_before_type_cast(:status),
-        allGood: @all_good
+        allGood: @all_good,
+        message: 'Place aux activités',
+        infos: {
+          city: @city_voted.location.city,
+          startDate: @date_voted.start_date.strftime('%d/%m/%Y'),
+          endDate: @date_voted.end_date.strftime('%d/%m/%Y')
+        }
       }
     )
   end
