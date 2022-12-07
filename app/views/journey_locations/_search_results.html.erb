@@ -1,7 +1,7 @@
 <% if locations.size > 0 %>
 	<div class="w-full rounded-3xl px-6 bg-white border border-great-blue-300 my-4">
 		<% locations.each do |location| %>
-			<%= button_to journey_journey_locations_path(@journey, location_id: location.id), class: "flex items-center gap-2 py-2" do %>
+			<%= button_to journey_journey_locations_path(@journey, location_id: location.id), class: "flex items-center gap-2 py-2", data: { turbo: "false" } do %>
 				<img src="<%= location.image_url %>" class="w-8 h-8 object-cover rounded" />
 				<span><%= location.city %></span>
 				<span class="text-great-blue-300"><%= location.zip_code.split('-').first %></span>
