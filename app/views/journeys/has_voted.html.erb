@@ -27,9 +27,9 @@
   </div>
 
   <div class="infos" data-waitingroom-subscription-target="infos">
+    <h2 class="text-center my-4">Les votes ont parlé !</h2>
     <% if @all_good %>
-      <p>Vous partez à : <%= @city_voted.location.city %></p>
-      <p>Vous partez du <%= @date_voted.start_date.strftime("%d/%m/%Y") %> au  <%= @date_voted.end_date.strftime("%d/%m/%Y") %></p>
+      <%= render "journey_summary_location" %>
     <% end %>
   </div>
 
