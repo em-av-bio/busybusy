@@ -1,0 +1,18 @@
+.journey-activity-card__image img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+}
+
+.journey-activity-card__vote {
+  @apply bg-great-blue-200 flex items-center justify-center p-4;
+}
+
+.journey-activity-card__vote svg {
+  width: 16px;
+  height: 16px;
+}
+
+.journey-activity-card__vote svg line {
+  @apply stroke-white;
+}

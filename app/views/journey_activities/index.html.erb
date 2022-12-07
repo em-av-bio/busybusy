@@ -1,18 +1,22 @@
-<h1>Proposition d'activités <i class="fa-solid fa-person-hiking"></i></h1>
+<div class="pb-24">
+  <%= render "shared/breadcrumbs", step: "activity" %>
 
-<% @journey_activities.each do |journey_activity| %>
-    <li>
-      <%= journey_activity.activity.name%>
-      <%= journey_activity.activity.details%>
-      <%= journey_activity.activity.duration_in_h%>
-    </li>
-<% end %>
+  <h1 class="text-center">Choix des activités</h1>
+
+  <% if @journey_activities.size > 0 %>
+    <div class="flex flex-col gap-4 py-8">
+      <% @journey_activities.each do |journey_activity| %>
+        <%= render "journey_activity_card", journey_activity: journey_activity %>
+      <% end %>
+    </div>
+  <% end %>
 
 <%= form_with model: [@journey, @journey_activity] do |form| %>
   <%= form.label :activity_id %>
   <%= form.select :activity_id, @select_activities %>
-  <%= form.submit "Ajouter une activité" %>
+  <%= form.submit "Ajouter une activité", class: "btn secundary" %>
 <% end %>
 
-<%= link_to "Je valide la liste", waitings_act_path(@journey), class:"btn-one inline-block" %>
-
+<div class="fixed bottom-0 left-0 right-0 w-full p-4 bg-white border-t border-great-blue-300">
+  <%= link_to "Valider les activités", waitings_act_path(@journey), class:"btn primary" %>
+</div>

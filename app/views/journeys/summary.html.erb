@@ -1,9 +1,14 @@
-<h1>Il est temps de faire vos valises! <i class="fa-solid fa-suitcase"></i></h1>
-<h2>Votre futur week-end</h2>
+<div class="flex flex-col gap-8">
+  <div class="flex items-center justify-center icon64">
+    <%= render "shared/summary" %>
+  </div>
 
-<i class="fa-solid fa-calendar"></i><p>Vous partez du <%= @date_voted.start_date.strftime("%d/%m/%Y") %> au  <%= @date_voted.end_date.strftime("%d/%m/%Y") %>
-<i class="fa-solid fa-location-dot"></i><p> À <%= @city_voted.location.city %></p>
-<i class="fa-solid fa-piggy-bank"></i><p>Avec un budget de <%= @journey_total_budget%>€</p>
-<i class="fa-solid fa-location-dot"></i><p> Pour faire : <%= @activity_voted.activity.name%></p>
-<i class="fa-solid fa-users"></i><p> Vous serez <%= @journey_members.count%> participants</p>
-<i class="fa-solid fa-house-user"></i><p>Quelques propositions de logements <a target="_blank" href="https://www.airbnb.fr/s/<%= @city_voted.location.city.downcase %>/homes?adults=<%= @journey_members.count%>&checkin=<%= @date_voted.start_date.strftime("%Y-%m-%d") %>&checkout=<%= @date_voted.end_date.strftime("%Y-%m-%d") %>" >ici</a></p>
+  <h1 class="text-center">C'est bientôt l'heure du départ !</h1>
+
+  <%= render "journey_summary_location" %>
+
+  <p><i class="fa-solid fa-piggy-bank"></i> Avec un budget de <%= @journey_total_budget%>€</p>
+  <p><i class="fa-solid fa-location-dot"></i> Pour faire : <%= @activity_voted.activity.name%></p>
+  <p><i class="fa-solid fa-users"></i> Vous serez <%= @journey_members.count%> participants</p>
+  <p><i class="fa-solid fa-house-user"></i> Quelques propositions de logements <a target="_blank" href="https://www.airbnb.fr/s/<%= @city_voted.location.city.downcase %>/homes?adults=<%= @journey_members.count%>&checkin=<%= @date_voted.start_date.strftime("%Y-%m-%d") %>&checkout=<%= @date_voted.end_date.strftime("%Y-%m-%d") %>" >ici</a></p>
+</div>
