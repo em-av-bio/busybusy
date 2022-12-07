@@ -9,7 +9,9 @@
       <% color = inactive %>
     <% end %>
     <div class="flex items-center justify-center relative <%= color %>">
-      <%= render "shared/#{item}", color: color %>
+      <div class="flex items-center justify-center">
+        <%= render "shared/#{item}", color: color %>
+      </div>
     </div>
   <% end %>
 </div>

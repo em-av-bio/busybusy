@@ -1,5 +1,7 @@
 <%= form_with url: users_search_path, method: :post do |form| %>
-  <%= form.search_field :nickname_search, oninput: "this.form.requestSubmit()" %>
+  <span class="input-search">
+    <%= form.search_field :nickname_search, oninput: "this.form.requestSubmit()" %>
+  </span>
   <%= hidden_field :journey, :id %>
 <% end %>
 <div id="search_results">

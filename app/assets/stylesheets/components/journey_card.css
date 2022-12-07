@@ -16,6 +16,7 @@
 
 .journey-card__button {
   @apply bg-great-blue-200 flex items-center justify-center;
+  background: var(--gradient-light);
   width: 48px;
 }
 

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" preserveAspectRatio="xMidYMid meet" overflow="visible">
+  <defs>
+    <style>
+      .search {
+        fill: none;
+        stroke: #3B94CB;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <circle class="search" cx="8.11" cy="8.11" r="7.11"/>
+  <line class="search" x1="17" y1="17" x2="13.14" y2="13.14"/>
+</svg>

@@ -1,3 +1,10 @@
-<% users.each do |user| %>
-    <%= button_to user.nickname, journey_journey_members_path(@journey, user_id: user.id) %>
+<% if users.size > 0 %>
+	<div class="w-full rounded-3xl px-6 bg-white border border-great-blue-300 my-4">
+    <% users.each do |user| %>
+    	<%= button_to journey_journey_members_path(@journey, user_id: user.id), class: "flex items-center gap-2 py-2", data: { turbo: "false" } do %>
+				<%= render "avatar", user: user %>
+				<span><%= user.nickname %></span>
+			<% end %>
+		<% end %>
+	</div>
 <% end %>

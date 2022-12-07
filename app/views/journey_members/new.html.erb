@@ -1,24 +1,21 @@
-<h1>Ajout des participants</h1>
+<h1 class="text-center pb-8">Ajout des participants</h1>
 
-<%# <%= form_with model: [@journey, @journey_member] do |form| %>
-  <%# <%= form.label :user_id %>
-  <%# <%= form.select :user_id, @select_users %>
-  <%# <%= form.submit "Ajouter un participant" %>
-<%# <% end %>
-
-<div class="flex flex-wrap items-center gap-2">
-    <span>Participants :</span>
-    <% unless @journey_members.blank? %>
-      <% @journey_members.each do |member| %>
-        <%= render "users/avatar", user: member.user %>
-        <span><%= member.user.nickname %></span>
-      <% end %>
-    <% end %>
-</div>
-
-
-<h3>Recherche par pseudo:</h3>
+<h3>Recherche par pseudonyme :</h3>
 <%= render "users/search_form" %>
 
-<%= link_to "Ajouter ce participant", new_journey_journey_member_path(@journey) %>
-<%= link_to "Passer à l'étape suivante",  edit_journey_journey_member_path(@journey, @current_journey_member)  %>
+   
+<% unless @journey_members.blank? %>
+  <h2 class="text-center pt-8 pb-4">Participants</h2>
+  <div class="w-full flex flex-wrap items-center justify-center gap-4">
+    <% @journey_members.each do |member| %>
+      <div class="flex flex-col items-center">
+        <%= render "users/avatar", user: member.user %>
+        <span><%= member.user.nickname %></span>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="fixed bottom-0 left-0 right-0 w-full p-4 bg-white border-t border-great-blue-300">
+  <%= link_to "Passer à l'étape suivante", edit_journey_journey_member_path(@journey, @current_journey_member), class: "btn primary" %>
+</div>
