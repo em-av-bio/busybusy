@@ -3,7 +3,7 @@ class JourneysController < ApplicationController
 
   def index
     if current_user
-      @journeys = current_user.journeys
+      @journeys = current_user.journeys.order(created_at: :desc)
     end
   end
 
