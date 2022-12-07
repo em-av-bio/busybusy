@@ -22,5 +22,5 @@
 }
 
 .journey-location-card__vote svg line {
-  @apply stroke-white stroke-3;
+  @apply stroke-white;
 }
