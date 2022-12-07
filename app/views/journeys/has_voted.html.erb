@@ -20,15 +20,19 @@
 
       <% end %>
   </div>
-</div>
-
-
-<%= link_to journey_journey_activities_path(@journey),
+  <%= link_to journey_journey_activities_path(@journey),
               data: {turbo: false, waitingroom_subscription_target: "button"},
               class: "btn" do
               %>
     <%= @all_good ? "Place aux activités" : "En attente des autres users..." %>
 
   <% end %>
-<p>Vous partez à : <%= @city_voted.location.city %></p>
-<p>Vous partez du <%= @date_voted.start_date.strftime("%d/%m/%Y") %> au  <%= @date_voted.end_date.strftime("%d/%m/%Y") %></p>
+
+  <div class="infos" data-waitingroom-subscription-target="infos">
+    <% if @all_good %>
+      <p>Vous partez à : <%= @city_voted.location.city %></p>
+      <p>Vous partez du <%= @date_voted.start_date.strftime("%d/%m/%Y") %> au  <%= @date_voted.end_date.strftime("%d/%m/%Y") %></p>
+    <% end %>
+  </div>
+
+</div>
