@@ -32,8 +32,9 @@ class LocationsController < ApplicationController
 
   def search
     @journey = Journey.find(params[:journey][:id].to_i)
+    location_ids = @journey.locations.pluck(:id)
     if params[:locations_search].present?
-      @locations = Location.where('city ILIKE ?', "%#{params[:locations_search]}%").order(created_at: :desc)
+      @locations = Location.where.not(id: location_ids).where('city ILIKE ?', "%#{params[:locations_search]}%").order(created_at: :desc)
     else
       @locations = Location.none
     end
