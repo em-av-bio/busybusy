@@ -1,16 +1,20 @@
-<h1>Votez <i class="fa-solid fa-check-to-slot"></i></h1>
+<%= render "shared/breadcrumbs", step: "vote1" %>
+
+<h1 class="text-center">Vote de la destination</h1>
 
 <%= form_with url: update_ranking_journey_journey_locations_path(@journey) do |form| %>
-  <ul class= "cards-sortable">
+  <ul class= "cards-sortable flex flex-col gap-4 py-8">
     <% x = 0 %>
     <% @journey_locations.each do |location| %>
       <li class="card" data-ranking="<%= @journey_locations.count %>">
-        <%= location.location.city%>
+        <%= render "journey_location_card", journey_location: location, step: "vote" %>
         <%= hidden_field_tag "journey_locations[#{x}][id]", location.id %>
         <%= hidden_field_tag "journey_locations[#{x}][ranking]", @journey_locations.count - x, class:"hidden_ranking" %>
       </li>
       <% x+=1 %>
     <% end %>
   </ul>
-  <%= form.submit "Je valide mon vote", data: { turbo: false } %>
+  <div class="fixed bottom-0 left-0 right-0 w-full p-4 bg-white border-t border-great-blue-300">
+    <%= form.submit "Je valide mon vote", data: { turbo: false }, class: "btn primary" %>
+  </div>
 <% end %>

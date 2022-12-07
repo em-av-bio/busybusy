@@ -11,3 +11,16 @@
 .journey-location-card__details>div svg .location {
   @apply stroke-great-blue-300;
 }
+
+.journey-location-card__vote {
+  @apply bg-great-blue-200 flex items-center justify-center p-4;
+}
+
+.journey-location-card__vote svg {
+  width: 16px;
+  height: 16px;
+}
+
+.journey-location-card__vote svg line {
+  @apply stroke-white stroke-3;
+}
