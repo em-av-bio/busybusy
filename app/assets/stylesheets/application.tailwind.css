@@ -13,6 +13,7 @@
 @import "components/banner";
 @import "components/avatar";
 @import "components/breadcrumbs";
+@import "components/popup";
 
 /* Cards */
 @import "components/journey_card";

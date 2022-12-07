@@ -11,9 +11,19 @@
     </div>
   <% end %>
 
-  <h2 class="text-center">Recherche par ville</h2>
+  <button id="clickBtn" class="btn primary">Recherche par ville</button>
+    <div id="popup">
+      <div class="popup-container">
+       <div class="popup">
+          <div class="close-popup" id="closeBtn"><a href="#">X</a></div>
+            <h1 class="text-center">Recherche par ville</h1>
+            <%= render "journey_locations/search_form"%>
+       </div>
+      </div>
+    </div>
 
-  <%= render "journey_locations/search_form"%>
+
+
 </div>
 <div class="fixed bottom-0 left-0 right-0 w-full p-4 bg-white border-t border-great-blue-300">
   <%= link_to "Je valide ces destinations", journey_journey_dates_path(@journey), class:"btn primary" %>
