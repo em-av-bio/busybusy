@@ -1,14 +1,20 @@
-<h1>Propositions de dates <i class="fa-solid fa-calendar"></i></h1>
+<div class="pb-24">
+  <%= render "shared/breadcrumbs", step: "date" %>
 
-<% @journey_dates.each do |journey_date| %>
-    <li>Du <%= journey_date.start_date.strftime("%d/%m/%Y")%> au <%= journey_date.end_date.strftime("%d/%m/%Y")%></li>
+  <h1 class="text-center">Choix d'une date</h1>
+  
+  <div class="flex flex-col gap-4 py-8">
+    <% @journey_dates.each do |journey_date| %>
+      <%= render "journey_date_card", journey_date: journey_date %>
+    <% end %>
+  </div>
 
-<% end %>
+  <%= form_with model: [@journey, @journey_date], data: { controller: 'flatpickr' }, class: "flex flex-col gap-4" do |f| %>
+    <%= f.text_field :dates, as: :string, placeholder: "Choisir une date de début et de fin",  data: { flatpickr_target: "startTime" } %>
+    <%= f.submit 'Proposer ces dates', class: "btn secundary" %>
+  <% end %>
+</div>
 
-
-<%= form_with model: [@journey, @journey_date], data: { controller: 'flatpickr' } do |f| %>
-  <%= f.text_field :dates, as: :string,  data: { flatpickr_target: "startTime" } %>
-  <%= f.submit 'Proposer des dates' %>
-<% end %>
-
-<%= link_to "Je valide ces dates", waitings_path(@journey), class:"btn-one inline-block" %>
+<div class="fixed bottom-0 left-0 right-0 w-full p-4 bg-white border-t border-great-blue-300">
+  <%= link_to "Je valide ces dates", waitings_path(@journey), class:"btn primary" %>
+</div>
