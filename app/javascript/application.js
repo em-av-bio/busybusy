@@ -12,11 +12,13 @@ const popup = document.getElementById("popup");
 const popupContainer = document.getElementById("popupContainer");
 const closeBtn = document.getElementById("closeBtn");
 
-clickBtn.addEventListener('click', () => {
-  popupContainer.style.display = 'flex';
-  popup.style.transform = 'translateY(0%)';
-});
-closeBtn.addEventListener('click', () => {
-  popupContainer.style.display = 'none';
-  popup.style.transform = 'translateY(100%)';
-});
+if (clickBtn) {
+  clickBtn.addEventListener('click', () => {
+    popupContainer.style.display = 'flex';
+    popup.style.transform = 'translateY(0%)';
+  });
+  closeBtn.addEventListener('click', () => {
+    popupContainer.style.display = 'none';
+    popup.style.transform = 'translateY(100%)';
+  });
+}
