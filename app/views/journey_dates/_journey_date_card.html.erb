@@ -1,0 +1,9 @@
+<div class="journey-date-card flex flex-col items-center shadow-md bg-white w-full gap-2 rounded-lg overflow-hidden px-4 py-2">
+  <%= render "shared/date" %>
+  <div class="flex items-center justify-center gap-2">
+    <span class="text-great-blue-300">du</span>
+    <span class="text-great-blue-600 font-bold"><%= journey_date.start_date.strftime("%d/%m/%Y")%></span>
+    <span class="text-great-blue-300">au</span>
+    <span class="text-great-blue-600 font-bold"><%= journey_date.end_date.strftime("%d/%m/%Y")%></span>
+  </div>
+</div>

@@ -1,7 +1,14 @@
-<h1>Nouveau weekend</h1>
+<h1 class="text-center">Donner un nom au weeekend</h1>
 
-<%= form_with model: @journey do |form| %>
-  <%= form.label :name, "Nom de votre week-end" %>
-  <%= form.text_field :name, placeholder: "Anniv Tom, Cousinade" %>
-  <%= form.submit "Créer un weekend" %>
+<div class="flex items-center justify-center py-8 icon64">
+  <%= render "shared/date" %>
+</div>
+
+<%= form_with model: @journey, class: "grow flex flex-col" do |form| %>
+  <div class="flex flex-col gap-4 grow pb-24">
+    <%= form.text_field :name, placeholder: "Anniversaire de Tom, Cousinades..." %>
+  </div>
+  <div class="fixed bottom-0 left-0 right-0 w-full p-4 bg-white border-t border-great-blue-300">
+    <%= form.submit "Créer un weekend", class: "btn primary" %>
+  </div>
 <% end %>
