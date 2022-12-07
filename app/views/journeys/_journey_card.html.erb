@@ -5,7 +5,7 @@
       <h2><%= journey.name %></h2>
     </div>
     <% unless journey.journey_members.size < 1 %>
-      <div class="content_members">
+      <div class="content_members flex">
         <% journey.journey_members.each do |member| %>
           <%= render "users/avatar", user: member.user %>
         <% end %>
