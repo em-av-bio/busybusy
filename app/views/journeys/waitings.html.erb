@@ -1,30 +1,38 @@
-<div class="container"
-  data-controller="waitingroom-subscription"
-  data-waitingroom-subscription-journey-id-value="<%= @journey.id %>"
-  data-waitingroom-subscription-current-user-id-value="<%= current_user.id %>"
-  data-waitingroom-subscription-current-user-status-value="<%= @journey_member.read_attribute_before_type_cast(:status) %>"
->
+<div  class="w-full"
+      data-controller="waitingroom-subscription"
+      data-waitingroom-subscription-journey-id-value="<%= @journey.id %>"
+      data-waitingroom-subscription-current-user-id-value="<%= current_user.id %>"
+      data-waitingroom-subscription-current-user-status-value="<%= @journey_member.read_attribute_before_type_cast(:status) %>"
+      >
+
+  <h1 class="text-center">Prêts à voter ?</h1>
 
   <div data-waiting-room-subscription-target="waitingUser">
-    <h3>Users</h3>
-    <% @journey_members.each do |journey_member| %>
-      <li >
-        <%= journey_member.user.nickname %>
-        <% if journey_member.user.avatar.attached? %>
-          <%= cl_image_tag journey_member.user.avatar.key, class: "avatar" %>
-        <% end %>
-      </li>
-
-      <p class="status <%= journey_member.current_status_enum < 3 ? "warning" : "good" %>" id="status-<%= journey_member.id %>"><%= journey_member.current_status_enum < 3 ? "Non validé" : "Validé" %></p>
-    <% end %>
-
+    <div class="flex flex-col w-full py-4 gap-2">
+      <div class="w-full flex items-center justify-between">
+        <h2 class="w-1/2 text-center">Les retardataires</h2>
+        <h2 class="w-1/2 text-center">Les bons élèves</h2>
+      </div>
+      <% @journey_members.each do |journey_member| %>
+        <div  id="status-<%= journey_member.id %>"
+              class="w-full flex items-center gap-2 <%= journey_member.current_status_enum < 3 ? "warning" : "good" %>"
+              >
+              <div class="w-1/2 px-8">
+                <div class="w-full flex flex-col items-center p-2 rounded-lg">
+                  <%= render "users/avatar", user: journey_member.user %>
+                  <span><%= journey_member.user.nickname %></span>
+                </div>
+              </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 
- <%= link_to locations_votes_path(@journey),
-             data: {turbo: false, waitingroom_subscription_target: "button"},
-             class: "btn" do
-              %>
-    <%= @all_good ? "Tout le monde peut voter !" : "En attente des autres users..." %>
-
-  <% end %>
+  <div class="fixed bottom-0 left-0 right-0 w-full p-4 bg-white border-t border-great-blue-300">
+    <%= link_to locations_votes_path(@journey),
+                data: {turbo: false, waitingroom_subscription_target: "button"},
+                class: "btn primary #{ 'disabled' unless @all_good }" do %>
+      <%= @all_good ? "Tout le monde peut voter !" : "En attente de vos amis..." %>
+    <% end %>
+  </div>
 </div>

@@ -6,6 +6,7 @@
 
 /* Sections */
 @import "sections/header";
+@import "sections/voting";
 
 /* Components */
 @import "components/buttons";

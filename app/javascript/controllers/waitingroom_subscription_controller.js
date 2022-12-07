@@ -30,7 +30,7 @@ export default class extends Controller {
     if (json.status >= this.currentUserStatusValue) {
       const idSelector = `#status-${json.journeyMemberId}`
       const journeyMemberStatus = document.querySelector(idSelector)
-      journeyMemberStatus.innerText = "Validé"
+      // journeyMemberStatus.innerText = "Validé"
       journeyMemberStatus.classList.remove("warning")
       journeyMemberStatus.classList.add("good")
     }
@@ -40,6 +40,7 @@ export default class extends Controller {
     console.log(this.buttonTarget);
     if (json.status >= this.currentUserStatusValue && json.allGood) {
       this.buttonTarget.innerText = json.message
+      this.buttonTarget.classList.remove("disabled")
       this.displayInfos(json)
     }
   }
