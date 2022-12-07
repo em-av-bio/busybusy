@@ -12,6 +12,10 @@
   @apply bg-transparent text-great-blue-500 border-2 border-great-blue-500;
 }
 
+.disabled {
+  @apply bg-default text-white cursor-not-allowed;
+}
+
 .button a {
   text-decoration: none;
 }

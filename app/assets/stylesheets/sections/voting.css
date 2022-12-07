@@ -1,0 +1,15 @@
+.warning {
+  justify-content: flex-start;
+}
+
+.warning>div>div {
+  background-color: rgba(255, 0, 0, 0.241);
+}
+
+.good {
+  justify-content: flex-end;
+}
+
+.good>div>div {
+  background-color: rgba(0, 255, 0, 0.241);
+}
