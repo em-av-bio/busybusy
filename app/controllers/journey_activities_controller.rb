@@ -4,8 +4,8 @@ class JourneyActivitiesController < ApplicationController
   def index
     @journey_activities = JourneyActivity.where(journey_id: params[:journey_id])
     @journey_activity = JourneyActivity.new
-    @journey_location = @journey.locations.first
-    @activities = @journey_location.activities
+    @location = @journey.journey_locations.max_by(&:ranking).location
+    @activities = @location.activities
     @select_activities = @activities.map { |activity| [activity.name, activity.id] }
   end
 
