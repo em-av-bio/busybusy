@@ -26,7 +26,8 @@ module.exports = {
         },
         'bg': '#FFF9F3',
         'focus': '#FF6D1B',
-        'default': '#BBBBBB'
+        'default': '#BBBBBB',
+        'dark-alpha': 'rgba(0, 0, 0, .5)'
       },
       fontFamily: {
         'sans': ['futura-pt-condensed', ...defaultTheme.fontFamily.sans]
