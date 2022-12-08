@@ -11,8 +11,8 @@
         <%= hidden_field_tag "journey_dates[#{x}][id]", journey_date.id %>
         <%= hidden_field_tag "journey_dates[#{x}][ranking]", @journey_dates.count - x, class:"hidden_ranking" %>
       </li>
+      <% x+=1 %>
     <% end %>
-    <% x+=1 %>
   </ul>
   <div class="fixed bottom-0 left-0 right-0 w-full p-4 bg-white border-t border-great-blue-300">
     <%= form.submit "Je valide mon vote", data: { turbo: false }, class: "btn primary" %>

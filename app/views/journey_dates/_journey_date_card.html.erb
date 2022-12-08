@@ -1,5 +1,5 @@
 <% defined?(step) ? step = step : step = "default" %>
-<div class="journey-date-card flex items-stretch shadow-md bg-white w-full rounded-lg overflow-hidden">
+<div class="journey-date-card flex items-stretch shadow-md bg-white w-full rounded-lg overflow-hidden relative">
   <div class="flex flex-col items-center gap-2 px-4 py-2 grow">
     <%= render "shared/date" %>
     <div class="flex items-center justify-center gap-2">
@@ -8,11 +8,14 @@
       <span class="text-great-blue-300">au</span>
       <span class="text-great-blue-600 font-bold"><%= journey_date.end_date.strftime("%d/%m/%Y")%></span>
     </div>
-    <%= link_to "Supprimer", journey_journey_date_path(@journey, journey_date), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   </div>
   <% if step == "vote" %>
     <div class="journey-date-card__vote">
       <%= render "shared/drag" %>
     </div>
+  <% else %>
+    <%= link_to journey_journey_date_path(@journey, journey_date), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr·e ?"}, class: "absolute right-2 bottom-2 w-6 h-6" do %>
+      <%= render "shared/bin" %>
+    <% end %>
   <% end %>
 </div>

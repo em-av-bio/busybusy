@@ -34,6 +34,7 @@ class JourneysController < ApplicationController
     @city_voted = @journey_locations.sort_by { |journey_location| journey_location.ranking }.last
     @date_voted = @journey_dates.sort_by { |journey_date| journey_date.ranking }.last
     @activities = JourneyActivity.where(journey_id: @journey.id)
+    @activities_sorted = @journey_activities.sort_by { |activity| activity.ranking }.reverse
     @activity_voted = @journey_activities.sort_by { |activity| activity.ranking }.last
     @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
     @journey_member.activities_voted!
@@ -51,7 +52,7 @@ class JourneysController < ApplicationController
         journeyMemberId: @journey_member.id,
         status: @journey_member.read_attribute_before_type_cast(:status),
         allGood: @all_good,
-        message: 'Tout le monde peut voter !'
+        message: 'Place aux votes !'
       }
     )
   end
@@ -68,7 +69,7 @@ class JourneysController < ApplicationController
         journeyMemberId: @journey_member.id,
         status: @journey_member.read_attribute_before_type_cast(:status),
         allGood: @all_good,
-        message: 'Tout le monde peut voter !'
+        message: 'Place aux votes !'
       }
     )
   end
@@ -89,7 +90,7 @@ class JourneysController < ApplicationController
         journeyMemberId: @journey_member.id,
         status: @journey_member.read_attribute_before_type_cast(:status),
         allGood: @all_good,
-        message: 'Place aux activités',
+        message: 'Place aux activités !',
         infos: {
           city: @city_voted.location.city,
           startDate: @date_voted.start_date.strftime('%d/%m/%Y'),

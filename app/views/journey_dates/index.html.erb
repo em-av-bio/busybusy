@@ -9,9 +9,9 @@
     <% end %>
   </div>
 
-  <%= form_with model: [@journey, @journey_date], data: { controller: 'flatpickr' }, class: "flex flex-col gap-4" do |f| %>
+  <%= form_with model: [@journey, @journey_date], data: { controller: 'flatpickr' }, class: "flex flex-col gap-4 relative" do |f| %>
     <%= f.text_field :dates, as: :string, placeholder: "Choisir une date de début et de fin",  data: { flatpickr_target: "startTime" } %>
-    <%= f.submit 'Proposer ces dates', class: "btn secundary" %>
+    <%= f.submit 'Ok', class: "btn primary inset" %>
   <% end %>
 </div>
 

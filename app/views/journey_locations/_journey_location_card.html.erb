@@ -1,6 +1,6 @@
 <% defined?(step) ? step = step : step = "default" %>
-<div class="journey-location-card flex items-stretch shadow-md bg-white w-full gap-4 rounded-lg overflow-hidden">
-  <div class="journey-location-card__image">
+<div class="journey-location-card flex items-stretch shadow-md bg-white w-full gap-4 rounded-lg overflow-hidden relative">
+  <div class="journey-location-card__image shrink-0">
     <img src="<%= journey_location.location.image_url %>" />
   </div>
   <div class="journey-location-card__details flex flex-col justify-center grow">
@@ -11,11 +11,14 @@
         <%= journey_location.location.country %>, <%= journey_location.location.zip_code.split('-').first %>
       </span>
     </div>
-    <%= link_to "Supprimer", journey_journey_location_path(@journey, journey_location), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   </div>
   <% if step == "vote" %>
     <div class="journey-location-card__vote">
       <%= render "shared/drag" %>
     </div>
+  <% else %>
+    <%= link_to journey_journey_location_path(@journey, journey_location), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr·e ?"}, class: "absolute right-2 bottom-2 w-6 h-6" do %>
+      <%= render "shared/bin" %>
+    <% end %>
   <% end %>
 </div>
