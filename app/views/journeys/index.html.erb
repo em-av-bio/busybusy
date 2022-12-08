@@ -31,7 +31,7 @@
             <% status = "Voir le résume" %>
             <% card_path = summary_path(journey.id) %>
         <% end %>
-        <%= link_to card_path, class:"m-2" do %>
+        <%= link_to card_path, class:"m-2", data: { turbo: "false" } do %>
           <%= render "journey_card", journey: journey, journey_member_id: journey_member_id, status: status %>
         <% end %>
       <% end %>
@@ -41,14 +41,14 @@
   <div class="fixed bottom-0 left-0 right-0 w-full p-4 bg-white border-t border-great-blue-300">
     <%= link_to "Créer un week-end", new_journey_path, class:"btn secundary" %>
   </div>
-  
+
 <% else %>
 
   <div class="h-full bg-cover bg-center bg-no-repeat flex flex-col justify-between" style="background-image: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), url(<%= asset_path 'weekzen_bg.jpg' %>);">
     <div class="grow flex items-center justify-center">
       <h1 class="px-16 pb-72 text-center">L'application qui vous aide à organiser vos week-ends entre ami·e·s</h1>
     </div>
-    <%= render "shared/footer" %> 
-  </div>   
+    <%= render "shared/footer" %>
+  </div>
 
 <% end %>
