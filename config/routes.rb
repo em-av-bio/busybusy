@@ -3,18 +3,18 @@ Rails.application.routes.draw do
   root 'journeys#index'
   resources :journeys do
     resources :journey_members, only: [:new, :create, :edit, :update]
-    resources :journey_locations, only: %i[index new create] do
+    resources :journey_locations, only: %i[index new create destroy] do
       collection do
         post :update_ranking
       end
     end
-    resources :journey_dates, only: %i[index new create] do
+    resources :journey_dates, only: %i[index new create destroy] do
       collection do
         post :update_ranking
       end
     end
-    resources :journey_accommodations, only: %i[index new create]
-    resources :journey_activities, only: %i[index new create] do
+    resources :journey_accommodations, only: %i[index new create destroy]
+    resources :journey_activities, only: %i[index new create destroy] do
       collection do
         post :update_ranking
       end

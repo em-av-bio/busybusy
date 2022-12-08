@@ -6,6 +6,7 @@
   <div class="journey-activity-card__details flex flex-col justify-center grow">
     <span><%= journey_activity.activity.name %></span>
     <span><%= journey_activity.activity.price %></span>
+    <%= link_to "Supprimer", journey_journey_activity_path(@journey, journey_activity), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   </div>
   <% if step == "vote" %>
     <div class="journey-activity-card__vote">

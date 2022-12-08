@@ -11,6 +11,7 @@
         <%= journey_location.location.country %>, <%= journey_location.location.zip_code.split('-').first %>
       </span>
     </div>
+    <%= link_to "Supprimer", journey_journey_location_path(@journey, journey_location), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   </div>
   <% if step == "vote" %>
     <div class="journey-location-card__vote">
