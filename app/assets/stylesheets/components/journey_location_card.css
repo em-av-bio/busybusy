@@ -1,4 +1,14 @@
+.journey-location-card {
+  min-height: 96px;
+}
+
+.journey-location-card__image {
+  @apply relative;
+  width: 96px;
+}
+
 .journey-location-card__image img {
+  @apply absolute left-0 top-0 w-full h-full;
   width: 96px;
   height: 96px;
   object-fit: cover;
@@ -13,7 +23,7 @@
 }
 
 .journey-location-card__vote {
-  @apply bg-great-blue-200 flex items-center justify-center p-4;
+  @apply bg-great-blue-200 flex items-center justify-center p-2;
 }
 
 .journey-location-card__vote svg {

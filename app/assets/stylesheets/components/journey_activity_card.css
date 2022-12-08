@@ -1,8 +1,6 @@
 .journey-activity-card__image {
   @apply relative;
   width: 96px;
-  min-height: 96px;
-  height: 100%;
 }
 
 .journey-activity-card__image img {
@@ -13,7 +11,7 @@
 }
 
 .journey-activity-card__vote {
-  @apply bg-great-blue-200 flex items-center justify-center p-4;
+  @apply bg-great-blue-200 flex items-center justify-center p-2;
 }
 
 .journey-activity-card__vote svg {

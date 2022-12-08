@@ -2,7 +2,7 @@
     href="https://www.airbnb.fr/s/<%= @city_voted.location.city.downcase %>/homes?adults=<%= @journey_members.count%>&checkin=<%= @date_voted.start_date.strftime("%Y-%m-%d") %>&checkout=<%= @date_voted.end_date.strftime("%Y-%m-%d") %>"
     target="_blank"
     >
-  <div class="summary-accommodation__details grow flex items-center justify-center gap-2">
+  <div class="summary-accommodation__details grow flex flex-col items-center justify-center">
     <span>Rechercher un logement sur</span>
     <%= render "shared/airbnb" %>
   </div>

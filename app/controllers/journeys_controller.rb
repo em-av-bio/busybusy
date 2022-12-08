@@ -34,6 +34,7 @@ class JourneysController < ApplicationController
     @city_voted = @journey_locations.sort_by { |journey_location| journey_location.ranking }.last
     @date_voted = @journey_dates.sort_by { |journey_date| journey_date.ranking }.last
     @activities = JourneyActivity.where(journey_id: @journey.id)
+    @activities_sorted = @journey_activities.sort_by { |activity| activity.ranking }.reverse
     @activity_voted = @journey_activities.sort_by { |activity| activity.ranking }.last
     @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
     @journey_member.activities_voted!

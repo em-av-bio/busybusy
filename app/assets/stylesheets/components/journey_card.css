@@ -10,8 +10,14 @@
 .content_members .avatar {
   margin-left: -8px;
 }
+
 .content_members .avatar:first-of-type {
   margin-left: 0; 
+}
+
+.content_status svg {
+  width: 24px;
+  height: 24px;
 }
 
 .journey-card__button {
@@ -26,6 +32,6 @@
   transform: rotate(180deg);
 }
 
-.journey-card__button svg .back {
+.journey-card__button svg .arrow {
   stroke: white;
 }
