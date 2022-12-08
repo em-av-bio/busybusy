@@ -5,8 +5,34 @@
     <div class="flex flex-col gap-4 py-8">
       <% @journeys.each do |journey| %>
         <% journey_member_id = JourneyMember.find_by(journey: journey, user: current_user) %>
-        <%= link_to edit_journey_journey_member_path(journey.id, journey_member_id), class:"m-2" do %>
-          <%= render "journey_card", journey: journey, journey_member_id: journey_member_id %>
+        <% case journey_member_id.status%>
+          <% when "default" %>
+            <% status = "Définir mon budget" %>
+            <% card_path = edit_journey_journey_member_path(journey.id, journey_member_id) %>
+          <% when "budget_defined" %>
+            <% status = "Valider les destinations" %>
+            <% card_path = journey_journey_locations_path(journey.id) %>
+          <% when "locations_accepted" %>
+            <% status = "Valider les dates" %>
+            <% card_path = journey_journey_dates_path(journey.id) %>
+          <% when "dates_accepted" %>
+            <% status = "Voter les destinations" %>
+            <% card_path = waitings_path(journey.id) %>
+          <% when "locations_voted" %>
+            <% status = "Voter les dates" %>
+            <% card_path = dates_votes_path(journey.id) %>
+          <% when "dates_voted" %>
+            <% status = "Valider les activités" %>
+            <% card_path = has_voted_path(journey.id) %>
+          <% when "activities_accepted" %>
+            <% status = "Voter les activités" %>
+            <% card_path = waitings_act_path(journey.id) %>
+          <% when "activities_voted" %>
+            <% status = "Voir le résume" %>
+            <% card_path = summary_path(journey.id) %>
+        <% end %>
+        <%= link_to card_path, class:"m-2" do %>
+          <%= render "journey_card", journey: journey, journey_member_id: journey_member_id, status: status %>
         <% end %>
       <% end %>
     </div>
