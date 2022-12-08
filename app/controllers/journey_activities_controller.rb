@@ -16,6 +16,7 @@ class JourneyActivitiesController < ApplicationController
   end
 
   def create
+    @journey = Journey.find(params[:journey_id])
     @journey_activity = JourneyActivity.new(journey_activity_params)
     @journey_activity.journey = @journey
     if @journey_activity.save!
@@ -58,7 +59,7 @@ class JourneyActivitiesController < ApplicationController
   private
 
   def journey_activity_params
-    params.require(:journey_activity).permit(:activity_id)
+    params.permit(:journey_id, :activity_id)
   end
 
   def set_user

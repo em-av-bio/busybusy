@@ -1,0 +1,8 @@
+<%= form_with url: activities_search_path, method: :post do |form| %>
+  <span class="input-search">
+    <%= form.search_field :activities_search, oninput: "this.form.requestSubmit()", placeholder: "Chercher une activité" %>
+  </span>
+  <%= hidden_field :journey, :id %>
+<% end %>
+<div id="activities_results">
+</div>
