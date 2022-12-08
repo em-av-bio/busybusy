@@ -21,6 +21,7 @@
 @import "components/journey_location_card";
 @import "components/journey_date_card";
 @import "components/journey_activity_card";
+@import "components/journey_summary_accommodation";
 
 /* Other */
 @import "tailwindcss/utilities";

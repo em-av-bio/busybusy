@@ -1,0 +1,12 @@
+<a  class="summary-accommodation shadow-md bg-white w-full rounded-lg overflow-hidden flex"
+    href="https://www.airbnb.fr/s/<%= @city_voted.location.city.downcase %>/homes?adults=<%= @journey_members.count%>&checkin=<%= @date_voted.start_date.strftime("%Y-%m-%d") %>&checkout=<%= @date_voted.end_date.strftime("%Y-%m-%d") %>"
+    target="_blank"
+    >
+  <div class="summary-accommodation__details grow flex items-center justify-center gap-2">
+    <span>Rechercher un logement sur</span>
+    <%= render "shared/airbnb" %>
+  </div>
+  <div class="summary-accommodation__arrow">
+    <%= render "shared/arrow" %>
+  </div>
+</a> 

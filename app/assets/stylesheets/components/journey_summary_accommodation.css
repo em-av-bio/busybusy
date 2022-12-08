@@ -1,0 +1,23 @@
+.summary-accommodation {
+  min-height: 72px;
+}
+
+.summary-accommodation__details svg {
+  height: 26px;
+  margin-top: 3px;
+}
+
+.summary-accommodation__arrow {
+  @apply flex items-center justify-center p-4;
+  background: var(--gradient-light);
+}
+
+.summary-accommodation__arrow svg {
+  width: 16px;
+  height: 16px;
+  transform: rotate(180deg);
+}
+
+.summary-accommodation__arrow svg .arrow {
+  @apply stroke-white;
+}

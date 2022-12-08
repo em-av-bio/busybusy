@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-4">
   <div class="flex items-center justify-center icon64">
     <%= render "shared/summary" %>
   </div>
@@ -7,8 +7,15 @@
 
   <%= render "journey_summary_location" %>
 
-  <p><i class="fa-solid fa-piggy-bank"></i> Avec un budget de <%= @journey_total_budget%>€</p>
-  <p><i class="fa-solid fa-location-dot"></i> Pour faire : <%= @activity_voted.activity.name%></p>
-  <p><i class="fa-solid fa-users"></i> Vous serez <%= @journey_members.count%> participants</p>
-  <p><i class="fa-solid fa-house-user"></i> Votre activité vous coûtera <% @activity_voted.activity.price %> Il vous reste <% @placebudget %>€.Quelques propositions de logements <a target="_blank" href="https://www.airbnb.fr/s/<%= @city_voted.location.city.downcase %>/homes?adults=<%= @journey_members.count%>&checkin=<%= @date_voted.start_date.strftime("%Y-%m-%d") %>&checkout=<%= @date_voted.end_date.strftime("%Y-%m-%d") %>" >ici</a></p>
+  <%= render "journey_summary_members" %>
+
+  <%= render "journey_summary_budget" %>
+
+  <h2 class="text-center pt-4">Pensez à votre logement sur place</h2>
+
+  <%= render "journey_summary_accommodation" %>
+
+  <h2 class="text-center pt-4">Vous allez être bien occupé·e·s !</h2>
+
+  <%= render "journey_summary_activities" %>
 </div>
