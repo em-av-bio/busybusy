@@ -27,7 +27,9 @@ module.exports = {
         'bg': '#FFF9F3',
         'focus': '#FF6D1B',
         'default': '#BBBBBB',
-        'dark-alpha': 'rgba(0, 0, 0, .5)'
+        'dark-alpha': 'rgba(0, 0, 0, .5)',
+        'success': 'rgba(25, 135, 10, .8)',
+        'warning': 'rgba(215, 40, 30, .8)'
       },
       fontFamily: {
         'sans': ['urw-din-semi-condensed', ...defaultTheme.fontFamily.sans]

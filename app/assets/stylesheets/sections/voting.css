@@ -1,15 +1,38 @@
-.warning {
-  justify-content: flex-start;
+.waiting__top_icon {
+  @apply bg-white shadow-md flex items-center justify-center;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;;
+  margin-top: -24px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.warning>div>div {
-  background-color: rgba(255, 0, 0, 0.241);
+.waiting__top svg {
+  width: 32px;
+  height: 32px;
+  transform: rotate(10deg);
 }
 
-.good {
-  justify-content: flex-end;
+.waiting__top svg .sandglass {
+  @apply stroke-warning;
 }
 
-.good>div>div {
-  background-color: rgba(0, 255, 0, 0.241);
+.waiting__top svg .checked {
+  @apply stroke-success;
+}
+
+.waiting__status.warning {
+  flex-direction: row;
+}
+
+.waiting__status.good {
+  flex-direction: row-reverse;
+}
+
+.warning .avatar,
+.good .avatar {
+  border-width: 3px;
+  width: 52px;
+  height: 52px;
 }
