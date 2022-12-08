@@ -46,11 +46,24 @@ export default class extends Controller {
   }
 
   displayInfos(json) {
-    if (this.hasInfosTarget) {
+    if (this.infosTarget && json.allGood) {
       const html = `
-        <p>Vous partez à : ${json.infos.city}</p>
-        <p>Vous partez du ${json.infos.startDate} au  ${json.infos.endDate}</p>
-      `
+      <h2 class="text-center my-4">Les votes ont parlé !</h2>
+      <div class="sumary-location shadow-md bg-white w-full gap-4 rounded-lg overflow-hidden">
+      <div  class="summary-location__location bg-no-repeat bg-cover"
+            style="background-image: url('${json.infos.city_url}');"
+            >
+        <div class="w-full h-52 left-0 top-0 flex items-center justify-center">
+          <div class="bg-dark-alpha px-4 rounded text-white text-bold text-2xl">${json.infos.city}</div>
+        </div>
+      </div>
+      <div class="summary-location__date flex items-center justify-center gap-2 p-2">
+        <span class="text-great-blue-300">du</span>
+        <span class="text-great-blue-600 font-bold">${json.infos.startDate}</span>
+        <span class="text-great-blue-300">au</span>
+        <span class="text-great-blue-600 font-bold">${json.infos.endDate}</span>
+      </div>
+    </div>`
       this.infosTarget.innerHTML = html
     }
   }

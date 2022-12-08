@@ -1,0 +1,12 @@
+<% if activities.size > 0 %>
+	<div class="w-full rounded-3xl px-6 bg-white border border-great-blue-300 my-4">
+		<% activities.each do |activity| %>
+			<%= button_to journey_journey_activities_path(@journey, activity_id: activity.id), class: "flex items-center gap-2 py-2", data: { turbo: "false" } do %>
+				<img src="<%= activity.image_url %>" class="w-8 h-8 object-cover rounded" />
+				<span><%= activity.name %></span>
+				<span><%= activity.price %></span>
+			<% end %>
+		<% end %>
+	</div>
+<% end %>
+ 

@@ -10,5 +10,5 @@
   <p><i class="fa-solid fa-piggy-bank"></i> Avec un budget de <%= @journey_total_budget%>€</p>
   <p><i class="fa-solid fa-location-dot"></i> Pour faire : <%= @activity_voted.activity.name%></p>
   <p><i class="fa-solid fa-users"></i> Vous serez <%= @journey_members.count%> participants</p>
-  <p><i class="fa-solid fa-house-user"></i> Quelques propositions de logements <a target="_blank" href="https://www.airbnb.fr/s/<%= @city_voted.location.city.downcase %>/homes?adults=<%= @journey_members.count%>&checkin=<%= @date_voted.start_date.strftime("%Y-%m-%d") %>&checkout=<%= @date_voted.end_date.strftime("%Y-%m-%d") %>" >ici</a></p>
+  <p><i class="fa-solid fa-house-user"></i> Votre activité vous coûtera <% @activity_voted.activity.price %> Il vous reste <% @placebudget %>€.Quelques propositions de logements <a target="_blank" href="https://www.airbnb.fr/s/<%= @city_voted.location.city.downcase %>/homes?adults=<%= @journey_members.count%>&checkin=<%= @date_voted.start_date.strftime("%Y-%m-%d") %>&checkout=<%= @date_voted.end_date.strftime("%Y-%m-%d") %>" >ici</a></p>
 </div>
