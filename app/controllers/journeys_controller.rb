@@ -35,7 +35,6 @@ class JourneysController < ApplicationController
     @date_voted = @journey_dates.sort_by { |journey_date| journey_date.ranking }.last
     @activities = JourneyActivity.where(journey_id: @journey.id)
     @activity_voted = @journey_activities.sort_by { |activity| activity.ranking }.last
-    @placebudget = @journey_total_budget - @activity_voted.activity.price
     @journey_member = JourneyMember.find_by(user_id: current_user.id, journey_id: params[:id])
     @journey_member.activities_voted!
   end
