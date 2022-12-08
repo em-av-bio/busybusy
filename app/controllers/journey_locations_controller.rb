@@ -27,6 +27,13 @@ class JourneyLocationsController < ApplicationController
     end
   end
 
+  def destroy
+    @journey = Journey.find(params[:journey_id])
+    @journey_location = @journey.journey_locations.find(params[:id])
+    @journey_location.destroy
+    redirect_to journey_journey_locations_path(@journey)
+  end
+
   def votes
     @journey_locations = JourneyLocation.where(journey_id: params[:id])
     @journey = Journey.find(params[:id])

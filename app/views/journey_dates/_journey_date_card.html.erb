@@ -8,6 +8,7 @@
       <span class="text-great-blue-300">au</span>
       <span class="text-great-blue-600 font-bold"><%= journey_date.end_date.strftime("%d/%m/%Y")%></span>
     </div>
+    <%= link_to "Supprimer", journey_journey_date_path(@journey, journey_date), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   </div>
   <% if step == "vote" %>
     <div class="journey-date-card__vote">
