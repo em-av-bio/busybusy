@@ -1,0 +1,4 @@
+meta_name: "Weekzen"
+meta_title: "Weekzen - Planificateur de votre week-end"
+meta_description: "Weekend vous aide à organiser votre week-end entre amis."
+meta_image: "weekzen.png" # should exist in `app/assets/images/`
