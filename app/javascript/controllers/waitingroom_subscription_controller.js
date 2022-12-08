@@ -42,6 +42,7 @@ export default class extends Controller {
       this.buttonTarget.innerText = json.message
       this.buttonTarget.classList.remove("disabled")
       this.displayInfos(json)
+      location.hash = "#vote";
     }
   }
 

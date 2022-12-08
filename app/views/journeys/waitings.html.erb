@@ -15,7 +15,7 @@
     <%= link_to locations_votes_path(@journey),
                 data: {turbo: false, waitingroom_subscription_target: "button"},
                 class: "btn primary #{ 'disabled' unless @all_good }" do %>
-      <%= @all_good ? "Tout le monde peut voter !" : "En attente de vos amis..." %>
+      <%= @all_good ? "Place aux votes !" : "En attente de vos amis" %>
     <% end %>
   </div>
 </div>

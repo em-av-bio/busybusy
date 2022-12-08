@@ -15,7 +15,7 @@
     <%= link_to summary_path(@journey),
                 data: { waitingroom_subscription_target: "button"},
                 class: "btn primary #{ 'disabled' unless @all_good }" do %>
-      <%= @all_good ? "Découvrez votre week end !" : "En attente des autres users..." %>
+      <%= @all_good ? "Découvrez votre week end !" : "En attente de vos amis" %>
     <% end %>
   </div>
 </div>

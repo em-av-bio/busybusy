@@ -71,3 +71,8 @@ input[type="checkbox"] {
 .details-text {
   @apply text-base text-great-blue-500;
 }
+
+/* Fix FlatPickr Month Height */
+.flatpickr-months .flatpickr-month {
+  height: 56px!important;
+}

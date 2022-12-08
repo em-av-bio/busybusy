@@ -1,5 +1,5 @@
 <div class="summary-activities shadow-md bg-white w-full gap-4 rounded-lg overflow-hidden">
-  <% @journey_activities.each_with_index do |activity, i| %>
+  <% @activity_voted.each_with_index do |activity, i| %>
     <div class="journey-activity-card flex items-stretch bg-white w-full overflow-hidden<% unless i == 0 %> border-t border-great-blue-300<% end %>">
       <div class="journey-activity-card__image shrink-0">
         <img src="<%= activity.activity.image_url %>" />

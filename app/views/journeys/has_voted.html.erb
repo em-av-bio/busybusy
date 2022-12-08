@@ -10,7 +10,7 @@
 
   <%= render "shared/waiting", step_id: 5 %>
 
-  <div class="infos" data-waitingroom-subscription-target="infos">
+  <div id="vote" class="infos pb-24" data-waitingroom-subscription-target="infos">
     <% if @all_good %>
       <h2 class="text-center my-4">Les votes ont parlé !</h2>
       <%= render "journey_summary_location" %>

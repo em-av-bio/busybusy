@@ -21,6 +21,18 @@
   text-decoration: none;
 }
 
+.btn.inset {
+  @apply absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  min-height: 40px;
+  height: 40px;
+  width: fit-content;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
 
 @layer components {
   .btn-one {
