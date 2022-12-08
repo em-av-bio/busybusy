@@ -23,6 +23,14 @@ class JourneyDatesController < ApplicationController
     end
   end
 
+  def destroy
+    @journey = Journey.find(params[:journey_id])
+    @journey_dates = JourneyDate.where(journey_id: params[:journey_id])
+    @journey_date = @journey_dates.find(params[:id])
+    @journey_date.destroy
+    redirect_to journey_journey_dates_path(@journey)
+  end
+
   def votes
     @journey = Journey.find(params[:id])
     @journey_dates = JourneyDate.where(journey_id: params[:id])

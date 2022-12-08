@@ -38,6 +38,7 @@ class LocationsController < ApplicationController
     else
       @locations = Location.none
     end
+
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
