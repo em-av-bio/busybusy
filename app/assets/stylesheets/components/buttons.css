@@ -1,5 +1,5 @@
 .btn {
-  @apply px-8 flex items-center justify-center w-full font-bold uppercase tracking-widest rounded-3xl cursor-pointer;
+  @apply px-8 flex items-center justify-center w-full font-bold uppercase tracking-widest rounded-3xl cursor-pointer text-center;
   min-height: 48px;
   transition: all .15s ease-in-out;
 }
