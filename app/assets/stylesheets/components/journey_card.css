@@ -1,12 +1,3 @@
-.content_title svg {
-  width: 24px;
-  height: 24px;
-}
-
-.content_title svg .calendar {
-  @apply stroke-great-blue-700;
-}
-
 .content_members .avatar {
   margin-left: -8px;
 }
@@ -16,8 +7,8 @@
 }
 
 .content_status svg {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 }
 
 .journey-card__button {

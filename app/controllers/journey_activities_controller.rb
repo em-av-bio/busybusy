@@ -48,7 +48,7 @@ class JourneyActivitiesController < ApplicationController
         journeyMemberId: @journey_member.id,
         status: @journey_member.read_attribute_before_type_cast(:status),
         allGood: @all_good,
-        message: 'Découvrez votre week end !'
+        message: 'Découvrez votre week-end'
       }
     )
   end
