@@ -67,3 +67,7 @@ input[type="checkbox"] {
 .icon64 svg {
   height: 64px;
 }
+
+.details-text {
+  @apply text-base text-great-blue-500;
+}

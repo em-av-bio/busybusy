@@ -1,6 +1,14 @@
-.journey-activity-card__image img {
+.journey-activity-card__image {
+  @apply relative;
   width: 96px;
-  height: 96px;
+  min-height: 96px;
+  height: 100%;
+}
+
+.journey-activity-card__image img {
+  @apply absolute left-0 top-0 w-full h-full;
+  width: 96px;
+  height: 100%;
   object-fit: cover;
 }
 

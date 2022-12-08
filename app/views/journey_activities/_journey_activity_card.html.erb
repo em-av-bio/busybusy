@@ -1,11 +1,11 @@
 <% defined?(step) ? step = step : step = "default" %>
 <div class="journey-activity-card flex items-stretch shadow-md bg-white w-full rounded-lg overflow-hidden">
-  <div class="journey-activity-card__image">
+  <div class="journey-activity-card__image shrink-0">
     <img src="<%= journey_activity.activity.image_url %>" />
   </div>
-  <div class="journey-activity-card__details flex flex-col justify-center grow">
-    <span><%= journey_activity.activity.name %></span>
-    <span><%= journey_activity.activity.price %></span>
+  <div class="journey-activity-card__details flex flex-col justify-center grow px-4 py-2">
+    <span><%= journey_activity.activity.name.truncate(56, omission: '...') %></span>
+    <span class="details-text"><%= journey_activity.activity.price %></span>
   </div>
   <% if step == "vote" %>
     <div class="journey-activity-card__vote">
