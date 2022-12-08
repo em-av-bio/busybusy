@@ -1,7 +1,7 @@
 .header__journey a {
-  @apply flex items-center justify-start;
+  @apply flex items-center justify-start border-r-2 border-great-blue-200;
   height: 48px;
-  width: 32px;
+  width: 40px;
 }
 .header__journey a svg {
   height: 24px;

@@ -7,15 +7,17 @@
     <% else %>
       <div class="header__journey flex items-center gap-2">
         <%= link_to journeys_path do %>
-          <%= render "shared/back" %>
+          <%= render "shared/arrow" %>
         <% end %>
-        <div class="border-l-2 border-great-blue-300 pl-4">
+        <div class="pl-2">
           <h2><%= current_page?(new_journey_path) ? "Nouveau weekend" : @journey.name  %></h2>
           <% unless @journey.id.nil? || @journey.journey_members.size < 1 %>
-            <span>
-              <% @journey.journey_members.each do |member|%>
-                <%= member.user.nickname %>
-              <% end %>
+            <span class="text-base text-great-blue-500">
+              <% members = "" %>
+              <% @journey.journey_members.each do |member| %>
+                <% members = members.concat(member.user.nickname, ', ') %>
+              <% end%>
+              <%= members.chomp(', ') %>
             </span>
           <% end %>
         </div>
@@ -29,19 +31,19 @@
           </button>
           <div
             data-dropdown-target="menu"
-            class="hidden flex flex-col items-center transition transform origin-top-right absolute top-full right-0 bg-white p-2 rounded shadow-md"
+            class="hidden flex flex-col items-center transition transform origin-top-right absolute top-full right-0 bg-white p-4 rounded-2xl shadow-lg"
             data-transition-enter-from="opacity-0 scale-95"
             data-transition-enter-to="opacity-100 scale-100"
             data-transition-leave-from="opacity-100 scale-100"
             data-transition-leave-to="opacity-0 scale-95"
           >
-            <%= link_to "Mes weekends", journeys_path, class: "dropdown-item block w-max" %>
-            <%= link_to "Déconnexion", destroy_user_session_path, class: "dropdown-item block w-max", data: {turbo_method: :delete} %>
+            <%= link_to "Mes weekends", journeys_path, class: "dropdown-item block w-max p-2 text-great-blue-500" %>
+            <%= link_to "Déconnexion", destroy_user_session_path, class: "dropdown-item block w-max p-2 text-great-blue-500", data: {turbo_method: :delete} %>
           </div>
         </div>
       <% else %>
-        <%= link_to "Connexion", new_user_session_path %>
-        <%= link_to "Inscription", new_user_registration_path %>
+        <%= link_to "Connexion", new_user_session_path, class: "text-great-blue-500" %>
+        <%= link_to "Inscription", new_user_registration_path, class: "text-great-blue-500" %>
       <% end %>
     </nav>
   </div>

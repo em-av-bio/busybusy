@@ -6,14 +6,23 @@
   @apply bg-default;
   content: '';
   position: absolute;
-  width: 16px;
+  width: 12px;
   height: 2px;
-  right: -8px;
+  right: -6px;
   top: 50%;
 }
 
+.breadcrumbs>div>div {
+  @apply w-9 h-9;
+  border-radius: 50%;
+}
+
+.breadcrumbs>.active>div {
+  background: var(--gradient-dark);
+}
+
 .breadcrumbs>div.fulfilled::after {
-  @apply bg-great-blue-300;
+  @apply bg-great-blue-500;
 }
 
 .breadcrumbs>div:last-of-type::after {
@@ -21,15 +30,16 @@
 }
 
 .breadcrumbs>div svg {
-  height: 30px;
+  height: 24px;
+  max-width: 24px;
 }
 
 .breadcrumbs>div svg .active {
-  @apply stroke-focus;
+  @apply stroke-white;
 }
 
 .breadcrumbs>div svg .fulfilled {
-  @apply stroke-great-blue-300;
+  @apply stroke-great-blue-500;
 }
 
 .breadcrumbs>div svg .unfulfilled {
@@ -43,5 +53,5 @@
 .breadcrumbs>div svg rect,
 .breadcrumbs>div svg circle,
 .breadcrumbs>div svg ellipse {
-  stroke-width: 3px!important;
+  stroke-width: 4px!important;
 }

@@ -4,8 +4,9 @@
   transition: all .15s ease-in-out;
 }
 
-.primary {
+.primary:not(.disabled) {
   @apply bg-great-blue-500 text-white;
+  background: var(--gradient-dark);
 }
 
 .secundary {
