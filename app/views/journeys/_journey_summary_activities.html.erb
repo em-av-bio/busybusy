@@ -1,0 +1,14 @@
+<div class="summary-activities shadow-md bg-white w-full gap-4 rounded-lg overflow-hidden">
+  <% @journey_activities.each_with_index do |activity, i| %>
+    <div class="journey-activity-card flex items-stretch bg-white w-full overflow-hidden<% unless i == 0 %> border-t border-great-blue-300<% end %>">
+      <div class="journey-activity-card__image shrink-0">
+        <img src="<%= activity.activity.image_url %>" />
+        <span class="absolute w-7 h-7 rounded-br-lg flex items-center justify-center left-0 top-0 bg-great-blue-500 text-white"><%= i + 1 %></span>
+      </div>
+      <div class="journey-activity-card__details flex flex-col justify-center grow px-4 py-2">
+        <span><%= activity.activity.name.truncate(56, omission: '...') %></span>
+        <span class="details-text"><%= activity.activity.price %></span>
+      </div>
+    </div>
+  <% end %>
+</div> 
