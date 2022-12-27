@@ -23,6 +23,8 @@
 @import "components/journey_activity_card";
 @import "components/journey_summary_budget";
 @import "components/journey_summary_accommodation";
+@import "components/popup";
+@import "components/map";
 
 /* Other */
 @import "tailwindcss/utilities";

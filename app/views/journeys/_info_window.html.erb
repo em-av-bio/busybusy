@@ -1,0 +1,15 @@
+ <% if @date_voted.end_date.strftime("%d/%m/%Y") > Date.today.to_time  %>
+    <p><i>A venir</i></p>
+  <% else %>
+    <p><i>Terminé</i></p>
+  <% end %>
+<span class="text-tag"><%= city.city.upcase %></span>
+<%= image_tag city.image_url, height: 350, width: 400, crop: :fill %>
+<div>
+  <strong><%= @count %> Voyageurs</strong>
+  <p>Nom du week-end : <%= @name %></p>
+    <span>Du</span>
+    <span><%= @date_voted.start_date.strftime("%d/%m/%Y")%></span>
+    <span>au</span>
+    <span><%= @date_voted.end_date.strftime("%d/%m/%Y")%></span>
+</div>

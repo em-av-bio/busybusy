@@ -1,9 +1,15 @@
 <% if current_user %>
-
   <div class="pb-24">
     <h1 class="text-center">Mes week-ends</h1>
-    <div class="flex flex-col gap-4 py-8">
+    <div class="map">
+      <div style="width: 100%; height: 500px;" class="mb-5"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>">
+      </div>
+    </div>
       <% @journeys.each do |journey| %>
+      <%= link_to "TRICOUNT", journey_expenses_path(journey)  %>
         <% journey_member_id = JourneyMember.find_by(journey: journey, user: current_user) %>
         <% case journey_member_id.status%>
           <% when "default" %>

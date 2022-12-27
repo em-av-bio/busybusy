@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   root 'journeys#index'
   resources :journeys do
-    resources :journey_members, only: [:new, :create, :edit, :update]
+    resources :expenses, only: %i[index new create destroy] do
+      collection do
+        get :balance
+      end
+    end
+    resources :journey_members, only: %i[new create edit update]
     resources :journey_locations, only: %i[index new create destroy] do
       collection do
         post :update_ranking
