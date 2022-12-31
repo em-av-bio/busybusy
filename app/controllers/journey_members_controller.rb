@@ -16,6 +16,7 @@ class JourneyMembersController < ApplicationController
     @journey_member = JourneyMember.new(user_id: params[:user_id], journey_id: params[:journey_id])
     @journey = Journey.find(params[:journey_id])
     if @journey_member.save!
+      @journey_member.solde = 0
       redirect_to new_journey_journey_member_path(@journey)
     end
   end

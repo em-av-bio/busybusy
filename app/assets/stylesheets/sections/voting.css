@@ -24,10 +24,12 @@
 
 .waiting__status.warning {
   flex-direction: row;
+  background: white;
 }
 
 .waiting__status.good {
   flex-direction: row-reverse;
+  background: white;
 }
 
 .warning .avatar,

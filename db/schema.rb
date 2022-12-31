@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_27_214907) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_30_130529) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,10 +66,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_214907) do
     t.string "title"
     t.float "amount"
     t.string "payer"
-    t.string "recipient"
-    t.bigint "journey_id", null: false
+    t.bigint "journey_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "recipient", default: [], array: true
     t.index ["journey_id"], name: "index_expenses_on_journey_id"
   end
 
@@ -121,6 +121,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_214907) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
+    t.integer "solde", default: 0
     t.index ["journey_id"], name: "index_journey_members_on_journey_id"
     t.index ["user_id"], name: "index_journey_members_on_user_id"
   end

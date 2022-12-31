@@ -20,11 +20,12 @@
         </div>
       </div>
     </div>
+
     <% @journey_members.each do |journey_member| %>
       <div  id="status-<%= journey_member.id %>"
             class="waiting__status w-full flex items-stretch <%= journey_member.current_status_enum < step_id ? "warning" : "good" %>"
             >
-        <div class="w-1/2 px-8">
+        <div class="w-1/2 px-8 ">
           <div class="w-full flex flex-col items-center bg-white border-x py-2">
             <%= render "users/avatar", user: journey_member.user %>
             <span class="details-text"><%= journey_member.user.nickname %></span>
@@ -36,6 +37,7 @@
         </div>
       </div>
     <% end %>
+
     <div class="waiting__bottom flex">
       <div class="w-1/2 px-8">
         <div class="bg-white border-x border-b rounded-b-xl h-4">

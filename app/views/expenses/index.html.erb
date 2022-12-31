@@ -3,15 +3,20 @@
     <div class="flex flex-col gap-4 py-8">
       <% @journey.expenses.each do |journey_expense| %>
        <div class="flex items-stretch shadow-md bg-white w-full gap-4 rounded-lg overflow-hidden relative">
-         <div class="flex flex-col justify-center grow">
+         <div class="flex flex-col justify-center grow p-4">
          <h2><%= journey_expense.amount %>€</h2>
-         <p class="text-gray-500"><%= journey_expense.title %></p>
+         <p class="text-gray-500 "><%= journey_expense.title %></p>
          <p class="text-gray-500">Payé par: <%= journey_expense.payer %></p>
-         <p class="text-gray-500">Pour: <%= journey_expense.recipient %></p>
-         <%= link_to "Supprimer cette dépense X", journey_expense_path(@journey, journey_expense), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+         <p class="text-gray-500">Pour:
+          <% if journey_expense.recipient != nil %>
+            <% journey_expense.recipient.each do |recipient| %>
+              <%= recipient %>
+            <% end %>
+          <% end %>
+          </p>
+         <%= link_to "Supprimer cette dépense", journey_expense_path(@journey, journey_expense), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-great-blue-500 " %>
       </div>
     </div>
-
       <% end %>
     </div>
   <% end %>
@@ -22,11 +27,14 @@
     <%= f.text_field :title %>
     <%= f.label :amount, 'Montant' %>
     <%= f.number_field :amount %>
-    <%= f.label :payer, 'Avancé par' %>
-    <%= f.select :payer, @nicknames, multiple: true %>
-    <%= f.label :recipient, 'Avancé pour' %>
-    <%= f.select :recipient, @nicknames, multiple: true %>
+    <%= f.label :payer, 'Avancé par:' %>
+    <br>
+    <%= f.select :payer, @payers, multiple: true %>
+    <br>
+    <%= f.label :recipient, 'Avancé pour:' %>
+    <br>
+    <%= f.collection_select :recipient, @nicknames , :nickname, :nickname,{}, {multiple: true,:include_blank => true } %>
     <%= f.submit 'Ajouter une dépense', class: "btn secundary mt-8"%>
 <% end %>
 
-<%= link_to "Afficher les balances", balance_journey_expenses_path(@journey)  %>
+<%= link_to "Afficher les balances", balance_journey_expenses_path(@journey),class: "btn secundary mt-8"  %>
