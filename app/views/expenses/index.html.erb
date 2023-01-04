@@ -1,41 +1,42 @@
 <h1 class="text-center">Liste des dépenses</h1>
+
 <% if @journey.expenses.size > 0 %>
     <div class="flex flex-col gap-4 py-8">
       <% @journey.expenses.each do |journey_expense| %>
-       <div class="flex items-stretch shadow-md bg-white w-full gap-4 rounded-lg overflow-hidden relative">
-         <div class="flex flex-col justify-center grow p-4">
-         <h2><%= journey_expense.amount %>€</h2>
-         <p class="text-gray-500 "><%= journey_expense.title %></p>
-         <p class="text-gray-500">Payé par: <%= journey_expense.payer %></p>
-         <p class="text-gray-500">Pour:
-          <% if journey_expense.recipient != nil %>
-            <% journey_expense.recipient.each do |recipient| %>
-              <%= recipient %>
+        <div class="flex items-stretch shadow-md bg-white w-full gap-4 rounded-lg overflow-hidden relative">
+          <div class="flex flex-col justify-center grow p-4">
+            <h2><%= journey_expense.amount %>€</h2>
+            <p class="text-gray-500 "><%= journey_expense.title %></p>
+            <p class="text-gray-500">Payé par: <%= journey_expense.payer %></p>
+            <p class="text-gray-500">Pour:
+            <% if journey_expense.recipient != nil %>
+              <% journey_expense.recipient.each do |recipient| %>
+                <%= recipient %>
+              <% end %>
             <% end %>
-          <% end %>
-          </p>
-         <%= link_to "Supprimer cette dépense", journey_expense_path(@journey, journey_expense), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-great-blue-500 " %>
-      </div>
-    </div>
+            </p>
+            <%= link_to "Supprimer cette dépense", journey_expense_path(@journey, journey_expense), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-great-blue-500 " %>
+          </div>
+        </div>
       <% end %>
     </div>
-  <% end %>
-</div>
+<% end %>
 
 <%= form_with model: [@journey, @expense] do |f| %>
-    <%= f.label :title, 'Nom de la dépense' %>
-    <%= f.text_field :title %>
-    <%= f.label :amount, 'Montant' %>
-    <%= f.number_field :amount %>
-    <%= f.label :payer, 'Avancé par:' %>
-    <br>
-    <%= f.select :payer, @payers, multiple: true %>
-    <br>
-    <%= f.label :recipient, 'Avancé pour:' %>
-    <br>
-    <%= f.collection_select :recipient, @nicknames , :nickname, :nickname,{}, {multiple: true,:include_blank => true } %>
-    <%= f.submit 'Ajouter une dépense', class: "btn secundary mt-6 mb-2"%>
+  <%= f.label :title, 'Nom de la dépense' %>
+  <%= f.text_field :title %>
+  <%= f.label :amount, 'Montant' %>
+  <%= f.number_field :amount %>
+  <%= f.label :payer, 'Avancé par:' %>
+  <br>
+  <%= f.select :payer, @payers, multiple: true %>
+  <br>
+  <%= f.label :recipient, 'Avancé pour:' %>
+  <br>
+  <%= f.collection_select :recipient, @nicknames , :nickname, :nickname,{}, {multiple: true,:include_blank => true } %>
+  <%= f.submit 'Ajouter une dépense', class: "btn secundary mt-6 mb-2"%>
 <% end %>
+
 <div class="sticky bottom-0 p-2 left-0 right-0 bg-white border-t border-great-blue-300">
   <%= link_to "Afficher les balances", balance_journey_expenses_path(@journey),class: "btn secundary "  %>
 </div>

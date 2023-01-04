@@ -9,66 +9,77 @@
 
 
 <div class="flex flex-col w-full py-8 bg-white">
+
   <div class="w-full flex items-center justify-between">
-      <h2 class="w-1/2 text-center">Les endettés</h2>
-      <h2 class="w-1/2 text-center">Les riches</h2>
-    </div>
+    <h2 class="w-1/2 text-center">Les endettés</h2>
+    <h2 class="w-1/2 text-center">Les riches</h2>
+  </div>
 
-     <div class="waiting__top flex ">
-      <div class="w-1/2 px-8">
-        <div class=" rounded-t-xl h-8 mt-8">
-          <div class="waiting__top_icon">
-            <%= render "shared/sandglass" %>
-          </div>
-        </div>
-      </div>
+  <div class="waiting__top flex ">
 
-      <div class="w-1/2 px-8">
-        <div class=" rounded-t-xl h-8 mt-8">
-          <div class="waiting__top_icon">
-            <%= render "shared/checked" %>
-          </div>
+    <div class="w-1/2 px-8">
+      <div class=" rounded-t-xl h-8 mt-8">
+        <div class="waiting__top_icon">
+          <%= render "shared/sandglass" %>
         </div>
       </div>
     </div>
 
-
-    <% @journey_members.each do |member| %>
-       <div class="waiting__status w-full flex items-stretch <%= member.solde < 0 ? "warning" : "good"%>" >
-        <% if member.solde < 0 && member.solde != -@value %>
-              <div class="w-1/2 px-8 warning">
-                <div class="w-full flex flex-col items-center pt-8">
-                  <p><%= member.user.nickname %></p>
-                  <p > Tu dois payer <%= -((member.solde - @value) + @value) %>€.</p>
-                </div>
-              </div>
-        <% elsif member.solde > 0 %>
-              <div class="w-1/2 px-8 good">
-                <div class="w-full flex flex-col items-center pt-8">
-                  <p><%= member.user.nickname %></p>
-                  <p>doit recevoir <%= member.solde %>€.</p>
-                </div>
-              </div>
-        <% elsif member.solde == -@value %>
-              <div class="w-1/2 px-8 good">
-                <div class="w-full flex flex-col items-center pt-8">
-                  <p><%= member.user.nickname %></p>
-                  <p> Tu dois payer <%= @value %>€.</p>
-                </div>
-              </div>
-        <% end %>
+    <div class="w-1/2 px-8">
+      <div class=" rounded-t-xl h-8 mt-8">
+        <div class="waiting__top_icon">
+          <%= render "shared/checked" %>
+        </div>
       </div>
-    <% end %>
+    </div>
 
-  <div class="waiting__bottom flex">
+  </div>
+
+
+  <% @journey_members.each do |member| %>
+
+    <div class="waiting__status w-full flex items-stretch <%= member.solde < 0 ? "warning" : "good"%>" >
+
+      <% if member.solde < 0 && member.solde != -@value %>
+        <div class="w-1/2 px-8 warning">
+          <div class="w-full flex flex-col items-center pt-8">
+            <p><%= member.user.nickname %></p>
+            <p > Tu dois payer <%= -((member.solde - @value) + @value) %>€.</p>
+          </div>
+        </div>
+
+      <% elsif member.solde > 0 %>
+        <div class="w-1/2 px-8 good">
+          <div class="w-full flex flex-col items-center pt-8">
+            <p><%= member.user.nickname %></p>
+            <p>doit recevoir <%= member.solde %>€.</p>
+          </div>
+        </div>
+
+      <% elsif member.solde == -@value %>
+        <div class="w-1/2 px-8 good">
+          <div class="w-full flex flex-col items-center pt-8">
+            <p><%= member.user.nickname %></p>
+            <p> Tu dois payer <%= @value %>€.</p>
+          </div>
+        </div>
+      <% end %>
+
+      </div>
+
+  <% end %>
+
+    <div class="waiting__bottom flex">
+
       <div class="w-1/2 px-8">
         <div class="rounded-b-xl h-4">
         </div>
       </div>
-      <div class="w-1/2 px-8">
-        <div class="rounded-b-xl h-4">
+
+        <div class="w-1/2 px-8">
+          <div class="rounded-b-xl h-4">
+          </div>
         </div>
-      </div>
     </div>
   </div>
 </div>

@@ -2,11 +2,10 @@ class ExpensesController < ApplicationController
 
   def index
     @journey = Journey.find(params[:journey_id])
-    @journey_members = @journey.journey_members
     @expenses = @journey.expenses
-    @expense = Expense.new
     @payers = @journey.journey_members.map { |member| member.user.nickname }
     @nicknames = @journey.journey_members.map { |member| member.user }
+    @expense = Expense.new
   end
 
   def create
@@ -36,9 +35,7 @@ class ExpensesController < ApplicationController
       @depenses_sum = @expenses.where(payer: member.user.nickname).sum(:amount)
       @dettes_sum = 0
       @expenses.each do |expense|
-        if expense.recipient.include?(member.user.nickname)
-          @dettes_sum += (expense.amount / @journey_members.count)
-        end
+        @dettes_sum += (expense.amount / @journey_members.count) if expense.recipient.include?(member.user.nickname)
       end
       member.update(solde: (@depenses_sum - @dettes_sum))
     end
