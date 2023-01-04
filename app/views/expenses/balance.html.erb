@@ -1,12 +1,6 @@
 <h1 class="text-center">Récapitulatif des comptes</h1>
-<h3 class= "text-center">Total des dépenses: <%= @sum %>€</h3>
-<h3 class="text-center mb-4">Coût de chacun: <%= @value %>€</h3>
-
-
-<% @journey_members.each do |member| %>
-  <p class="text-center text-great-blue-500 mb-5"><%= member.user.nickname %>, voici ta balance : <%= member.solde %>€ </p>
-<% end %>
-
+<h3 class= "text-center">Total des dépenses: <%= @sum.round(2) %>€</h3>
+<h3 class="text-center mb-4">Coût de chacun: <%= @value.round(2) %>€</h3>
 
 <div class="flex flex-col w-full py-8 bg-white">
 
@@ -44,7 +38,7 @@
         <div class="w-1/2 px-8 warning">
           <div class="w-full flex flex-col items-center pt-8">
             <p><%= member.user.nickname %></p>
-            <p > Tu dois payer <%= -((member.solde - @value) + @value) %>€.</p>
+            <p > Tu dois payer <%= -((member.solde - @value) + @value).round(2) %>€.</p>
           </div>
         </div>
 
@@ -52,7 +46,7 @@
         <div class="w-1/2 px-8 good">
           <div class="w-full flex flex-col items-center pt-8">
             <p><%= member.user.nickname %></p>
-            <p>doit recevoir <%= member.solde %>€.</p>
+            <p>doit recevoir <%= member.solde.round(2) %>€.</p>
           </div>
         </div>
 
@@ -60,7 +54,7 @@
         <div class="w-1/2 px-8 good">
           <div class="w-full flex flex-col items-center pt-8">
             <p><%= member.user.nickname %></p>
-            <p> Tu dois payer <%= @value %>€.</p>
+            <p> Tu dois payer <%= @value.round(2) %>€.</p>
           </div>
         </div>
       <% end %>

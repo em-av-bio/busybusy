@@ -1,146 +1,77 @@
 require 'rails_helper'
+require 'rails-controller-testing'
+Rails::Controller::Testing.install
+
 begin
-  require "expenses_controller"
+  require 'expenses_controller'
 rescue LoadError
 end
 
 if defined?(ExpensesController)
   RSpec.describe ExpensesController, type: :controller do
-
     before(:each) do
-      @user = User.create!(nickname: 'utilisateur', email: 'utilisateur@gmail.com', password: 'password')
-      @user2 = User.create!(nickname: 'utilisateur2', email: 'utilisateur2@gmail.com', password: 'password')
+      @user = User.create!(nickname: 'user', email: 'user@gmail.com', password: 'password')
+      @user2 = User.create!(nickname: 'user2', email: 'user2@gmail.com', password: 'password')
+      @user3 = User.create!(nickname: 'user3', email: 'user3@gmail.com', password: 'password')
       @journey = Journey.create!(name: 'Journey test')
-      @journey_member = JourneyMember.create!(user_id: @user.id, journey_id: @journey.id)
-      @journey_member2 = JourneyMember.create!(user_id: @user2.id, journey_id: @journey.id)
+      @journey_members = []
+      @journey_member = JourneyMember.create!(user: @user, journey: @journey)
+      @journey_members << @journey_member
+      @journey_member1 = JourneyMember.create!(user: @user2, journey: @journey)
+      @journey_members << @journey_member1
+      @journey_member2 = JourneyMember.create!(user: @user3, journey: @journey)
+      @journey_members << @journey_member2
+      sign_in @user
     end
 
-    let(:valid_attributes) do
-      { expense: { journey_id: @journey.id, title: 'test expense', amount: '50', payer: @journey_member.user.nickname, recipient: @journey_member2.user.nickname } }
+    let!(:valid_attributes) do
+      { journey_id: @journey.id, expense: { title: "expense's test", amount: '60', payer: @user.nickname, recipient: [@user.nickname, @user2.nickname, @user3.nickname] } }
     end
 
-    describe "POST create" do
-      describe "with valid params" do
-        it "creates a new expense" do
-          expect {
-            post :create, params: valid_attributes
-          }.to change(Expense, :count).by(5)
+    let!(:other_attributes) do
+      { journey_id: @journey.id, expense: { title: "expense's test", amount: '60', payer: @user.nickname, recipient: [@user2.nickname, @user3.nickname] } }
+    end
+
+    describe 'POST create' do
+      describe 'with valid params' do
+        it 'creates a new expense' do
+          expect { post :create, params: valid_attributes }.to change(Expense, :count).by(1)
+        end
+
+        it 'assigns a newly created expense as @expense' do
+          post :create, params: valid_attributes
+          expect(assigns(:expense)).to be_a(Expense)
+          expect(assigns(:expense)).to be_persisted
+        end
+
+        it 'redirects to the created expense' do
+          post :create, params: valid_attributes
+          expect(response).to redirect_to(journey_expenses_path(@journey))
+        end
+
+        it "update journey's members solde if payer's expense is also a recipient" do
+          post :create, params: valid_attributes
+          @journey_member.reload
+          @journey_member1.reload
+          @journey_member2.reload
+          expect(@journey_member.solde).to eq(60 - 60 / 3)
+        end
+
+        it "update journey's members solde if payer's expense isn't also a recipient" do
+          post :create, params: other_attributes
+          @journey_member.reload
+          @journey_member1.reload
+          @journey_member2.reload
+          expect(@journey_member.solde).to eq(60)
         end
       end
     end
 
+    describe 'GET balance' do
+      it "get balance's page" do
+        get :balance, params: { journey_id: @journey.id }
+        expect(response.status).to eq(200)
+      end
+    end
   end
 end
-
-#       describe "POST create" do
-#         describe "with valid params" do
-#           it "creates a new bookmark" do
-#             expect {
-#               post :create, params: valid_attributes
-#             }.to change(Bookmark, :count).by(1)
-#           end
-
-#           it "assigns a newly created bookmark as @bookmark" do
-#             post :create, params: valid_attributes
-#             expect(assigns(:bookmark)).to be_a(Bookmark)
-#             expect(assigns(:bookmark)).to be_persisted
-#           end
-
-#           it "redirects to the created list" do
-#             post :create, params: valid_attributes
-#             expect(response).to redirect_to(@list)
-#           end
-#         end
-
-#         describe "with invalid params" do
-#           it "assigns a newly created but unsaved bookmark as @bookmark" do
-#             post :create, params: invalid_attributes
-#             expect(assigns(:bookmark)).to be_a_new(Bookmark)
-#           end
-
-#           it "re-renders the 'new' template or 'lists/show'" do
-#             post :create, params: invalid_attributes
-#             expect(response).to render_template('new').or redirect_to(@list)
-#           end
-#         end
-#       end
-
-#       describe "DELETE destroy" do
-#         it "deletes a bookmark" do
-#           @bookmark = Bookmark.create!(valid_attributes[:bookmark].merge(list_id: @list.id))
-#           expect {
-#             delete :destroy, params: { id: @bookmark.id }
-#           }.to change(Bookmark, :count).by(-1)
-#         end
-#       end
-#     end
-#   else
-#     describe "BookmarksController" do
-#       it "should exist" do
-#         expect(defined?(Bookmarks)).to eq(true)
-#       end
-#     end
-#   end
-#     } }
-# end
-
-#     let(:invalid_attributes) do
-#       { list_id: @list.id, bookmark: { journey_id: @journey.id, comment: "Good!" } }
-#     end
-
-#     describe "GET new" do
-#       it "assigns a new bookmark to @bookmark" do
-#         get :new, params: valid_attributes
-#         expect(assigns(:bookmark)).to be_a_new(Bookmark)
-#       end
-#     end
-
-#     describe "POST create" do
-#       describe "with valid params" do
-#         it "creates a new bookmark" do
-#           expect {
-#             post :create, params: valid_attributes
-#           }.to change(Bookmark, :count).by(1)
-#         end
-
-#         it "assigns a newly created bookmark as @bookmark" do
-#           post :create, params: valid_attributes
-#           expect(assigns(:bookmark)).to be_a(Bookmark)
-#           expect(assigns(:bookmark)).to be_persisted
-#         end
-
-#         it "redirects to the created list" do
-#           post :create, params: valid_attributes
-#           expect(response).to redirect_to(@list)
-#         end
-#       end
-
-#       describe "with invalid params" do
-#         it "assigns a newly created but unsaved bookmark as @bookmark" do
-#           post :create, params: invalid_attributes
-#           expect(assigns(:bookmark)).to be_a_new(Bookmark)
-#         end
-
-#         it "re-renders the 'new' template or 'lists/show'" do
-#           post :create, params: invalid_attributes
-#           expect(response).to render_template('new').or redirect_to(@list)
-#         end
-#       end
-#     end
-
-#     describe "DELETE destroy" do
-#       it "deletes a bookmark" do
-#         @bookmark = Bookmark.create!(valid_attributes[:bookmark].merge(list_id: @list.id))
-#         expect {
-#           delete :destroy, params: { id: @bookmark.id }
-#         }.to change(Bookmark, :count).by(-1)
-#       end
-#     end
-#   end
-# else
-#   describe "BookmarksController" do
-#     it "should exist" do
-#       expect(defined?(Bookmarks)).to eq(true)
-#     end
-#   end
-# end

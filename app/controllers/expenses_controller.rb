@@ -13,6 +13,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.new(expense_params)
     @expense.journey = @journey
     if @expense.save!
+      balance
       redirect_to journey_expenses_path(@journey)
     else
       render :index, status: :unprocessable_entity
@@ -35,9 +36,9 @@ class ExpensesController < ApplicationController
       @depenses_sum = @expenses.where(payer: member.user.nickname).sum(:amount)
       @dettes_sum = 0
       @expenses.each do |expense|
-        @dettes_sum += (expense.amount / @journey_members.count) if expense.recipient.include?(member.user.nickname)
+        @dettes_sum += (expense.amount / expense.recipient.compact_blank.count) if expense.recipient.include?(member.user.nickname)
       end
-      member.update(solde: (@depenses_sum - @dettes_sum))
+      member.update!(solde: (@depenses_sum - @dettes_sum))
     end
   end
 
