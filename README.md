@@ -1,25 +1,18 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Enjoy your journey with Weekzen !
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version: Ruby 3.1.2
 
-* System dependencies
+* Rails version: Rails 7.0.4
 
-* Configuration
+* Start localhost: dev
 
-* Database creation
+* How to run tests RSpec: bundle exec rspec
 
-* Database initialization
+* Services: 
+ Import cities: rake city:import
+ Import activities: rake activities:scrap
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 # busybusy
