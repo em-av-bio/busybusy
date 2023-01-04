@@ -7,12 +7,15 @@ Things you may want to cover:
 
 * Rails version: Rails 7.0.4
 
-* Start localhost: dev
+* To do : "bundle install" and "yarn" before start localhost.
 
-* How to run tests RSpec: bundle exec rspec
+* Start localhost: command "dev"
+
+* How to run tests RSpec: "bundle exec rspec"
 
 * Services: 
- Import cities: rake city:import
- Import activities: rake activities:scrap
+
+ Import cities: "rake city:import"
+ Import activities: "rake activities:scrap"
 
 # Weekzen
