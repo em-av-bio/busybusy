@@ -9,22 +9,24 @@ class JourneysController < ApplicationController
     unless @journeys.nil?
       @journeys.each do |journey|
         unless @cities_voted.nil?
-          @city_voted = journey.journey_locations.sort_by { |journey_location| journey_location.ranking }.last.location
-          @cities_voted << @city_voted
-          @count = journey.journey_members.count
-          @name = journey.name
-          @journey_dates = JourneyDate.where(journey_id: journey.id)
-          @date_voted = @journey_dates.sort_by { |journey_date| journey_date.ranking }.last
+          if journey.journey_locations.count > 0
+            @city_voted = journey.journey_locations.sort_by { |journey_location| journey_location.ranking }.last.location
+            @cities_voted << @city_voted
+            @count = journey.journey_members.count
+            @name = journey.name
+            @journey_dates = JourneyDate.where(journey_id: journey.id)
+            @date_voted = @journey_dates.sort_by { |journey_date| journey_date.ranking }.last
+          end
         end
         @markers = @cities_voted.map do |city|
-        {
-          lat: city.latitude,
-          lng: city.longitude,
-          info_window: render_to_string(partial: 'info_window', locals: { city: city })
-        }
+          {
+            lat: city.latitude,
+            lng: city.longitude,
+            info_window: render_to_string(partial: 'info_window', locals: { city: city })
+          }
         end
-     end
-   end
+      end
+    end
   end
 
   def new

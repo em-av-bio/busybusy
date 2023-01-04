@@ -34,7 +34,8 @@
     <%= f.label :recipient, 'Avancé pour:' %>
     <br>
     <%= f.collection_select :recipient, @nicknames , :nickname, :nickname,{}, {multiple: true,:include_blank => true } %>
-    <%= f.submit 'Ajouter une dépense', class: "btn secundary mt-8"%>
+    <%= f.submit 'Ajouter une dépense', class: "btn secundary mt-6 mb-2"%>
 <% end %>
-
-<%= link_to "Afficher les balances", balance_journey_expenses_path(@journey),class: "btn secundary mt-8"  %>
+<div class="sticky bottom-0 p-2 left-0 right-0 bg-white border-t border-great-blue-300">
+  <%= link_to "Afficher les balances", balance_journey_expenses_path(@journey),class: "btn secundary "  %>
+</div>
