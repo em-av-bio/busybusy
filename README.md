@@ -15,4 +15,4 @@ Things you may want to cover:
  Import cities: rake city:import
  Import activities: rake activities:scrap
 
-# busybusy
+# Weekzen
